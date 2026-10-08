@@ -1,3 +1,43 @@
-<div class="mb-6" role="banner" aria-label="{{ 'sylius.ui.home'|trans }}">
-    <img src="https://picsum.photos/id/1013/1920/1080" alt="" class="img-fluid w-100" role="presentation" style="max-height: 40vw">
-</div>
+<section class="canvas-cover" aria-labelledby="canvas-cover-title">
+    <div class="container">
+        <div class="canvas-cover__grid">
+            <div class="canvas-cover__copy">
+                <p class="canvas-cover__issue">
+                    <span>{{ 'canvas.hero.issue'|trans({}, 'canvas') }}</span>
+                    <span class="canvas-cover__rule" aria-hidden="true"></span>
+                    <span>{{ 'canvas.hero.season'|trans({}, 'canvas') }}</span>
+                </p>
+                <h1 id="canvas-cover-title">{{ 'canvas.hero.title'|trans({}, 'canvas')|raw }}</h1>
+                <p class="canvas-cover__lead">{{ 'canvas.hero.lead'|trans({}, 'canvas') }}</p>
+                <div class="canvas-cover__actions">
+                    <a class="btn btn-primary canvas-cover__cta" href="#canvas-products">
+                        {{ 'canvas.hero.cta'|trans({}, 'canvas') }}
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <span class="canvas-cover__note">{{ 'canvas.hero.note'|trans({}, 'canvas') }}</span>
+                </div>
+            </div>
+
+            <div class="canvas-cover__visual">
+                {{ component('sylius_shop:product:list', {limit: 3, template: 'shop/homepage/banner/collage.html.twig'}) }}
+                <span class="canvas-cover__vertical" aria-hidden="true">{{ 'canvas.hero.vertical'|trans({}, 'canvas') }}</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="canvas-values" aria-label="{{ 'canvas.values.label'|trans({}, 'canvas') }}">
+    <div class="container">
+        <ol class="canvas-values__list" role="list">
+            {% for item in ['craft', 'delivery', 'returns'] %}
+                <li>
+                    <span class="canvas-values__index" aria-hidden="true">{{ ['I', 'II', 'III'][loop.index0] }}.</span>
+                    <span>
+                        <strong>{{ ('canvas.values.' ~ item ~ '.title')|trans({}, 'canvas') }}</strong>
+                        {{ ('canvas.values.' ~ item ~ '.text')|trans({}, 'canvas') }}
+                    </span>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>

@@ -1,6 +1,6 @@
-<section class="bg-off-white py-6 py-lg-10">
+<section id="canvas-products" class="canvas-products bg-off-white py-6 py-lg-10">
     <div class="container" role="region" aria-labelledby="{{ hookable_metadata.configuration['test_attribute']|default('latest-products') ~ '-heading' }}">
-        <h2 class="h3 mb-6" id="{{ hookable_metadata.configuration['test_attribute']|default('latest-products') ~ '-heading' }}">{{ hookable_metadata.configuration.title|default('sylius.ui.latest_products')|trans }}</h2>
+        <h2 class="canvas-products__title" id="{{ hookable_metadata.configuration['test_attribute']|default('latest-products') ~ '-heading' }}">{{ hookable_metadata.configuration.title|default('sylius.ui.latest_products')|trans }}</h2>
 
         <div {{ sylius_test_html_attribute(hookable_metadata.configuration.test_attribute|default('latest-products')) }}>
             <div class="products-grid">

@@ -1,0 +1,20 @@
+canvas:
+    hero:
+        issue: 'Canvas — N° 01'
+        season: 'Autumn edit'
+        title: 'The art of <em>everyday</em> dressing.'
+        lead: 'Quiet pieces, honest materials and cuts that last. A wardrobe composed slowly, one essential at a time.'
+        cta: 'Discover the edit'
+        note: 'New pieces every week'
+        vertical: 'Autumn · Winter collection'
+    values:
+        label: 'Our commitments'
+        craft:
+            title: 'Considered craft.'
+            text: 'Natural fibres, chosen to age beautifully.'
+        delivery:
+            title: 'Careful delivery.'
+            text: 'Wrapped by hand, shipped within 48 hours.'
+        returns:
+            title: 'Easy returns.'
+            text: '30 days to change your mind, free of charge.'

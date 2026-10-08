@@ -286,7 +286,11 @@ async function main() {
       .then(async response => {
         if (!response.ok) return { url: ${JSON.stringify(productUrl)}, usable: false, reason: 'HTTP ' + response.status };
         const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
-        const name = doc.querySelector('h1')?.textContent.trim() ?? '';
+        // Themes may put headings in the header or in off-canvas menus: the product
+        // name is the first page heading outside of them.
+        const heading = [...doc.querySelectorAll('h1')]
+          .find(h1 => !h1.closest('header, nav, .offcanvas, [class*="offcanvas-"]'));
+        const name = heading?.textContent.trim() ?? '';
         const button = doc.querySelector('#add-to-cart-button');
         // Real product pictures are served by LiipImagine from /media/, placeholders are not.
         const images = [...doc.querySelectorAll('img')]

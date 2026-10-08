@@ -1,0 +1,297 @@
+// Homepage cover: an editorial "magazine" hero built from the latest products.
+
+.canvas-cover {
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+  border-bottom: 1px solid $border;
+  background-color: $background;
+}
+
+.canvas-cover__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.canvas-cover__issue {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: $text-muted;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.canvas-cover__rule {
+  width: 3rem;
+  height: 1px;
+  background-color: $text;
+}
+
+.canvas-cover h1 {
+  margin-bottom: 1.75rem;
+  font-size: clamp(3rem, 6.2vw, 5.75rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  text-wrap: balance;
+
+  em {
+    color: $terracotta;
+    font-style: italic;
+    font-weight: 400;
+  }
+}
+
+.canvas-cover__lead {
+  max-width: 30rem;
+  margin-bottom: 2.25rem;
+  color: $text-muted;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.canvas-cover__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: center;
+}
+
+.canvas-cover__cta {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding-inline: 1.75rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  span {
+    transition: transform 150ms ease;
+  }
+
+  &:hover span {
+    transform: translateX(4px);
+  }
+}
+
+.canvas-cover__note {
+  color: $text-muted;
+  font-family: $headings-font-family;
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+// Collage of the latest products
+
+.canvas-cover__visual {
+  position: relative;
+  padding-inline-end: 2.5rem;
+}
+
+.canvas-collage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  aspect-ratio: 7 / 6;
+}
+
+.canvas-collage__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 0;
+  background-color: $surface-soft;
+  color: $text;
+  text-decoration: none;
+
+  &:hover {
+    color: $text;
+  }
+}
+
+.canvas-collage__item--1 {
+  grid-row: span 2;
+}
+
+.canvas-collage__item:only-child {
+  grid-column: span 2;
+}
+
+.canvas-collage__item--2:last-child {
+  grid-row: span 2;
+}
+
+.canvas-collage__media {
+  position: absolute;
+  inset: 0;
+
+  img {
+    transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}
+
+.canvas-collage__item:hover .canvas-collage__media img {
+  transform: scale(1.04);
+}
+
+.canvas-collage__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  max-width: calc(100% - 1rem);
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.75rem 1rem 0.8rem;
+  background-color: $surface;
+}
+
+.canvas-collage__number {
+  color: $terracotta;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+
+.canvas-collage__name {
+  font-family: $headings-font-family;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.canvas-collage__item--empty {
+  background:
+    linear-gradient(135deg, transparent 49.6%, $border 49.6% 50.4%, transparent 50.4%),
+    $surface-soft;
+}
+
+.canvas-cover__vertical {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: $text-muted;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(50%, -50%) rotate(90deg);
+  transform-origin: center;
+  translate: -0.6rem 0;
+}
+
+// Commitments strip
+
+.canvas-values {
+  border-bottom: 1px solid $border;
+  background-color: $surface;
+}
+
+.canvas-values__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 1.75rem 2rem;
+    color: $text-muted;
+    font-size: 0.92rem;
+    line-height: 1.55;
+
+    & + li {
+      border-left: 1px solid $border;
+    }
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  strong {
+    color: $text;
+    font-weight: 500;
+  }
+}
+
+.canvas-values__index {
+  flex: 0 0 2.4rem;
+  color: $terracotta;
+  font-family: $headings-font-family;
+  font-size: 1.6rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+.canvas-products {
+  scroll-margin-top: 1rem;
+}
+
+.canvas-products__title {
+  margin-bottom: 2rem;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 400;
+}
+
+// Squared product pictures, in line with the rest of the theme.
+.products-grid a .rounded-3 {
+  border-radius: 0 !important;
+
+  img {
+    transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}
+
+.products-grid a:hover .rounded-3 img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 991.98px) {
+  .canvas-cover__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-values__list {
+    grid-template-columns: 1fr;
+
+    li {
+      padding: 1.1rem 0;
+
+      & + li {
+        border-top: 1px solid $border;
+        border-left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .canvas-cover__visual {
+    padding-inline-end: 0;
+  }
+
+  .canvas-cover__vertical {
+    display: none;
+  }
+
+  .canvas-collage {
+    aspect-ratio: 4 / 5;
+  }
+
+  .canvas-collage__name {
+    font-size: 1rem;
+  }
+}
