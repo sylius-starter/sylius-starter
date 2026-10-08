@@ -22,6 +22,30 @@ env:
     ANSICON: 1
 
 jobs:
+    monorepo:
+        name: Validate monorepo
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.4'
+                  coverage: none
+                  tools: composer, castor
+
+            - name: Validate packages and root composer.json
+              run: castor monorepo:validate
+
+            - name: Validate composer.json files
+              run: |
+                  composer validate --no-check-publish --no-check-lock
+                  for package in src/*/; do
+                      echo "::group::${package}"
+                      composer validate --no-check-publish --no-check-lock --working-dir="${package}"
+                      echo "::endgroup::"
+                  done
+
     cs-fixer:
         runs-on: ubuntu-latest
         steps:
@@ -72,6 +96,62 @@ jobs:
             -   name: Run PHPUnit
                 run: vendor/bin/phpunit
 
+    package-tests:
+        name: "Package ${{ matrix.package.name }} (isolated)"
+        needs: monorepo-packages
+        timeout-minutes: 20
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                package: ${{ fromJson(needs.monorepo-packages.outputs.packages) }}
+        steps:
+            -   uses: actions/checkout@v6
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: "8.4"
+                    extensions: xml, simplexml, dom, gd
+                    coverage: none
+                    tools: composer:v2
+
+            # Install the package alone (internal dependencies resolved from the monorepo
+            # through path repositories) to make sure it does not rely on another one.
+            -   name: Install the package in isolation
+                working-directory: ${{ matrix.package.path }}
+                run: |
+                    composer config repositories.monorepo '{"type": "path", "url": "../*", "options": {"symlink": false, "versions": {"sylius-starter/core": "dev-main"}}}'
+                    composer config minimum-stability dev
+                    composer config prefer-stable true
+                    composer require --dev --no-update "phpunit/phpunit:^13.2" "jolicode/castor:^1.6"
+                    COMPOSER_ROOT_VERSION=dev-main composer update --prefer-dist --no-progress
+
+            -   name: Run the package tests
+                working-directory: ${{ matrix.package.path }}
+                run: |
+                    if [ ! -d tests ]; then
+                        echo "No tests for this package."
+                        exit 0
+                    fi
+                    vendor/bin/phpunit --bootstrap vendor/autoload.php tests
+
+    monorepo-packages:
+        name: List packages
+        runs-on: ubuntu-latest
+        outputs:
+            packages: ${{ steps.packages.outputs.packages }}
+        steps:
+            -   uses: actions/checkout@v6
+
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.4'
+                    coverage: none
+
+            -   id: packages
+                run: echo "packages=$(php .github/scripts/monorepo-matrix.php)" >> "$GITHUB_OUTPUT"
+
     tasks:
         name: ${{ matrix.command.name }}
         timeout-minutes: 20
@@ -80,7 +160,7 @@ jobs:
             matrix:
                 command:
                     -   name: Google Recaptcha Plugin
-                    -   value: "castor sylius:add recaptcha && castor sylius:remove recaptcha"
+                        value: "castor sylius:add recaptcha && castor sylius:remove recaptcha"
                     -   name: Sylius API
                         value: "castor sylius:remove api"
                     -   name: Symfony BugSnag Plugin
