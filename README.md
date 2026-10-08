@@ -161,6 +161,7 @@ castor sylius:add cms invoicing refund
 | Plugin         | Description                                        |
 |----------------|----------------------------------------------------|
 | ai_dev_tools   | Dev-only AI tooling for Sylius                     |
+| altcha         | ALTCHA captcha to customer registration            |
 | bugsnag        | Official BugSnag notifier for Symfony applications |
 | cms            | CMS plugin for Sylius applications                 |
 | gdpr           | Synolia sylius GDPR plugin                         |
@@ -193,6 +194,7 @@ castor sylius:remove invoicing cms
 | Plugin       | Description                                        |
 |--------------|----------------------------------------------------|
 | ai_dev_tools | Dev-only AI tooling for Sylius                     |
+| altcha       | ALTCHA captcha to customer registration            |
 | api          | Sylius API and its test tooling                    |
 | bugsnag      | Official BugSnag notifier for Symfony applications |
 | cms          | CMS plugin for Sylius applications                 |

@@ -9,6 +9,7 @@ use SyliusStarter\Core\Component\InstallerInterface;
 use SyliusStarter\Core\Util\Composer;
 use SyliusStarter\Core\Util\Docker;
 use SyliusStarter\Core\Util\Symfony;
+use SyliusStarter\Core\Util\Yaml;
 use SyliusStarter\Plugins\PluginResourceCopier;
 
 use function Castor\io;
@@ -31,6 +32,8 @@ final readonly class RecaptchaInstaller implements InstallerInterface
 
         Composer::allowContribRecipes($app);
         Docker::run($app, 'composer require karser/karser-recaptcha3-bundle');
+
+        Yaml::import($app, 'config/packages/_sylius.yaml', '../sylius/twig_hooks/**/**.php');
 
         PluginResourceCopier::copy($app, 'recaptcha');
         Symfony::cacheClear($app);
