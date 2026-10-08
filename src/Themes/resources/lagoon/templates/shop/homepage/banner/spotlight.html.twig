@@ -1,0 +1,27 @@
+{% set product = latest_products|first %}
+
+<div class="lagoon-window">
+    <div class="lagoon-window__bar" aria-hidden="true">
+        <span class="lagoon-window__dot"></span>
+        <span class="lagoon-window__dot"></span>
+        <span class="lagoon-window__dot"></span>
+        <span class="lagoon-window__url">{{ 'lagoon.hero.window'|trans({}, 'lagoon') }}</span>
+    </div>
+
+    {% if product %}
+        <a class="lagoon-window__product" href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}">
+            <div class="lagoon-window__media">
+                {{ component('sylius_shop:main_image', {product: product, class: 'w-100 h-100 object-fit-cover'}) }}
+            </div>
+            <div class="lagoon-window__info">
+                <span class="lagoon-window__label">{{ 'lagoon.hero.spotlight'|trans({}, 'lagoon') }}</span>
+                <span class="lagoon-window__name">{{ product.name }}</span>
+                <span class="lagoon-window__cta">{{ 'lagoon.hero.discover'|trans({}, 'lagoon') }}</span>
+            </div>
+        </a>
+    {% else %}
+        <div class="lagoon-window__empty" aria-hidden="true">
+            <span></span><span></span><span></span>
+        </div>
+    {% endif %}
+</div>

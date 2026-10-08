@@ -16,12 +16,14 @@ use SyliusStarter\Themes\Attribute\AsThemeInstaller;
 use SyliusStarter\Themes\Attribute\AsThemeRemover;
 use SyliusStarter\Themes\Installer\BlushInstaller;
 use SyliusStarter\Themes\Installer\CanvasInstaller;
+use SyliusStarter\Themes\Installer\LagoonInstaller;
 use SyliusStarter\Themes\Installer\PromptDarkThemeInstaller;
 use SyliusStarter\Themes\Installer\PromptLightThemeInstaller;
 use SyliusStarter\Themes\Installer\ThemeInstallerDescriptor;
 use SyliusStarter\Themes\Installer\VoltInstaller;
 use SyliusStarter\Themes\Remover\BlushRemover;
 use SyliusStarter\Themes\Remover\CanvasRemover;
+use SyliusStarter\Themes\Remover\LagoonRemover;
 use SyliusStarter\Themes\Remover\PromptDarkThemeRemover;
 use SyliusStarter\Themes\Remover\PromptLightThemeRemover;
 use SyliusStarter\Themes\Remover\ThemeRemoverDescriptor;
@@ -41,12 +43,14 @@ function initialize(AfterBootEvent $afterBootEvent): void
     Themes::addInstaller(new PromptLightThemeInstaller());
     Themes::addInstaller(new BlushInstaller());
     Themes::addInstaller(new VoltInstaller());
+    Themes::addInstaller(new LagoonInstaller());
 
     Themes::addRemover(new CanvasRemover());
     Themes::addRemover(new PromptDarkThemeRemover());
     Themes::addRemover(new PromptLightThemeRemover());
     Themes::addRemover(new BlushRemover());
     Themes::addRemover(new VoltRemover());
+    Themes::addRemover(new LagoonRemover());
 
     foreach (ComponentResolver::candidates() as $reflection) {
         $descriptor = resolve_theme_installer($reflection);

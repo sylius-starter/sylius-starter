@@ -1,0 +1,48 @@
+<section class="lagoon-hero" aria-labelledby="lagoon-hero-title">
+    <div class="container">
+        <div class="lagoon-hero__grid">
+            <div class="lagoon-hero__copy">
+                <p class="lagoon-hero__kicker">{{ 'lagoon.hero.kicker'|trans({}, 'lagoon') }}</p>
+                <h1 id="lagoon-hero-title">{{ 'lagoon.hero.title'|trans({}, 'lagoon')|raw }}</h1>
+                <p class="lagoon-hero__lead">{{ 'lagoon.hero.lead'|trans({}, 'lagoon')|raw }}</p>
+
+                <div class="lagoon-hero__actions">
+                    <a class="btn btn-primary lagoon-btn-arrow" href="#lagoon-latest-products">
+                        {{ 'lagoon.hero.cta'|trans({}, 'lagoon') }}
+                    </a>
+                    <a class="lagoon-hero__link" href="#lagoon-latest-deals">
+                        {{ 'sylius.homepage.latest_deals'|trans }}
+                    </a>
+                </div>
+
+                <ul class="lagoon-usp" role="list">
+                    <li>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>
+                        <span><strong>{{ 'lagoon.usp.shipping.title'|trans({}, 'lagoon') }}</strong>{{ 'lagoon.usp.shipping.text'|trans({}, 'lagoon') }}</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 1 0 2.35-5.65"/><path d="M4 4v4h4"/></svg>
+                        <span><strong>{{ 'lagoon.usp.returns.title'|trans({}, 'lagoon') }}</strong>{{ 'lagoon.usp.returns.text'|trans({}, 'lagoon') }}</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.6 2.6L16.2 9.5"/></svg>
+                        <span><strong>{{ 'lagoon.usp.payment.title'|trans({}, 'lagoon') }}</strong>{{ 'lagoon.usp.payment.text'|trans({}, 'lagoon') }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="lagoon-hero__visual">
+                {{ component('sylius_shop:product:list', {limit: 1, template: 'shop/homepage/banner/spotlight.html.twig'}) }}
+
+                <div class="lagoon-float lagoon-float--stat" aria-hidden="true">
+                    <span class="lagoon-float__value">30</span>
+                    <span class="lagoon-float__text">{{ 'lagoon.hero.float.stat'|trans({}, 'lagoon') }}</span>
+                </div>
+                <div class="lagoon-float lagoon-float--note" aria-hidden="true">
+                    <span class="lagoon-float__title">{{ 'lagoon.hero.float.title'|trans({}, 'lagoon') }}</span>
+                    <span class="lagoon-float__text">{{ 'lagoon.hero.float.text'|trans({}, 'lagoon') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,126 @@
+// Homepage sections: product rails and the "you replace / you keep" comparison.
+
+.lagoon-products {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.lagoon-products--latest-deals {
+  border-top: 1px solid $border;
+}
+
+.lagoon-promise {
+  padding-block: clamp(4rem, 8vw, 7rem);
+  background-color: $foam;
+}
+
+.lagoon-compare {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-radius: $radius;
+  box-shadow: 0 30px 70px rgba($abyss, 0.1);
+}
+
+.lagoon-compare__side {
+  padding: clamp(2rem, 4vw, 3.25rem);
+
+  h3 {
+    margin-bottom: 1.75rem;
+    font-size: clamp(1.75rem, 2.8vw, 2.25rem);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding: 0.9rem 0 0.9rem 1.85rem;
+    border-bottom: 1px solid $border;
+    line-height: 1.5;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &::before {
+      position: absolute;
+      top: 1.15rem;
+      left: 0;
+      width: 0.95rem;
+      height: 0.95rem;
+      background-color: currentColor;
+      content: "";
+    }
+  }
+}
+
+.lagoon-compare__side--them {
+  background-color: $white;
+  color: $text-muted;
+
+  li::before {
+    background-color: $teal;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 3l10 10M13 3 3 13' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 3l10 10M13 3 3 13' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+}
+
+.lagoon-compare__side--us {
+  background-color: $abyss;
+  color: rgba($white, 0.82);
+
+  .lagoon-eyebrow {
+    color: $aqua;
+  }
+
+  h3,
+  strong {
+    color: $white;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  li {
+    border-bottom-color: rgba($white, 0.12);
+  }
+
+  li::before {
+    background-color: $aqua;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m2.5 8.5 3.5 3.5 7.5-8' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m2.5 8.5 3.5 3.5 7.5-8' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+}
+
+.lagoon-promise__outro {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+
+  p {
+    margin-bottom: 1.5rem;
+    color: $text-muted;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  strong {
+    display: block;
+    color: $ink;
+    font-weight: 600;
+  }
+
+  .btn {
+    min-height: 3.25rem;
+    padding-inline: 1.75rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .lagoon-compare {
+    grid-template-columns: 1fr;
+  }
+}

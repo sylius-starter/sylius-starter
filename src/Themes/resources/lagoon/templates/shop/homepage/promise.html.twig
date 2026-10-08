@@ -1,0 +1,38 @@
+<section class="lagoon-promise" aria-labelledby="lagoon-promise-title">
+    <div class="container">
+        <div class="lagoon-section-head lagoon-section-head--wide">
+            <p class="lagoon-eyebrow">{{ 'lagoon.promise.eyebrow'|trans({}, 'lagoon') }}</p>
+            <h2 id="lagoon-promise-title">{{ 'lagoon.promise.title'|trans({}, 'lagoon') }}</h2>
+            <p class="lagoon-section-head__lead">{{ 'lagoon.promise.lead'|trans({}, 'lagoon') }}</p>
+        </div>
+
+        <div class="lagoon-compare">
+            <div class="lagoon-compare__side lagoon-compare__side--them">
+                <p class="lagoon-eyebrow">{{ 'lagoon.promise.them.eyebrow'|trans({}, 'lagoon') }}</p>
+                <h3>{{ 'lagoon.promise.them.title'|trans({}, 'lagoon') }}</h3>
+                <ul role="list">
+                    {% for item in 1..4 %}
+                        <li>{{ ('lagoon.promise.them.item_' ~ item)|trans({}, 'lagoon') }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="lagoon-compare__side lagoon-compare__side--us">
+                <p class="lagoon-eyebrow">{{ 'lagoon.promise.us.eyebrow'|trans({}, 'lagoon') }}</p>
+                <h3>{{ 'lagoon.promise.us.title'|trans({}, 'lagoon') }}</h3>
+                <ul role="list">
+                    {% for item in 1..4 %}
+                        <li>{{ ('lagoon.promise.us.item_' ~ item)|trans({}, 'lagoon')|raw }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="lagoon-promise__outro">
+            <p>
+                {{ 'lagoon.promise.outro.text'|trans({}, 'lagoon') }}
+                <strong>{{ 'lagoon.promise.outro.strong'|trans({}, 'lagoon') }}</strong>
+            </p>
+            <a class="btn lagoon-btn-aqua lagoon-btn-arrow" href="#lagoon-latest-products">{{ 'lagoon.promise.outro.cta'|trans({}, 'lagoon') }}</a>
+        </div>
+    </div>
+</section>

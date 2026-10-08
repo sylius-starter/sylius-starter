@@ -5,9 +5,9 @@ violet, soft-lavender accents, rounded components and bold Jost typography. Its
 custom homepage banner uses layered CSS artwork, so it needs no additional image
 assets.
 
-| Homepage                                                 | Comet Pulse T-Shirt                                                                 | Cart                                                                     |
-|----------------------------------------------------------|-------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| ![Volt storefront homepage](../images/volt-homepage.png) | ![Comet Pulse T-Shirt product page in Volt](../images/volt-comet-pulse-product.png) | ![Volt cart containing the Comet Pulse T-Shirt](../images/volt-cart.png) |
+| Homepage                                                 | Product page                                        | Cart                                                       |
+|----------------------------------------------------------|-----------------------------------------------------|------------------------------------------------------------|
+| ![Volt storefront homepage](../images/volt-homepage.png) | ![Product page in Volt](../images/volt-product.png) | ![Volt cart containing a product](../images/volt-cart.png) |
 
 - **Palette** — plum ink (`#302B43`), electric violet (`#6554B8`) and soft
   lavender (`#E9E5F4`) over a subtle, near-white background.

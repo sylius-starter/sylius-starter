@@ -1,0 +1,58 @@
+.card {
+  overflow: hidden;
+  border: 1px solid $border;
+  border-radius: $radius;
+  background-color: $white;
+  box-shadow: $shadow-soft;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+  color: $ink;
+  font-weight: 700;
+}
+
+.card-text {
+  color: $text-muted;
+}
+
+.card-footer {
+  border-top-color: $border;
+  background-color: $white;
+}
+
+// Product cards: soft mint frame and a slow zoom on hover.
+
+.products-grid {
+  row-gap: 2.5rem;
+}
+
+.products-grid a .rounded-3 {
+  position: relative;
+  border-radius: $radius !important;
+  background-color: $foam !important;
+
+  img {
+    transition: transform 600ms $ease;
+  }
+}
+
+.products-grid a:hover .rounded-3 img {
+  transform: scale(1.045);
+}
+
+.products-grid a .h6 {
+  color: $ink;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  transition: color 160ms ease;
+}
+
+.products-grid a:hover .h6 {
+  color: $teal;
+}

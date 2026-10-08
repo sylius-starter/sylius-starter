@@ -1,0 +1,30 @@
+// Product page refinements.
+
+.product h1,
+.product .h1 {
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  letter-spacing: -0.05em;
+}
+
+.product .text-bg-light,
+.product .bg-light {
+  background-color: $foam !important;
+}
+
+.offcanvas {
+  --bs-offcanvas-border-color: #{$border};
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid $border;
+}
+
+.table {
+  --bs-table-border-color: #{$border};
+}
+
+.badge.bg-primary,
+.badge.text-bg-primary {
+  background-color: $iris !important;
+  color: $white !important;
+}

@@ -1,0 +1,25 @@
+{% import "@SyliusShop/shared/macro/money.html.twig" as money %}
+
+<div class="col-auto position-relative lagoon-cart" {{ attributes }}>
+    <div data-loading>
+        <div class="sylius-shop-loader">
+            <img src="{{ asset('build/shop/images/loader.gif', 'shop') }}" alt="{{ 'sylius.ui.loading'|trans }}" loading="lazy"/>
+        </div>
+    </div>
+    <div {{ sylius_test_html_attribute('cart-button') }}>
+        <button class="btn lagoon-cart__button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-label="{{ 'sylius.ui.cart'|trans }}">
+            <svg class="lagoon-cart__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M6.33 8h11.34a2 2 0 0 1 1.98 2.27l-1.1 7.9A3 3 0 0 1 15.58 21H8.42a3 3 0 0 1-2.97-2.83l-1.1-7.9A2 2 0 0 1 6.33 8Z"/>
+                <path d="M9 11V6a3 3 0 0 1 6 0v5"/>
+            </svg>
+            <span class="d-none d-lg-inline" {{ sylius_test_html_attribute('cart-total') }}>
+                {{- money.convertAndFormat(cart.itemsTotal) -}}
+            </span>
+            {% if cart.totalQuantity > 0 %}
+                <span class="lagoon-cart__count" {{ sylius_test_html_attribute('cart-quantity', cart.totalQuantity) }}>
+                    {{ cart.totalQuantity }}
+                </span>
+            {% endif %}
+        </button>
+    </div>
+</div>

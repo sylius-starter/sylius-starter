@@ -1,0 +1,63 @@
+lagoon:
+    hero:
+        kicker: 'Des essentiels sans hâte, pour les longs étés.'
+        title: 'Faits pour durer,<br>portés des <em>années</em>.'
+        lead: 'Des coupes intemporelles, des matières épaisses et des prix honnêtes. <strong>Retours gratuits pendant 30 jours</strong> et une garde-robe qui vous suit, saison après saison.'
+        cta: 'Découvrir la collection'
+        window: 'lagoon.shop / nouveautes'
+        spotlight: 'Tout juste arrivé'
+        discover: 'Découvrir'
+        float:
+            stat: 'jours pour changer d’avis'
+            title: 'Pensé pour durer'
+            text: 'Des matières choisies pour être portées, lavées et reportées'
+    usp:
+        shipping:
+            title: 'Livraison rapide'
+            text: 'Expédié sous 48 heures'
+        returns:
+            title: 'Retours gratuits'
+            text: '30 jours, sans justification'
+        payment:
+            title: 'Paiement sécurisé'
+            text: 'Carte, PayPal et plus'
+    products:
+        eyebrow:
+            deals: 'Bonnes affaires'
+            latest: 'Nouveautés'
+    promise:
+        eyebrow: 'Pourquoi Lagoon'
+        title: 'Une garde-robe qui vous reste.'
+        lead: 'La plupart des vêtements sont conçus pour être remplacés. Les nôtres sont conçus pour être gardés : moins de pièces, mieux faites, et toute l’histoire derrière chacune d’elles.'
+        them:
+            eyebrow: 'Fast fashion'
+            title: 'Vous remplacez'
+            item_1: 'Des tendances qui passent en une saison'
+            item_2: 'Des tissus fins qui se déforment au lavage'
+            item_3: 'Des retours qui coûtent du temps et de l’argent'
+            item_4: 'Une chaîne d’approvisionnement dont personne ne parle'
+        us:
+            eyebrow: 'Les essentiels Lagoon'
+            title: 'Vous gardez'
+            item_1: '<strong>Des coupes intemporelles</strong> que vous porterez encore dans cinq ans'
+            item_2: 'Des matières épaisses qui vieillissent bien'
+            item_3: '<strong>Retours gratuits</strong> pendant 30 jours, étiquette fournie'
+            item_4: 'Chaque atelier référencé, chaque prix expliqué'
+        outro:
+            text: 'Vous ne savez pas par où commencer ?'
+            strong: 'Choisissez une pièce coup de cœur, on s’occupe du reste.'
+            cta: 'Voir les nouveautés'
+    footer:
+        tagline: 'Des essentiels sans hâte pour les longs étés. Faits pour durer, livrés sans détour.'
+        band:
+            eyebrow: 'Comment ça marche'
+            title: 'De notre atelier à votre garde-robe.'
+            step_1:
+                title: 'Commandez aujourd’hui.'
+                text: 'Votre colis part sous 48 heures.'
+            step_2:
+                title: 'Essayez chez vous.'
+                text: 'Vous avez 30 jours pour vous décider.'
+            step_3:
+                title: 'Gardez-le des années.'
+                text: 'On vous aide à l’entretenir, saison après saison.'

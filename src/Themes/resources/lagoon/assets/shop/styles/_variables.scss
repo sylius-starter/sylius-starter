@@ -1,0 +1,48 @@
+// Lagoon — deep-water teal, aqua shallows, mint foam and a touch of iris.
+$font-family-sans-serif: "InterVariable", "Inter", "Helvetica Neue", "Arial", sans-serif;
+$font-family-monospace: ui-monospace, "SFMono-Regular", "JetBrains Mono", "Menlo", monospace;
+$font-family-base: $font-family-sans-serif;
+
+$headings-font-family: $font-family-sans-serif;
+$headings-font-weight: 800;
+
+$abyss: #0A3A3E;
+$abyss-deep: #072B2E;
+$teal: #0E7C86;
+$teal-dark: #0A5F67;
+$aqua: #14DFE6;
+$aqua-soft: #9BF0F3;
+$foam: #E7F9F9;
+$foam-strong: #CDEFF0;
+$iris: #6B3FE0;
+$iris-soft: #EEE8FD;
+$sky: #3E93C1;
+$ink: #0B1416;
+$white: #FFF;
+$text: #2F3D40;
+$text-muted: #687A7D;
+$border: #D7EEEF;
+
+$body-bg: $white;
+$body-color: $text;
+
+$primary: $teal;
+$secondary: $foam;
+$success: #1F8A6A;
+$info: $teal;
+
+$link-color: $teal;
+$link-hover-color: $abyss;
+$border-color: $border;
+
+$radius-sm: 0.75rem;
+$radius: 1.25rem;
+$radius-lg: 1.75rem;
+
+$shadow-soft: 0 10px 30px rgba($abyss, 0.06);
+$shadow-float: 0 24px 60px rgba($abyss, 0.12);
+
+$ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+$spacing-6: 1.5rem;
+$spacing-12: 3rem;

@@ -5,9 +5,9 @@ Blush adapts the visual language of the
 page into a storefront: a crisp white canvas, expressive raspberry accents,
 soft rose panels and a deep plum footer.
 
-| Homepage                                                   | Comet Pulse T-Shirt                                                                   | Cart                                                                       |
-|------------------------------------------------------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| ![Blush storefront homepage](../images/blush-homepage.png) | ![Comet Pulse T-Shirt product page in Blush](../images/blush-comet-pulse-product.png) | ![Blush cart containing the Comet Pulse T-Shirt](../images/blush-cart.png) |
+| Homepage                                                   | Product page                                          | Cart                                                         |
+|------------------------------------------------------------|-------------------------------------------------------|--------------------------------------------------------------|
+| ![Blush storefront homepage](../images/blush-homepage.png) | ![Product page in Blush](../images/blush-product.png) | ![Blush cart containing a product](../images/blush-cart.png) |
 
 - **Palette** — white and pale rose surfaces (`#FFFFFF`, `#FBF6F8`), raspberry
   (`#B54878`) accents and plum (`#2D141F`) typography and footer.

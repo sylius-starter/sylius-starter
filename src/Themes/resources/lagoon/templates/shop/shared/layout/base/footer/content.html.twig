@@ -1,0 +1,29 @@
+<footer class="lagoon-footer">
+    <div class="lagoon-footer__band">
+        <div class="container">
+            <div class="lagoon-footer__band-grid">
+                <div>
+                    <p class="lagoon-eyebrow">{{ 'lagoon.footer.band.eyebrow'|trans({}, 'lagoon') }}</p>
+                    <p class="lagoon-footer__band-title">{{ 'lagoon.footer.band.title'|trans({}, 'lagoon') }}</p>
+                </div>
+                <ol class="lagoon-steps" role="list">
+                    {% for step in 1..3 %}
+                        <li>
+                            <span class="lagoon-steps__index">{{ '%02d'|format(step) }}</span>
+                            <span><strong>{{ ('lagoon.footer.band.step_' ~ step ~ '.title')|trans({}, 'lagoon') }}</strong> {{ ('lagoon.footer.band.step_' ~ step ~ '.text')|trans({}, 'lagoon') }}</span>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="container lagoon-footer__main">
+        <div class="lagoon-footer__brand">
+            {% include 'shop/shared/layout/brand/logo.html.twig' with {variant: 'footer'} %}
+            <p>{{ 'lagoon.footer.tagline'|trans({}, 'lagoon') }}</p>
+        </div>
+        <div class="row">
+            {% hook 'content' %}
+        </div>
+    </div>
+</footer>

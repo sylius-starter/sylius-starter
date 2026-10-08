@@ -7,7 +7,7 @@ application, run `castor sylius:theme:setup <theme>` (for example,
 `castor sylius:theme:setup canvas`). Theme setup switches the active theme; the
 screenshot script only captures the storefront and verifies its theme marker.
 
-To refresh the full-page homepage and Comet Pulse T-Shirt screenshots for a theme, run:
+To refresh the full-page homepage and product page screenshots for a theme, run:
 
 ```bash
 node scripts/capture-theme-screenshots.mjs canvas
@@ -15,11 +15,17 @@ node scripts/capture-theme-screenshots.mjs blush
 node scripts/capture-theme-screenshots.mjs prompt_dark
 node scripts/capture-theme-screenshots.mjs prompt_light
 node scripts/capture-theme-screenshots.mjs volt
+node scripts/capture-theme-screenshots.mjs lagoon
 ```
 
-The script saves the screenshots in `docs/images/`. Use `--base-url <url>` to capture from another storefront URL, or `--output-dir <dir>` to choose another output directory. The default storefront is `https://app.test/en_US/`.
+The script saves the screenshots in `docs/images/` (`<theme>-homepage.png`, `<theme>-product.png` and `<theme>-cart.png`). Use `--base-url <url>` to capture from another storefront URL, or `--output-dir <dir>` to choose another output directory. The default storefront is `https://app.test/en_US/`.
 
-Add `--include-cart` to also put the Comet Pulse T-Shirt in a fresh browser cart and capture the cart page:
+Data fixtures differ between installs, so the script evaluates the products listed on the storefront
+(homepage, then category pages) and picks the first one that is in stock, has an add-to-cart button and a real
+image, preferring the Comet Pulse T-Shirt when it qualifies. Skipped products are listed with the reason. Use
+`--product <slug>` to force a product.
+
+Add `--include-cart` to also put the selected product in a fresh browser cart and capture the cart page:
 
 ```bash
 node scripts/capture-theme-screenshots.mjs canvas --include-cart
@@ -27,6 +33,7 @@ node scripts/capture-theme-screenshots.mjs blush --include-cart
 node scripts/capture-theme-screenshots.mjs prompt_dark --include-cart
 node scripts/capture-theme-screenshots.mjs prompt_light --include-cart
 node scripts/capture-theme-screenshots.mjs volt --include-cart
+node scripts/capture-theme-screenshots.mjs lagoon --include-cart
 ```
 
 The cart uses an isolated temporary browser profile and does not alter another browser session's cart.
