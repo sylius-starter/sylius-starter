@@ -17,9 +17,9 @@ shipped by the Sylius shop, so no extra font file is needed).
   aqua add-to-cart button, and no default header top bar.
 - **Homepage** — a split hero with oversized copy, three reassurance items and a
   floating "storefront window" that showcases the **latest product of the
-  channel** (real image and link, no static asset); the new collection block is
-  replaced by a *"You replace / You keep"* comparison section on a mint
-  background.
+  channel** (real image and link, no static asset), a *"You replace / You keep"*
+  comparison section on a mint background, then the four latest products; the
+  deals and new collection blocks are hidden.
 - **Footer** — a deep-teal band with numbered "how it works" steps above a light
   footer with the Lagoon wordmark and Sylius links.
 - **Product page** — the price sits directly below the product name, before reviews.

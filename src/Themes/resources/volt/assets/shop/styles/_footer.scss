@@ -92,3 +92,9 @@ footer .volt-logo__name {
 footer .volt-logo__tagline {
   color: $white !important;
 }
+
+.volt-footer__copy a {
+  color: $lavender !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.2em;
+}

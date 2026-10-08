@@ -1,6 +1,11 @@
+{% set volt_list_key = hookable_metadata.configuration['test_attribute']|default('latest-products') %}
+
 <section id="volt-products" class="volt-products">
-    <div class="container" role="region" aria-labelledby="{{ hookable_metadata.configuration['test_attribute']|default('latest-products') ~ '-heading' }}">
-        <h2 class="h3 mb-6" id="{{ hookable_metadata.configuration['test_attribute']|default('latest-products') ~ '-heading' }}">{{ hookable_metadata.configuration.title|default('sylius.ui.latest_products')|trans }}</h2>
+    <div class="container" role="region" aria-labelledby="{{ volt_list_key ~ '-heading' }}">
+        <div class="volt-products__head">
+            <p class="volt-pill">{{ 'volt.products.eyebrow'|trans({}, 'volt') }}</p>
+            <h2 id="{{ volt_list_key ~ '-heading' }}">{{ hookable_metadata.configuration.title|default('sylius.ui.latest_products')|trans }}</h2>
+        </div>
 
         <div {{ sylius_test_html_attribute(hookable_metadata.configuration.test_attribute|default('latest-products')) }}>
             <div class="products-grid">

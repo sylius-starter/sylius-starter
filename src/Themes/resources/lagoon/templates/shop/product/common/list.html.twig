@@ -1,5 +1,5 @@
 {% set lagoon_list_key = hookable_metadata.configuration['test_attribute']|default('latest-products') %}
-{% set lagoon_eyebrows = {'latest-deals': 'lagoon.products.eyebrow.deals', 'latest-products': 'lagoon.products.eyebrow.latest'} %}
+{% set lagoon_eyebrows = {'latest-products': 'lagoon.products.eyebrow.latest'} %}
 
 <section id="lagoon-{{ lagoon_list_key }}" class="lagoon-products lagoon-products--{{ lagoon_list_key }}">
     <div class="container" role="region" aria-labelledby="{{ lagoon_list_key ~ '-heading' }}">

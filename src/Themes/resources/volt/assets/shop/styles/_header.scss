@@ -179,7 +179,7 @@ header .nav-link {
   }
 }
 
-.badge[data-test-cart-quantity] {
+.badge.volt-cart__count {
   top: -0.35rem !important;
   inset-inline-start: auto !important;
   inset-inline-end: -0.4rem;

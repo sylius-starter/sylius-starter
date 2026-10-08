@@ -1,0 +1,333 @@
+// Homepage: contained hero, perks strip and the latest products rail.
+
+.volt-home-top {
+  padding-top: 1.5rem;
+}
+
+.volt-hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(28rem, 48vw, 40rem);
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(2rem, 6vw, 5rem);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 78% 48%, rgba($electric, 0.95) 0 17%, transparent 17.2%),
+    radial-gradient(circle at 78% 48%, $lavender 0 27%, transparent 27.2%),
+    $ink;
+  color: $white;
+  isolation: isolate;
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+    right: -3%;
+    bottom: -35%;
+    width: 48%;
+    aspect-ratio: 1;
+    border: 1px solid rgba($white, 0.22);
+    border-radius: 50%;
+    content: "";
+    box-shadow:
+      0 0 0 2rem rgba($white, 0.035),
+      0 0 0 4rem rgba($white, 0.025);
+    pointer-events: none;
+  }
+}
+
+.volt-hero__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 38rem;
+}
+
+.volt-hero__eyebrow,
+.volt-pill {
+  display: inline-flex;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 50rem;
+  background-color: $lavender;
+  color: $ink;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+
+.volt-hero h1 {
+  margin: 0 0 1.25rem;
+  color: $white;
+  font-size: clamp(3.5rem, 8.5vw, 7rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.86;
+  text-wrap: initial;
+
+  span {
+    display: inline-block;
+    color: $lavender;
+    font-size: 0.88em;
+    transform: skewX(-6deg);
+  }
+}
+
+.volt-hero__lead {
+  max-width: 26rem;
+  margin: 1.75rem 0 2rem;
+  color: rgba($white, 0.78);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.volt-hero__cta {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.4rem 0.8rem 1.6rem;
+  border: 2px solid $lavender;
+  border-radius: 50rem;
+  background-color: $lavender;
+  color: $ink;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.2;
+    transition: transform 160ms ease;
+  }
+
+  &:hover,
+  &:focus {
+    transform: translateY(-2px);
+    background-color: transparent;
+    color: $lavender !important;
+
+    svg {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.volt-hero__orbit {
+  position: absolute;
+  top: 50%;
+  right: 9%;
+  display: grid;
+  width: clamp(11rem, 26vw, 22rem);
+  aspect-ratio: 1;
+  place-items: center;
+  transform: translateY(-50%) rotate(-12deg);
+}
+
+.volt-hero__disc {
+  display: grid;
+  width: 68%;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba($white, 0.3);
+  border-radius: 50%;
+  background: linear-gradient(145deg, #686BFF, $electric 65%, #292CC5);
+  box-shadow:
+    0 1.5rem 3rem rgba($ink, 0.28),
+    inset 0 0 0 0.7rem rgba($white, 0.06);
+  color: $white;
+  font-size: clamp(4rem, 11vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -0.12em;
+  line-height: 1;
+}
+
+.volt-hero__tag {
+  position: absolute;
+  right: 0;
+  bottom: 12%;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba($white, 0.3);
+  border-radius: 50rem;
+  background-color: $ink;
+  color: $white;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  transform: rotate(12deg);
+}
+
+// Perks strip
+
+.volt-perks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid $border;
+    border-radius: 1.25rem;
+    background-color: $white;
+  }
+
+  span:not(.volt-perks__icon) {
+    display: flex;
+    flex-direction: column;
+    color: $text-muted;
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
+  strong {
+    color: $ink;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+}
+
+.volt-perks__icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.9rem;
+  background-color: $lavender;
+
+  svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: none;
+    stroke: $electric;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+  }
+}
+
+// Latest products
+
+.volt-products {
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  scroll-margin-top: 1rem;
+}
+
+.volt-products__head {
+  margin-bottom: 2rem;
+
+  .volt-pill {
+    margin-bottom: 1rem;
+    background-color: $ink;
+    color: $lavender;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.055em;
+  }
+}
+
+.products-grid {
+  row-gap: 2.5rem;
+}
+
+.products-grid a .rounded-3 {
+  border-radius: 1.25rem !important;
+  background-color: $lavender !important;
+
+  img {
+    transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}
+
+.products-grid a:hover .rounded-3 img {
+  transform: scale(1.05);
+}
+
+.products-grid a .h6 {
+  margin-bottom: 0.35rem;
+  color: $ink;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: color 160ms ease;
+}
+
+.products-grid a:hover .h6 {
+  color: $electric;
+}
+
+@media (max-width: 991.98px) {
+  .volt-perks {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .volt-home-top {
+    padding-top: 0.75rem;
+  }
+
+  .volt-hero {
+    min-height: 39rem;
+    align-items: flex-start;
+    padding: 2rem 1.75rem;
+    background:
+      radial-gradient(circle at 82% 86%, rgba($electric, 0.95) 0 16%, transparent 16.2%),
+      radial-gradient(circle at 82% 86%, $lavender 0 25%, transparent 25.2%),
+      $ink;
+  }
+
+  .volt-hero__orbit {
+    top: auto;
+    right: 6%;
+    bottom: 1.5rem;
+    width: 9rem;
+    transform: rotate(-12deg);
+  }
+
+  .volt-hero__disc {
+    font-size: 3.5rem;
+  }
+
+  .volt-hero__tag {
+    right: auto;
+    bottom: auto;
+    top: -0.5rem;
+    left: -2.5rem;
+  }
+
+  .volt-perks {
+    gap: 0.6rem;
+
+    li {
+      padding: 0.8rem 1rem;
+    }
+  }
+
+  .volt-perks__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
