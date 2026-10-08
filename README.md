@@ -1,12 +1,16 @@
-# Castor Sylius Plugin
+# Sylius Starter
 
-A [Castor](https://castor.jolicode.com/) plugin that turns a PHP description of
+A set of [Castor](https://castor.jolicode.com/) packages that turns a PHP description of
 your stack into a Sylius app, and gives you the tasks to drive it.
+
+> Formerly the `castor-php/sylius` Castor plugin. The code now lives in this monorepo and is
+> published as several `sylius-starter/*` packages, see [Packages](#-packages).
 
 <!-- TOC -->
 
-* [Why Castor Sylius?](#why-castor-sylius)
+* [Why Castor Sylius?](#why-sylius-starter)
 * [Installation](#installation)
+* [📦 Packages](#-packages)
 * [🦫 Available commands](#-available-commands)
     * [Add or Remove plugins](#add-or-remove-plugins)
         * [✚ Add plugins](#-add-plugins)
@@ -42,11 +46,16 @@ your stack into a Sylius app, and gives you the tasks to drive it.
     * [The App instance](#the-app-instance)
     * [Helpers](#helpers)
     * [Good to know](#good-to-know)
+* [🏗️ Monorepo & contributing](#️-monorepo--contributing)
+    * [Layout](#layout)
+    * [Monorepo tasks](#monorepo-tasks)
+    * [Splitting packages in the CI](#splitting-packages-in-the-ci)
+    * [Adding a package](#adding-a-package)
 * [License](#license)
 
 <!-- TOC -->
 
-## Why Castor Sylius?
+## Why Sylius Starter?
 
 Castor Sylius provides a higher-level interface for building, configuring and operating a Sylius application.
 
@@ -77,10 +86,16 @@ The result is less guesswork, fewer tokens spent on repetitive tasks, and more r
 echo '{}' > castor.composer.json
 ```
 
-3. Install the Castor plugin for Sylius
+3. Install Sylius Starter (every package at once)
 
 ```bash
-castor composer require castor-php/sylius "@dev"
+castor composer require sylius-starter/sylius-starter "@dev"
+```
+
+Or pick only what you need: `sylius-starter/core` is always required, then add the task packages you want, e.g.
+
+```bash
+castor composer require sylius-starter/core sylius-starter/themes sylius-starter/plugins "@dev"
 ```
 
 4. Setup a new Sylius application
@@ -88,6 +103,38 @@ castor composer require castor-php/sylius "@dev"
 ```bash
 castor docker:service:install sylius
 ```
+
+## 📦 Packages
+
+| Package                                                                                 | Namespace                       | Tasks                                                                 |
+|-----------------------------------------------------------------------------------------|---------------------------------|-----------------------------------------------------------------------|
+| [`sylius-starter/core`](https://github.com/sylius-starter/core)                         | `SyliusStarter\Core`            | Castor plugin: `SyliusService`, installer, `sylius:fixtures`, helpers |
+| [`sylius-starter/plugins`](https://github.com/sylius-starter/plugins)                   | `SyliusStarter\Plugins`         | `sylius:plugin:add`, `sylius:plugin:remove`                           |
+| [`sylius-starter/payment-gateways`](https://github.com/sylius-starter/payment-gateways) | `SyliusStarter\PaymentGateways` | `sylius:payment-gateways:setup`                                       |
+| [`sylius-starter/themes`](https://github.com/sylius-starter/themes)                     | `SyliusStarter\Themes`          | `sylius:theme:setup`                                                  |
+| [`sylius-starter/menu`](https://github.com/sylius-starter/menu)                         | `SyliusStarter\Menu`            | `sylius:menu:remove`                                                  |
+| [`sylius-starter/b2b`](https://github.com/sylius-starter/b2b)                           | `SyliusStarter\B2b`             | `sylius:b2b:enable`                                                   |
+| [`sylius-starter/import`](https://github.com/sylius-starter/import)                     | `SyliusStarter\Import`          | `sylius:import:*`                                                     |
+| [`sylius-starter/upsun`](https://github.com/sylius-starter/upsun)                       | `SyliusStarter\Upsun`           | `sylius:upsun:check`                                                  |
+| `sylius-starter/sylius-starter`                                                         | —                               | All of the above (this repository)                                    |
+
+The core is the Castor plugin itself. Every other package only contributes tasks: it registers them in the core
+from a file autoloaded by Composer, so installing a package is enough to get its tasks on your `SyliusService`.
+
+### Upgrading from `castor-php/sylius`
+
+Replace the package in your `castor.composer.json` (`castor composer remove castor-php/sylius` then require
+`sylius-starter/sylius-starter`) and update your imports:
+
+| Before                                                    | After                                                           |
+|-----------------------------------------------------------|-----------------------------------------------------------------|
+| `Castor\Sylius\Service\SyliusService`                     | `SyliusStarter\Core\Service\SyliusService`                      |
+| `Castor\Sylius\App`, `Castor\Sylius\Util\*`               | `SyliusStarter\Core\App`, `SyliusStarter\Core\Util\*`           |
+| `Castor\Sylius\Attribute\AsPluginInstaller` / `Remover`   | `SyliusStarter\Plugins\Attribute\AsPluginInstaller` / `Remover` |
+| `Castor\Sylius\Attribute\AsPaymentGateway*`               | `SyliusStarter\PaymentGateways\Attribute\AsPaymentGateway*`     |
+| `Castor\Sylius\Attribute\AsTheme*`                        | `SyliusStarter\Themes\Attribute\AsTheme*`                       |
+| `Castor\Sylius\Plugin\Installer\PluginInstallerInterface` | `SyliusStarter\Core\Component\InstallerInterface`               |
+| `Castor\Sylius\Plugin\Remover\PluginRemoverInterface`     | `SyliusStarter\Core\Component\RemoverInterface`                 |
 
 ## 🦫 Available commands
 
@@ -471,15 +518,16 @@ castor sylius:import:fixtures:load --project=example
 ## 🧩 Extending the plugin
 
 The lists above are not closed: you can add your own plugins, themes and payment gateways to the commands, from your
-own `castor.php` (or from any file it `import()`s), using the attributes shipped in `Castor\Sylius\Attribute`.
+own `castor.php` (or from any file it `import()`s), using the attributes shipped with each package.
 
 Once registered, your component is offered in the interactive prompt of its command **and** is callable by name on the
 command line, exactly like a built-in one.
 
 ### Available attributes
 
-All six attributes live in the `Castor\Sylius\Attribute` namespace, take a required `name` argument, and can be
-put on a function or on a class.
+The attributes live in the `Attribute` namespace of their package (`SyliusStarter\Plugins\Attribute`,
+`SyliusStarter\PaymentGateways\Attribute` and `SyliusStarter\Themes\Attribute`), take a required `name` argument,
+and can be put on a function or on a class.
 
 | Attribute                                           | Command                                              | Called when                            |
 |-----------------------------------------------------|------------------------------------------------------|----------------------------------------|
@@ -504,14 +552,14 @@ The most direct option, and a good fit for a component living in your `castor.ph
 ```php
 <?php
 
-use Castor\Sylius\App;
-use Castor\Sylius\Attribute\AsPluginInstaller;
-use Castor\Sylius\Attribute\AsPluginRemover;
-use Castor\Sylius\Util\Assets;
-use Castor\Sylius\Util\Composer;
-use Castor\Sylius\Util\Database;
-use Castor\Sylius\Util\Docker;
-use Castor\Sylius\Util\Symfony;
+use SyliusStarter\Core\App;
+use SyliusStarter\Plugins\Attribute\AsPluginInstaller;
+use SyliusStarter\Plugins\Attribute\AsPluginRemover;
+use SyliusStarter\Core\Util\Assets;
+use SyliusStarter\Core\Util\Composer;
+use SyliusStarter\Core\Util\Database;
+use SyliusStarter\Core\Util\Docker;
+use SyliusStarter\Core\Util\Symfony;
 
 use function Castor\io;
 
@@ -556,12 +604,12 @@ class is instantiated once, without arguments, and called on install/remove:
 ```php
 <?php
 
-use Castor\Sylius\App;
-use Castor\Sylius\Attribute\AsThemeInstaller;
-use Castor\Sylius\Attribute\AsThemeRemover;
-use Castor\Sylius\Util\Assets;
-use Castor\Sylius\Util\Javascript;
-use Castor\Sylius\Util\Symfony;
+use SyliusStarter\Core\App;
+use SyliusStarter\Themes\Attribute\AsThemeInstaller;
+use SyliusStarter\Themes\Attribute\AsThemeRemover;
+use SyliusStarter\Core\Util\Assets;
+use SyliusStarter\Core\Util\Javascript;
+use SyliusStarter\Core\Util\Symfony;
 
 #[AsThemeInstaller(name: 'acme')]
 final class AcmeThemeInstaller
@@ -612,7 +660,7 @@ function remove_adyen(App $app): void
 
 ### The App instance
 
-Both forms receive the targeted Sylius application as a `Castor\Sylius\App` instance:
+Both forms receive the targeted Sylius application as a `SyliusStarter\Core\App` instance:
 
 | Method        | Returns                                            |
 |---------------|----------------------------------------------------|
@@ -676,6 +724,97 @@ does not cover.
 - **A component can also be a task.** Nothing prevents you from adding `#[AsTask]` next to the attribute, if you want
   the very same code to be reachable as a standalone command.
 
+### Adding your own tasks to the Sylius service
+
+Every task package registers its tasks in the core `TaskProviderRegistry`. You can do the same from your
+`castor.php`: the tasks are then exposed by every `SyliusService`, like the built-in ones.
+
+```php
+use Castor\Attribute\AsTask;
+use SyliusStarter\Core\Service\SyliusService;
+use SyliusStarter\Core\Task\TaskProviderRegistry;
+
+use function Castor\io;
+
+TaskProviderRegistry::register('my_tasks', static fn (SyliusService $service): iterable => [
+    [
+        'task' => new AsTask('hello', 'sylius:my', 'Say hello'),
+        'function' => static fn () => io()->success(\sprintf('Hello from %s', $service->getName())),
+    ],
+]);
+```
+
+A package can also hook into `castor docker:service:install sylius` (extra questions and steps run once Sylius is
+installed) by
+registering a `SyliusInstallerExtensionInterface` in `SyliusInstallerExtensions`, as `sylius-starter/payment-gateways`
+does to ask which payment gateways to configure.
+
+## 🏗️ Monorepo & contributing
+
+This repository is the development monorepo of every `sylius-starter/*` package. Each package is split into its own
+**read-only** repository by the CI: issues and pull requests always go here.
+
+### Layout
+
+```
+src/
+├── Core/              sylius-starter/core
+│   ├── composer.json
+│   ├── src/           SyliusStarter\Core\
+│   └── tests/
+├── Plugins/           sylius-starter/plugins     (+ resources/)
+├── PaymentGateways/   sylius-starter/payment-gateways
+├── Themes/            sylius-starter/themes      (+ resources/)
+├── Menu/              sylius-starter/menu
+├── B2b/               sylius-starter/b2b         (+ resources/)
+├── Import/            sylius-starter/import      (+ resources/)
+└── Upsun/             sylius-starter/upsun
+tests/Integration/     cross-package tests
+.castor/monorepo/      monorepo tooling (castor monorepo:*)
+```
+
+The `composer.json` of each package is the source of truth: the root `composer.json` (require, `replace`, autoload)
+is **generated** from them. Internal dependencies use `self.version` so all packages are always released together.
+
+### Monorepo tasks
+
+| Task                                   | What it does                                                                                    |
+|----------------------------------------|-------------------------------------------------------------------------------------------------|
+| `castor monorepo:packages [--json]`    | Lists the packages (`--json` is used to build the CI matrix)                                    |
+| `castor monorepo:merge`                | Regenerates the root `composer.json` from the packages                                          |
+| `castor monorepo:validate`             | Checks package metadata, internal dependencies and the root `composer.json`                     |
+| `castor monorepo:split [<package>...]` | Splits packages with [splitsh-lite](https://github.com/splitsh/lite) (dry-run without `--push`) |
+
+```bash
+castor monorepo:split                              # dry-run, prints the split SHA of every package
+castor monorepo:split core themes --push           # push the current branch of two packages
+castor monorepo:split --ref=refs/tags/v0.1.0 --push
+```
+
+The remote of each package defaults to `git@github.com:{name}.git` (`{name}` = `sylius-starter/core`, `{short}` =
+`core`); override it with `--remote-pattern` or the `SPLIT_REMOTE_PATTERN` environment variable.
+
+### Splitting packages in the CI
+
+The [`Split packages`](.github/workflows/split.yml) workflow runs on every push to `main` and on every tag: it builds
+a matrix from `castor monorepo:packages --json` and runs `castor monorepo:split <package> --push` for each package.
+
+Requirements:
+
+1. Create one empty repository per package (`sylius-starter/core`, `sylius-starter/themes`...).
+2. Add a `SPLIT_TOKEN` secret to this repository: a fine-grained personal access token (or a GitHub App token)
+   with *Contents: read and write* on the package repositories.
+3. Register the package repositories on Packagist (and this one for `sylius-starter/sylius-starter`).
+
+Tags are split too: tag the monorepo (`git tag v0.1.0 && git push --tags`) and every package receives the same tag.
+
+### Adding a package
+
+1. Create `src/<Name>/` with `composer.json` (name `sylius-starter/<name>`, `SyliusStarter\<Name>\` PSR-4
+   autoload on `src/`, `"sylius-starter/core": "self.version"`), a `README.md` and a `LICENSE`.
+2. Register its tasks from an autoloaded `src/functions.php` with `TaskProviderRegistry::register()`.
+3. Run `castor monorepo:merge`, then `castor monorepo:validate` and `composer dump-autoload`.
+
 ## License
 
-This plugin is part of the Castor project, released under the MIT license.
+Sylius Starter is released under the MIT license.

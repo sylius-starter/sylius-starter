@@ -54,3 +54,9 @@ castor sylius:theme:setup <theme>
 Never rely on `data-test-*` attributes in CSS selectors. They are testing
 helpers and may not be present in the production storefront; target stable
 classes or semantic structure instead.
+
+## Monorepo
+
+The code is split into packages under `src/<Package>/` (`composer.json`, `src/`, `tests/`, `resources/`). The root
+`composer.json` is generated: after changing a package `composer.json`, run `castor monorepo:merge`, then check with
+`castor monorepo:validate`. A package must never use another task package's namespace, only `SyliusStarter\Core`.
