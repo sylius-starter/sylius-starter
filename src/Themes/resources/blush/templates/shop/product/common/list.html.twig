@@ -1,7 +1,7 @@
 <section id="blush-products" class="blush-products">
     <div class="container" role="region" aria-labelledby="{{ hookable_metadata.configuration['test_attribute']|default('latest-products') ~ '-heading' }}">
-        <p class="blush-products__eyebrow">LA BOUTIQUE / À DÉCOUVRIR</p>
-        <h2 class="h3 mb-6" id="{{ hookable_metadata.configuration['test_attribute']|default('latest-products') ~ '-heading' }}">{{ hookable_metadata.configuration.title|default('sylius.ui.latest_products')|trans }}</h2>
+        <p class="blush-products__eyebrow">{{ 'blush.products.eyebrow'|trans({}, 'blush') }}</p>
+        <h2 id="{{ hookable_metadata.configuration['test_attribute']|default('latest-products') ~ '-heading' }}">{{ hookable_metadata.configuration.title|default('sylius.ui.latest_products')|trans }}</h2>
 
         <div {{ sylius_test_html_attribute(hookable_metadata.configuration.test_attribute|default('latest-products')) }}>
             <div class="products-grid">

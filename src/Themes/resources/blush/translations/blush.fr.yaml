@@ -1,0 +1,9 @@
+blush:
+    hero:
+        eyebrow: 'BLUSH · SÉLECTION DU MOMENT'
+        title: 'Le beau,<br>au quotidien.'
+        description: 'Des essentiels choisis avec soin, pour accompagner vos journées et durer longtemps.'
+        cta: 'Découvrir la sélection'
+        label: 'UNE BELLE SÉLECTION'
+    products:
+        eyebrow: 'LA BOUTIQUE / À DÉCOUVRIR'
