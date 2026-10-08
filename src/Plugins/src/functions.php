@@ -15,6 +15,7 @@ use SyliusStarter\Core\Task\TaskProviderRegistry;
 use SyliusStarter\Plugins\Attribute\AsPluginInstaller;
 use SyliusStarter\Plugins\Attribute\AsPluginRemover;
 use SyliusStarter\Plugins\Installer\AiDevToolsInstaller;
+use SyliusStarter\Plugins\Installer\AltchaInstaller;
 use SyliusStarter\Plugins\Installer\BugSnagInstaller;
 use SyliusStarter\Plugins\Installer\CmsInstaller;
 use SyliusStarter\Plugins\Installer\GdprInstaller;
@@ -26,6 +27,7 @@ use SyliusStarter\Plugins\Installer\RecaptchaInstaller;
 use SyliusStarter\Plugins\Installer\RefundInstaller;
 use SyliusStarter\Plugins\Installer\WishlistInstaller;
 use SyliusStarter\Plugins\Remover\AiDevToolsRemover;
+use SyliusStarter\Plugins\Remover\AltchaRemover;
 use SyliusStarter\Plugins\Remover\ApiRemover;
 use SyliusStarter\Plugins\Remover\BugSnagRemover;
 use SyliusStarter\Plugins\Remover\CmsRemover;
@@ -45,6 +47,7 @@ TaskProviderRegistry::register(
 function initialize(AfterBootEvent $afterBootEvent): void
 {
     PluginTasks::addInstaller(new AiDevToolsInstaller());
+    PluginTasks::addInstaller(new AltchaInstaller());
     PluginTasks::addInstaller(new BugSnagInstaller());
     PluginTasks::addInstaller(new CmsInstaller());
     PluginTasks::addInstaller(new GdprInstaller());
@@ -56,6 +59,7 @@ function initialize(AfterBootEvent $afterBootEvent): void
     PluginTasks::addInstaller(new WishlistInstaller());
 
     PluginTasks::addRemover(new AiDevToolsRemover());
+    PluginTasks::addRemover(new AltchaRemover());
     PluginTasks::addRemover(new ApiRemover());
     PluginTasks::addRemover(new BugSnagRemover());
     PluginTasks::addRemover(new CmsRemover());

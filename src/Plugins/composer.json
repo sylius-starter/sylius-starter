@@ -1,6 +1,6 @@
 {
     "name": "sylius-starter/plugins",
-    "description": "Castor tasks to add and remove Sylius plugins (CMS, Invoicing, Refund, Wishlist, reCAPTCHA...)",
+    "description": "Castor tasks to add and remove Sylius plugins (CMS, Invoicing, Refund, Wishlist, reCAPTCHA, ALTCHA...)",
     "type": "library",
     "license": "MIT",
     "keywords": [

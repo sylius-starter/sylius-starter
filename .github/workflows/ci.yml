@@ -209,6 +209,8 @@ jobs:
             fail-fast: false
             matrix:
                 command:
+                    -   name: ALTCHA Plugin
+                        value: "castor sylius:add altcha && castor sylius:remove altcha"
                     -   name: Google Recaptcha Plugin
                         value: "castor sylius:add recaptcha && castor sylius:remove recaptcha"
                     -   name: Sylius API
