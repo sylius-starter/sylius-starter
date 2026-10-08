@@ -15,7 +15,8 @@ final class RecaptchaCustomerRegistrationTypeExtension extends AbstractTypeExten
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('captcha', Recaptcha3Type::class, [
-            'constraints' => new Recaptcha3(),
+            // Sylius validates the registration form with the "sylius" group, not "Default"
+            'constraints' => new Recaptcha3(groups: ['sylius']),
             'action_name' => 'registration',
         ]);
     }
