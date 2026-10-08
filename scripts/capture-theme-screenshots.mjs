@@ -9,27 +9,35 @@ import { get } from 'node:http';
 import { get as getHttps } from 'node:https';
 
 const viewport = { width: 1440, height: 1000 };
-const pages = [
-  { name: 'homepage', route: './' },
-  { name: 'comet-pulse-product', route: './products/comet-pulse-t-shirt' },
-];
+// Data fixtures differ from one install to another: the product is discovered on
+// the storefront. This one is only preferred when it exists and can be bought,
+// so that screenshots stay comparable between themes.
+const preferredProductSlug = 'comet-pulse-t-shirt';
+const maxEvaluatedProducts = 24;
 const themeSelectors = {
   canvas: '.canvas-logo',
   prompt_dark: '.prompt-logo',
   prompt_light: '.prompt-logo',
   blush: '.blush-logo',
   volt: '.volt-logo',
+  lagoon: '.lagoon-logo',
 };
 
 function printUsage() {
   console.log(`Usage: node scripts/capture-theme-screenshots.mjs <theme> [options]
 
-Capture full-page screenshots of the homepage and Comet Pulse T-Shirt product page.
+Capture full-page screenshots of the homepage and of a product page.
 Screenshots are saved as docs/images/<theme>-homepage.png and
-docs/images/<theme>-comet-pulse-product.png.
+docs/images/<theme>-product.png.
+
+The product is chosen among the products listed on the storefront (homepage,
+then category pages): the first one that is in stock, has an add-to-cart button
+and a real image is used, the "${preferredProductSlug}" product being preferred
+when it qualifies.
 
 Options:
-  --include-cart       Add the Comet Pulse T-Shirt and capture the cart page
+  --include-cart       Add the selected product and capture the cart page
+  --product <slug>     Use this product instead of discovering one
   --base-url <url>    Storefront base URL (default: https://app.test/en_US/)
   --output-dir <dir>  Screenshot output directory (default: docs/images)
   --help              Show this help
@@ -41,6 +49,7 @@ specific browser executable.`);
 function parseArguments(args) {
   let theme;
   let includeCart = false;
+  let productSlug;
   let baseUrl = 'https://app.test/en_US/';
   let outputDir = 'docs/images';
 
@@ -56,12 +65,13 @@ function parseArguments(args) {
       continue;
     }
 
-    if (argument === '--base-url' || argument === '--output-dir') {
+    if (argument === '--base-url' || argument === '--output-dir' || argument === '--product') {
       const value = args.shift();
       if (!value || value.startsWith('--')) {
         throw new Error(`${argument} requires a value`);
       }
       if (argument === '--base-url') baseUrl = value;
+      else if (argument === '--product') productSlug = value;
       else outputDir = value;
       continue;
     }
@@ -73,6 +83,7 @@ function parseArguments(args) {
 
   if (!theme) throw new Error('A theme name is required');
   if (!/^[a-zA-Z0-9_-]+$/.test(theme)) throw new Error('The theme name may only contain letters, numbers, hyphens, and underscores');
+  if (productSlug !== undefined && !/^[a-zA-Z0-9_-]+$/.test(productSlug)) throw new Error('The product slug may only contain letters, numbers, hyphens, and underscores');
 
   const parsedBaseUrl = new URL(baseUrl);
   if (!['http:', 'https:'].includes(parsedBaseUrl.protocol)) {
@@ -80,7 +91,7 @@ function parseArguments(args) {
   }
   parsedBaseUrl.pathname = `${parsedBaseUrl.pathname.replace(/\/+$/, '')}/`;
 
-  return { theme, includeCart, baseUrl: parsedBaseUrl, outputDir: resolve(outputDir) };
+  return { theme, includeCart, productSlug, baseUrl: parsedBaseUrl, outputDir: resolve(outputDir) };
 }
 
 function findChrome() {
@@ -149,7 +160,7 @@ async function waitForEvent(events, method) {
 }
 
 async function main() {
-  const { theme, includeCart, baseUrl, outputDir } = parseArguments(process.argv.slice(2));
+  const { theme, includeCart, productSlug, baseUrl, outputDir } = parseArguments(process.argv.slice(2));
   const chrome = findChrome();
   if (!chrome) throw new Error('Could not find Chrome or Chromium; set CHROME_BIN to its executable');
 
@@ -227,71 +238,140 @@ async function main() {
       ws.send(JSON.stringify({ id, method, params }));
     });
 
-    await send('Page.enable');
-    await send('Runtime.enable');
-    for (const page of pages) {
-      const url = new URL(page.route, baseUrl);
+    const evaluate = async (expression, { awaitPromise = false } = {}) => {
+      const result = await send('Runtime.evaluate', { expression, awaitPromise, returnByValue: true });
+      if (result.exceptionDetails) {
+        throw new Error(result.exceptionDetails.exception?.description ?? result.exceptionDetails.text);
+      }
+      return result.result.value;
+    };
+
+    const navigate = async url => {
       const loaded = waitForEvent(events, 'Page.loadEventFired');
       const navigation = await send('Page.navigate', { url: url.href });
       if (navigation.errorText) throw new Error(`Could not open ${url.href}: ${navigation.errorText}`);
       await loaded;
-      await send('Runtime.evaluate', {
-        expression: 'document.fonts.ready',
-        awaitPromise: true,
-        returnByValue: true,
-      });
+      await evaluate('document.fonts.ready', { awaitPromise: true });
       await delay(1000);
 
-      if (themeSelectors[theme]) {
-        const result = await send('Runtime.evaluate', {
-          expression: `document.querySelector(${JSON.stringify(themeSelectors[theme])}) !== null`,
-          returnByValue: true,
-        });
-        if (!result.result.value) {
-          throw new Error(`Expected ${theme} theme marker ${themeSelectors[theme]} was not found at ${url.href}`);
-        }
+      if (themeSelectors[theme] && !await evaluate(`document.querySelector(${JSON.stringify(themeSelectors[theme])}) !== null`)) {
+        throw new Error(`Expected ${theme} theme marker ${themeSelectors[theme]} was not found at ${url.href}`);
       }
+    };
 
+    const outputTheme = theme.replace(/_/g, '-');
+    const capture = async (url, name) => {
       const metrics = await send('Page.getLayoutMetrics');
       const size = metrics.cssContentSize;
-      const capture = await send('Page.captureScreenshot', {
+      const screenshot = await send('Page.captureScreenshot', {
         format: 'png',
         captureBeyondViewport: true,
         fromSurface: true,
         clip: { x: 0, y: 0, width: size.width, height: size.height, scale: 1 },
       });
-      const outputTheme = theme.replace(/_/g, '-');
-      const path = join(outputDir, `${outputTheme}-${page.name}.png`);
+      const path = join(outputDir, `${outputTheme}-${name}.png`);
       mkdirSync(outputDir, { recursive: true });
-      writeFileSync(path, Buffer.from(capture.data, 'base64'));
+      writeFileSync(path, Buffer.from(screenshot.data, 'base64'));
       console.log(`${url.href} -> ${path} (${size.width}x${size.height})`);
+    };
+
+    // Product links of the current page, as absolute URLs, without duplicates.
+    const productLinksExpression = `[...new Set([...document.querySelectorAll('a[href]')]
+      .map(link => new URL(link.getAttribute('href'), document.baseURI))
+      .filter(url => url.origin === location.origin && url.pathname.split('/').filter(Boolean).at(-2) === 'products')
+      .map(url => url.origin + url.pathname))]`;
+
+    // Fetches a product page and reports whether it makes a good screenshot.
+    const evaluateProduct = productUrl => evaluate(`fetch(${JSON.stringify(productUrl)}, { credentials: 'same-origin' })
+      .then(async response => {
+        if (!response.ok) return { url: ${JSON.stringify(productUrl)}, usable: false, reason: 'HTTP ' + response.status };
+        const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const name = doc.querySelector('h1')?.textContent.trim() ?? '';
+        const button = doc.querySelector('#add-to-cart-button');
+        // Real product pictures are served by LiipImagine from /media/, placeholders are not.
+        const images = [...doc.querySelectorAll('img')]
+          .map(image => image.getAttribute('src') ?? '')
+          .filter(src => src.includes('/media/'));
+        const reasons = [];
+        if (!name) reasons.push('no product name');
+        if (!button) reasons.push('no add-to-cart button (out of stock or not purchasable)');
+        else if (button.disabled) reasons.push('add-to-cart button disabled');
+        if (images.length === 0) reasons.push('no product image');
+        return { url: ${JSON.stringify(productUrl)}, name, images: images.length, usable: reasons.length === 0, reason: reasons.join(', ') };
+      })`, { awaitPromise: true });
+
+    await send('Page.enable');
+    await send('Runtime.enable');
+
+    const homepageUrl = new URL('./', baseUrl);
+    await navigate(homepageUrl);
+    await capture(homepageUrl, 'homepage');
+
+    let candidates;
+    if (productSlug) {
+      candidates = [new URL(`./products/${productSlug}`, baseUrl).href];
+    } else {
+      candidates = await evaluate(productLinksExpression);
+      if (candidates.length === 0) {
+        // The theme may hide product lists on the homepage: look into the categories.
+        const taxonUrls = await evaluate(`[...new Set([...document.querySelectorAll('a[href]')]
+          .map(link => new URL(link.getAttribute('href'), document.baseURI))
+          .filter(url => url.origin === location.origin && url.pathname.split('/').includes('taxons'))
+          .map(url => url.href))].slice(0, 5)`);
+        for (const taxonUrl of taxonUrls) {
+          const links = await evaluate(`fetch(${JSON.stringify(taxonUrl)}, { credentials: 'same-origin' })
+            .then(response => response.text())
+            .then(html => { const doc = new DOMParser().parseFromString(html, 'text/html');
+              return [...doc.querySelectorAll('a[href]')]
+                .map(link => new URL(link.getAttribute('href'), ${JSON.stringify(taxonUrl)}))
+                .filter(url => url.pathname.split('/').filter(Boolean).at(-2) === 'products')
+                .map(url => url.origin + url.pathname); })`, { awaitPromise: true });
+          candidates = [...new Set([...candidates, ...links])];
+        }
+      }
+      candidates.sort((a, b) => Number(b.endsWith(`/products/${preferredProductSlug}`)) - Number(a.endsWith(`/products/${preferredProductSlug}`)));
+      candidates = candidates.slice(0, maxEvaluatedProducts);
+    }
+    if (candidates.length === 0) {
+      throw new Error(`No product link was found on ${homepageUrl.href}; load the data fixtures or pass --product <slug>`);
     }
 
-    if (includeCart) {
-      const addToCart = await send('Runtime.evaluate', {
-        expression: `(() => {
-          const button = document.querySelector('#add-to-cart-button');
-          if (!button) throw new Error('The Comet Pulse T-Shirt add-to-cart button was not found');
-          button.click();
-          return true;
-        })()`,
-        returnByValue: true,
-      });
-      if (addToCart.exceptionDetails) {
-        throw new Error(addToCart.exceptionDetails.exception?.description ?? 'Could not add the Comet Pulse T-Shirt to the cart');
+    let product;
+    const rejected = [];
+    for (const candidate of candidates) {
+      const evaluation = await evaluateProduct(candidate);
+      if (evaluation.usable) {
+        product = evaluation;
+        break;
       }
+      rejected.push(evaluation);
+    }
+    if (!product) {
+      const details = rejected.map(item => `  - ${item.url}: ${item.reason}`).join('\n');
+      throw new Error(`None of the ${candidates.length} evaluated products can be used:\n${details}`);
+    }
+    for (const item of rejected) console.log(`Skipped ${item.url}: ${item.reason}`);
+    console.log(`Selected product: ${product.name} (${product.url})`);
+
+    const productUrl = new URL(product.url);
+    await navigate(productUrl);
+    await capture(productUrl, 'product');
+
+    if (includeCart) {
+      const productName = JSON.stringify(product.name);
+      await evaluate(`(() => {
+        const button = document.querySelector('#add-to-cart-button');
+        if (!button) throw new Error('The add-to-cart button was not found for ' + ${productName});
+        button.click();
+        return true;
+      })()`);
 
       let cartHasProduct = false;
       for (let attempt = 0; attempt < 30 && !cartHasProduct; attempt++) {
         try {
-          const result = await send('Runtime.evaluate', {
-            expression: `fetch(new URL('cart/', document.baseURI), { credentials: 'same-origin' })
-              .then(response => response.text())
-              .then(html => html.includes('Comet Pulse T-Shirt'))`,
-            awaitPromise: true,
-            returnByValue: true,
-          });
-          cartHasProduct = result.result.value === true;
+          cartHasProduct = await evaluate(`fetch(new URL('cart/', ${JSON.stringify(baseUrl.href)}), { credentials: 'same-origin' })
+            .then(response => response.text())
+            .then(html => new DOMParser().parseFromString(html, 'text/html').body.textContent.includes(${productName}))`, { awaitPromise: true }) === true;
         } catch {
           // Adding to cart redirects to the cart page, which destroys the
           // context being evaluated: retry once the new document is loaded.
@@ -300,38 +380,14 @@ async function main() {
         }
         if (!cartHasProduct) await delay(500);
       }
-      if (!cartHasProduct) throw new Error('The Comet Pulse T-Shirt did not appear in the cart after adding it');
+      if (!cartHasProduct) throw new Error(`${product.name} did not appear in the cart after adding it`);
 
       const cartUrl = new URL('cart/', baseUrl);
-      const loaded = waitForEvent(events, 'Page.loadEventFired');
-      const navigation = await send('Page.navigate', { url: cartUrl.href });
-      if (navigation.errorText) throw new Error(`Could not open ${cartUrl.href}: ${navigation.errorText}`);
-      await loaded;
-      await send('Runtime.evaluate', {
-        expression: 'document.fonts.ready',
-        awaitPromise: true,
-        returnByValue: true,
-      });
-      await delay(500);
-
-      const cartPageHasProduct = await send('Runtime.evaluate', {
-        expression: "document.body.innerText.includes('Comet Pulse T-Shirt')",
-        returnByValue: true,
-      });
-      if (!cartPageHasProduct.result.value) throw new Error('The cart page did not render the Comet Pulse T-Shirt');
-
-      const metrics = await send('Page.getLayoutMetrics');
-      const size = metrics.cssContentSize;
-      const capture = await send('Page.captureScreenshot', {
-        format: 'png',
-        captureBeyondViewport: true,
-        fromSurface: true,
-        clip: { x: 0, y: 0, width: size.width, height: size.height, scale: 1 },
-      });
-      const outputTheme = theme.replace(/_/g, '-');
-      const path = join(outputDir, `${outputTheme}-cart.png`);
-      writeFileSync(path, Buffer.from(capture.data, 'base64'));
-      console.log(`${cartUrl.href} -> ${path} (${size.width}x${size.height})`);
+      await navigate(cartUrl);
+      if (!await evaluate(`document.body.innerText.includes(${productName})`)) {
+        throw new Error(`The cart page did not render ${product.name}`);
+      }
+      await capture(cartUrl, 'cart');
     }
   } finally {
     ws?.close();

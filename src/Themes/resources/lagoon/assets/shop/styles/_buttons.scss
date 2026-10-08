@@ -1,0 +1,103 @@
+.btn {
+  min-height: 2.875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms $ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-primary {
+  --bs-btn-color: #{$white};
+  --bs-btn-bg: #{$teal};
+  --bs-btn-border-color: #{$teal};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$abyss};
+  --bs-btn-hover-border-color: #{$abyss};
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #{$abyss};
+  --bs-btn-active-border-color: #{$abyss};
+  --bs-btn-disabled-bg: #{$teal};
+  --bs-btn-disabled-border-color: #{$teal};
+}
+
+.btn-secondary,
+.btn-outline-primary,
+.btn-outline-gray {
+  --bs-btn-color: #{$teal};
+  --bs-btn-bg: #{$white};
+  --bs-btn-border-color: #{$foam-strong};
+  --bs-btn-hover-color: #{$abyss};
+  --bs-btn-hover-bg: #{$foam};
+  --bs-btn-hover-border-color: #{$aqua};
+  --bs-btn-active-color: #{$abyss};
+  --bs-btn-active-bg: #{$foam};
+  --bs-btn-active-border-color: #{$aqua};
+}
+
+.btn-link {
+  color: $teal;
+
+  &:hover {
+    color: $abyss;
+  }
+}
+
+.lagoon-btn-aqua {
+  --bs-btn-color: #{$ink};
+  --bs-btn-bg: #{$aqua};
+  --bs-btn-border-color: #{$aqua};
+  --bs-btn-hover-color: #{$ink};
+  --bs-btn-hover-bg: #{$aqua-soft};
+  --bs-btn-hover-border-color: #{$aqua-soft};
+  --bs-btn-active-color: #{$ink};
+  --bs-btn-active-bg: #{$aqua};
+  --bs-btn-active-border-color: #{$aqua};
+
+  box-shadow: 0 10px 24px rgba($aqua, 0.35);
+
+  &:hover {
+    box-shadow: 0 14px 30px rgba($aqua, 0.45);
+  }
+}
+
+.lagoon-btn-arrow::after {
+  display: inline-block;
+  margin-inline-start: 0.5rem;
+  content: "→";
+  transition: transform 180ms $ease;
+}
+
+.lagoon-btn-arrow:hover::after {
+  transform: translateX(3px);
+}
+
+#add-to-cart-button {
+  --bs-btn-color: #{$ink};
+  --bs-btn-bg: #{$aqua};
+  --bs-btn-border-color: #{$aqua};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$abyss};
+  --bs-btn-hover-border-color: #{$abyss};
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #{$abyss};
+  --bs-btn-active-border-color: #{$abyss};
+
+  width: 100%;
+  min-height: 3.25rem;
+  font-size: 1rem;
+}

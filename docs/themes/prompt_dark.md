@@ -4,9 +4,9 @@ Prompt Dark is the terminal-inspired storefront direction: a dark workspace,
 terminal-green accents, monospaced typography and a command-inspired homepage
 panel.
 
-| Homepage                                                               | Comet Pulse T-Shirt                                                                               | Cart                                                                                   |
-|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
-| ![Prompt Dark storefront homepage](../images/prompt-dark-homepage.png) | ![Comet Pulse T-Shirt product page in Prompt Dark](../images/prompt-dark-comet-pulse-product.png) | ![Prompt Dark cart containing the Comet Pulse T-Shirt](../images/prompt-dark-cart.png) |
+| Homepage                                                               | Product page                                                      | Cart                                                                     |
+|------------------------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------------|
+| ![Prompt Dark storefront homepage](../images/prompt-dark-homepage.png) | ![Product page in Prompt Dark](../images/prompt-dark-product.png) | ![Prompt Dark cart containing a product](../images/prompt-dark-cart.png) |
 
 - **Palette** — deep green-black surfaces, terminal green highlights and muted
   neutral text.

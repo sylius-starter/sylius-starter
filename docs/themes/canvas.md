@@ -4,9 +4,9 @@ Canvas gives the storefront a clean, editorial look, with warm neutral colors,
 squared corners and a refined pairing of *Jost* (body) and *Cormorant Garamond*
 (headings).
 
-| Homepage                                                     | Comet Pulse T-Shirt                                                                     | Cart                                                                         |
-|--------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| ![Canvas storefront homepage](../images/canvas-homepage.png) | ![Comet Pulse T-Shirt product page in Canvas](../images/canvas-comet-pulse-product.png) | ![Canvas cart containing the Comet Pulse T-Shirt](../images/canvas-cart.png) |
+| Homepage                                                     | Product page                                            | Cart                                                           |
+|--------------------------------------------------------------|---------------------------------------------------------|----------------------------------------------------------------|
+| ![Canvas storefront homepage](../images/canvas-homepage.png) | ![Product page in Canvas](../images/canvas-product.png) | ![Canvas cart containing a product](../images/canvas-cart.png) |
 
 The theme restyles the shop through SCSS overrides and Sylius Twig hooks:
 

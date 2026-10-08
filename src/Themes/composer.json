@@ -1,6 +1,6 @@
 {
     "name": "sylius-starter/themes",
-    "description": "Ready-to-use Sylius storefront themes (Canvas, Blush, Prompt, Volt) installable with Castor",
+    "description": "Ready-to-use Sylius storefront themes (Canvas, Blush, Prompt, Volt, Lagoon) installable with Castor",
     "type": "library",
     "license": "MIT",
     "keywords": [

@@ -1,0 +1,63 @@
+lagoon:
+    hero:
+        kicker: 'Slow essentials for long summers.'
+        title: 'Made to last,<br>worn for <em>years</em>.'
+        lead: 'Timeless cuts, heavyweight fabrics and honest prices. <strong>Free returns for 30 days</strong> and a wardrobe that keeps up with you, season after season.'
+        cta: 'Shop the collection'
+        window: 'lagoon.shop / just-landed'
+        spotlight: 'Just landed'
+        discover: 'Discover'
+        float:
+            stat: 'days to change your mind'
+            title: 'Designed to last'
+            text: 'Fabrics chosen to be worn, washed and worn again'
+    usp:
+        shipping:
+            title: 'Fast delivery'
+            text: 'Shipped within 48 hours'
+        returns:
+            title: 'Free returns'
+            text: '30 days, no questions'
+        payment:
+            title: 'Secure payment'
+            text: 'Card, PayPal and more'
+    products:
+        eyebrow:
+            deals: 'Good catches'
+            latest: 'New arrivals'
+    promise:
+        eyebrow: 'Why Lagoon'
+        title: 'A wardrobe that stays with you.'
+        lead: 'Most clothes are designed to be replaced. Ours are designed to be kept: fewer pieces, better made, and the full story behind every one of them.'
+        them:
+            eyebrow: 'Fast fashion'
+            title: 'You replace'
+            item_1: 'Trends that fade after a single season'
+            item_2: 'Thin fabrics that lose their shape in the wash'
+            item_3: 'Returns that cost you time and money'
+            item_4: 'Supply chains nobody wants to talk about'
+        us:
+            eyebrow: 'Lagoon essentials'
+            title: 'You keep'
+            item_1: '<strong>Timeless cuts</strong> you will still wear in five years'
+            item_2: 'Heavyweight fabrics that age gracefully'
+            item_3: '<strong>Free returns</strong> for 30 days, labels included'
+            item_4: 'Every workshop listed, every price explained'
+        outro:
+            text: 'Not sure where to start?'
+            strong: 'Pick one favourite piece, we take care of the rest.'
+            cta: 'See the new arrivals'
+    footer:
+        tagline: 'Slow essentials for long summers. Made to last, shipped without fuss.'
+        band:
+            eyebrow: 'How it works'
+            title: 'From our workshop to your wardrobe.'
+            step_1:
+                title: 'Order today.'
+                text: 'Your parcel leaves within 48 hours.'
+            step_2:
+                title: 'Try it at home.'
+                text: 'You have 30 days to make up your mind.'
+            step_3:
+                title: 'Keep it for years.'
+                text: 'We help you care for it, season after season.'

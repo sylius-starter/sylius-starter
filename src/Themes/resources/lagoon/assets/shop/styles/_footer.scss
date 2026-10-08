@@ -1,0 +1,127 @@
+footer.lagoon-footer {
+  margin-top: auto;
+  padding: 0;
+  border-top: 0;
+  background-color: $white;
+  color: $text-muted;
+  font-size: 0.92rem;
+}
+
+// Dark "deep water" band with numbered steps.
+
+.lagoon-footer__band {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  background:
+    radial-gradient(circle at 92% -20%, rgba($aqua, 0.18), transparent 40%),
+    $abyss;
+  color: rgba($white, 0.78);
+
+  .lagoon-eyebrow {
+    color: $aqua;
+  }
+}
+
+.lagoon-footer__band-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.lagoon-footer__band-title {
+  margin: 0;
+  color: $white;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.lagoon-steps {
+  display: grid;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    line-height: 1.55;
+  }
+
+  strong {
+    color: $white;
+    font-weight: 600;
+  }
+}
+
+.lagoon-steps__index {
+  flex: 0 0 2rem;
+  color: $aqua;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+// Light, airy footer body.
+
+.lagoon-footer__main {
+  padding-top: clamp(3rem, 5vw, 4rem);
+  padding-bottom: 1.5rem;
+
+  > .row {
+    padding-top: 2.5rem;
+  }
+
+  a,
+  .nav-link {
+    color: $text-muted;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $teal;
+    }
+  }
+
+  .fw-medium,
+  h2,
+  h3,
+  h4 {
+    color: $teal;
+    font-size: 0.72rem;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+}
+
+.lagoon-footer__brand {
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid $border;
+
+  p {
+    max-width: 24rem;
+    margin: 1rem 0 0;
+    line-height: 1.6;
+  }
+
+  .lagoon-logo,
+  .lagoon-logo:hover {
+    color: $ink;
+  }
+}
+
+.lagoon-footer__copy a {
+  color: $teal !important;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 767.98px) {
+  .lagoon-footer__band-grid {
+    grid-template-columns: 1fr;
+  }
+}
