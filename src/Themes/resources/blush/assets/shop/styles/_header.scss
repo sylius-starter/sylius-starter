@@ -1,0 +1,174 @@
+header {
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid $border;
+  background-color: $white;
+}
+
+header .container {
+  padding-block: 0.55rem;
+}
+
+header a {
+  color: $ink;
+
+  &:hover {
+    color: $pink;
+  }
+}
+
+header .navbar {
+  background-color: transparent;
+}
+
+.blush-logo {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.7rem;
+  color: $ink;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $pink;
+    text-decoration: none;
+  }
+}
+
+.blush-logo__mark {
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  border-radius: 50%;
+  background-color: $pink;
+  color: $white;
+  font-family: $headings-font-family;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
+
+.blush-logo__wording {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.blush-logo__name {
+  color: currentColor;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+}
+
+.blush-logo__tagline {
+  margin-top: 0.28rem;
+  color: $muted;
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.blush-category-nav {
+  display: flex;
+  align-items: center;
+}
+
+.blush-category-nav__menu .offcanvas-body {
+  display: flex;
+  align-items: center;
+}
+
+.blush-category-nav__links {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.blush-category-nav__links > .nav-link,
+.blush-category-nav__links > .nav-item > .nav-link {
+  padding: 0.6rem 0.85rem !important;
+  border-radius: 50rem;
+  color: $muted;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  &:hover,
+  &:focus,
+  &[aria-expanded="true"] {
+    background-color: $rose;
+    color: $pink;
+  }
+}
+
+.blush-category-nav__menu .dropdown-menu,
+header .dropdown-menu {
+  border: 1px solid $border;
+  border-radius: 0.75rem;
+  background-color: $white;
+  box-shadow: 0 0.75rem 1.75rem rgba($plum, 0.1);
+}
+
+.blush-category-nav__menu .dropdown-menu .nav-link,
+header .dropdown-item {
+  color: $ink;
+
+  &:hover,
+  &:focus {
+    background-color: $rose;
+    color: $pink;
+  }
+}
+
+header .navbar-brand {
+  color: $pink;
+}
+
+.btn-icon .badge {
+  background-color: $pink !important;
+  color: $white !important;
+}
+
+.blush-cart-button {
+  color: $ink !important;
+
+  &:hover,
+  &:focus-visible {
+    color: $pink !important;
+  }
+
+  svg,
+  [data-test-cart-total] {
+    color: inherit;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .blush-category-nav__menu {
+    position: fixed;
+    background-color: $white;
+  }
+
+  .blush-category-nav__menu .offcanvas-header {
+    border-bottom: 1px solid $border;
+  }
+
+  .blush-category-nav__menu .offcanvas-body {
+    align-items: flex-start;
+    padding: 1rem !important;
+  }
+
+  .blush-category-nav__links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .blush-category-nav__links > .nav-link,
+  .blush-category-nav__links > .nav-item > .nav-link {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

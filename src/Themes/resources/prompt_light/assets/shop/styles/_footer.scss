@@ -1,0 +1,56 @@
+footer {
+  margin-top: auto;
+  padding-block: $spacing-12 $spacing-6;
+  border-top: 1px solid $border;
+  background-color: $black;
+  color: $text-muted;
+
+  --bs-body-color: #{$text-muted};
+  --bs-body-color-rgb: 150, 164, 147;
+  --bs-emphasis-color: #{$white};
+  --bs-emphasis-color-rgb: 240, 244, 236;
+  --bs-secondary-color: #{$text-muted};
+  --bs-tertiary-color: #{$text-muted};
+  --bs-link-color: #{$green};
+  --bs-link-color-rgb: 164, 232, 121;
+  --bs-link-hover-color: #{$white};
+  --bs-link-hover-color-rgb: 240, 244, 236;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $white !important;
+  }
+}
+
+.prompt-footer__brand {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid $border;
+}
+
+footer .prompt-logo__name {
+  color: $white;
+}
+
+footer a,
+footer a:visited,
+footer a:focus,
+footer a:active {
+  color: $green !important;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: $white !important;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+footer .row.g-2.mb-4 > div > a {
+  border-color: $border !important;
+  background-color: $surface;
+}

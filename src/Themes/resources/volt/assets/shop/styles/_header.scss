@@ -1,0 +1,273 @@
+header {
+  position: relative;
+  z-index: 2;
+  background-color: $white;
+  border-bottom: 1px solid $border;
+  box-shadow: 0 4px 18px rgba($ink, 0.035);
+}
+
+header .container {
+  padding-block: 0.5rem;
+}
+
+header a {
+  color: $ink;
+
+  &:hover {
+    color: $electric;
+  }
+}
+
+header .navbar {
+  background-color: transparent;
+}
+
+header .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  color: $electric;
+}
+
+.volt-logo {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.7rem;
+  color: $electric;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $electric;
+    text-decoration: none;
+  }
+}
+
+.volt-logo--header {
+  margin-inline-start: -0.75rem;
+}
+
+.volt-logo__mark {
+  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+}
+
+.volt-logo__mark-bg {
+  fill: $electric;
+}
+
+.volt-logo__bolt {
+  fill: $lavender;
+}
+
+.volt-logo__wording {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.volt-logo__name {
+  color: currentColor;
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.075em;
+}
+
+.volt-logo__tagline {
+  margin-top: 0.3rem;
+  color: $text-muted;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+header .navbar-brand .volt-logo__tagline {
+  color: $text-muted;
+}
+
+header .nav-link {
+  position: relative;
+  margin-inline: 0.1rem;
+  padding: 0.65rem 0.9rem !important;
+  border-radius: 50rem;
+  color: $ink;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+
+  &:hover,
+  &:focus {
+    background-color: $paper;
+    color: $electric;
+  }
+
+  &.active,
+  &[aria-current="page"] {
+    background-color: $paper;
+    color: $electric;
+    font-weight: 700;
+  }
+}
+
+.volt-category-nav {
+  display: flex;
+  align-items: center;
+}
+
+.volt-category-nav__menu .offcanvas-body {
+  display: flex;
+  align-items: center;
+}
+
+.volt-category-nav__links {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  overflow: visible;
+}
+
+.volt-category-nav__links > .nav-item.dropdown {
+  position: relative;
+}
+
+.volt-category-nav__links > .nav-link,
+.volt-category-nav__links > .nav-item > .nav-link {
+  flex: 0 0 auto;
+  padding: 0.55rem 0.9rem !important;
+  border-radius: 50rem;
+  color: $ink;
+  font-size: 0.96rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus,
+  &[aria-expanded="true"] {
+    background-color: $lavender;
+    color: $electric;
+  }
+}
+
+.volt-category-nav__menu .dropdown-menu {
+  z-index: 1060;
+  min-width: 13rem;
+  padding: 0.5rem;
+  border: 1px solid $border;
+  border-radius: 0.85rem;
+  background-color: $white;
+  box-shadow: 0 12px 30px rgba($ink, 0.12);
+}
+
+.volt-category-nav__menu .dropdown-menu .nav-link {
+  padding: 0.6rem 0.75rem !important;
+  border-radius: 0.6rem;
+  color: $text;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-transform: none;
+  white-space: normal;
+
+  &:hover,
+  &:focus {
+    background-color: $paper;
+    color: $electric;
+  }
+}
+
+.badge[data-test-cart-quantity] {
+  top: -0.35rem !important;
+  inset-inline-start: auto !important;
+  inset-inline-end: -0.4rem;
+  display: grid;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  place-items: center;
+  padding: 0 0.3rem;
+  border: 2px solid $white;
+  border-radius: 50rem;
+  background: $electric !important;
+  color: $white !important;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+header .dropdown-menu {
+  border: 1px solid $border;
+  border-radius: 1rem;
+  background-color: $white;
+  box-shadow: 0 16px 40px rgba($ink, 0.12);
+}
+
+header .dropdown-item {
+  border-radius: 0.5rem;
+  color: $ink;
+
+  &:hover,
+  &:focus {
+    background-color: $paper;
+    color: $electric;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .volt-category-nav__menu {
+    position: fixed;
+  }
+
+  .volt-category-nav__menu .offcanvas-header {
+    border-bottom: 1px solid $border;
+  }
+
+  .volt-category-nav__menu .offcanvas-body {
+    align-items: flex-start;
+    padding: 1rem !important;
+  }
+
+  .volt-category-nav__links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    overflow: visible;
+  }
+
+  .volt-category-nav__links > .nav-link,
+  .volt-category-nav__links > .nav-item > .nav-link {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.75rem 0.85rem !important;
+    border-radius: 0.75rem;
+    color: $ink;
+    font-size: 0.95rem;
+  }
+
+  .volt-category-nav__menu .dropdown-menu {
+    position: static !important;
+    width: 100%;
+    margin-top: 0.25rem;
+    border: 0;
+    background: $paper;
+    box-shadow: none;
+    transform: none !important;
+  }
+
+  .volt-category-nav__menu .dropdown-menu .nav-link {
+    padding-left: 1.25rem !important;
+  }
+
+  header .nav-link {
+    margin-block: 0.1rem;
+    padding-inline: 0.85rem !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .volt-logo--header {
+    margin-inline-start: -0.5rem;
+  }
+}

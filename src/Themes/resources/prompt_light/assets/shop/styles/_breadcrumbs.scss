@@ -1,0 +1,25 @@
+.breadcrumb {
+  --bs-breadcrumb-divider: "/";
+  --bs-breadcrumb-divider-color: #{$light-text};
+
+  padding: 0.9rem 0;
+  color: $light-text;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+
+  .breadcrumb-item a {
+    color: $light-link !important;
+  }
+
+  .breadcrumb-item:not(.active) .text-body-tertiary {
+    color: $light-text !important;
+  }
+
+  .breadcrumb-item.active .text-body-tertiary {
+    color: $light-text !important;
+  }
+
+  .breadcrumb-item.active {
+    color: $light-text;
+  }
+}

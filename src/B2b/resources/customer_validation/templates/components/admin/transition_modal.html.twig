@@ -1,0 +1,22 @@
+{% extends '@SyliusAdmin/shared/components/confirmation_modal.html.twig' %}
+{% import '@SyliusAdmin/shared/helper/button.html.twig' as button %}
+
+{% props id = null, action = null, path = null, label = null, icon = 'tabler:trash-x', disabled = false, form_attr = null, type = 'submit', class = '' %}
+{% set modal_id = 'transition-modal-' ~ id ~ '-' ~ action %}
+
+{% block trigger %}
+    <div data-bs-toggle="tooltip" data-bs-title="{{ label|trans }}">
+        <button class="btn btn-icon {{ class }}" data-bs-toggle="modal" data-bs-target="#{{ modal_id }}" title="{{ label|trans }}">
+            {% if icon %}{{ ux_icon(icon) }}{% endif %}
+        </button>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <form action="{{ path }}" method="post" {{ form_attr }} {{ sylius_test_html_attribute('action', action) }}>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token(id) }}" />
+
+        {{ button.default({text: 'sylius.ui.cancel'|trans, attr: 'data-bs-dismiss=modal'}) }}
+        {{ button.default({text: 'sylius.ui.save_changes'|trans, type: 'submit', class: 'btn-danger', attr: sylius_test_html_attribute('confirm-button')}) }}
+    </form>
+{% endblock %}

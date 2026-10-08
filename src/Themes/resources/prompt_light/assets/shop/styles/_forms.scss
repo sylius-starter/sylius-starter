@@ -1,0 +1,32 @@
+.form-control,
+.form-select {
+  border-color: $border;
+  background-color: $surface;
+  color: $text;
+
+  &:focus {
+    border-color: $green;
+    background-color: $surface;
+    color: $text;
+    box-shadow: 0 0 0 0.2rem rgba($green, 0.15);
+  }
+
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+.form-label,
+.form-check-label {
+  color: $text;
+}
+
+.form-check-input {
+  border-color: $border;
+  background-color: $surface;
+
+  &:checked {
+    border-color: $green;
+    background-color: $green;
+  }
+}

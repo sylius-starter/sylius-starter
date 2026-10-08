@@ -1,0 +1,7 @@
+sylius:
+    email:
+        customer_validation:
+            registration:
+                subject: Inscription reçue
+                title: Merci pour votre inscription
+                message: Votre compte est en attente de validation par un administrateur. Vous pourrez vous connecter une fois votre compte approuvé.

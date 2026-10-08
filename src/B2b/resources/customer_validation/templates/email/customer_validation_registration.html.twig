@@ -1,0 +1,11 @@
+{% block subject %}{{ 'sylius.email.customer_validation.registration.subject'|trans }}{% endblock %}
+
+{% block body %}
+<!doctype html>
+<html lang="{{ localeCode|split('_')[0] }}">
+    <body>
+        <h1>{{ 'sylius.email.customer_validation.registration.title'|trans }}</h1>
+        <p>{{ 'sylius.email.customer_validation.registration.message'|trans }}</p>
+    </body>
+</html>
+{% endblock %}

@@ -1,0 +1,64 @@
+.btn {
+  min-height: 2.75rem;
+  padding: 0.7rem 1.25rem;
+
+  border-radius: 0;
+
+  font-weight: 500;
+  letter-spacing: 0.01em;
+
+  transition:
+          background-color 150ms ease,
+          border-color 150ms ease,
+          color 150ms ease;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba($black, 0.15);
+  }
+}
+
+.btn-primary {
+  --bs-btn-color: #{$white};
+  --bs-btn-bg: #B75D17;
+  --bs-btn-border-color: #B75D17;
+
+  --bs-btn-hover-color: #B75D17;
+  --bs-btn-hover-bg: #{$white};
+  --bs-btn-hover-border-color: #B75D17;
+
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #B75D17;
+  --bs-btn-active-border-color: #B75D17;
+}
+
+.btn-secondary {
+  --bs-btn-color: #{$black};
+  --bs-btn-bg: #{$surface-soft};
+  --bs-btn-border-color: #{$surface-soft};
+
+  --bs-btn-hover-color: #{$black};
+  --bs-btn-hover-bg: #{$border};
+  --bs-btn-hover-border-color: #{$border};
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #{$black};
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: #{$black};
+
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$black};
+  --bs-btn-hover-border-color: #{$black};
+}
+
+.btn-link {
+  color: $text;
+
+  &:hover {
+    color: $black-hover;
+  }
+}
+
+#add-to-cart-button {
+  width: 100%;
+}

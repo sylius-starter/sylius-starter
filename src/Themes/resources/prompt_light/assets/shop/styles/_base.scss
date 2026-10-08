@@ -1,0 +1,155 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $background;
+  color: $text;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: $green;
+  text-underline-offset: 0.2em;
+  transition: color 160ms ease;
+
+  &:hover,
+  &.link-reset:hover {
+    color: $black !important;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $text;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  letter-spacing: -0.06em;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+::selection {
+  background-color: $green;
+  color: $black;
+}
+
+:focus-visible {
+  outline: 2px solid $green;
+  outline-offset: 3px;
+}
+
+.text-muted,
+.text-body-secondary {
+  color: $text-muted !important;
+}
+
+.bg-light {
+  --bs-body-color: #{$light-text};
+  --bs-body-color-rgb: 16, 21, 16;
+  --bs-emphasis-color: #{$light-text};
+  --bs-emphasis-color-rgb: 16, 21, 16;
+  background-color: $light !important;
+  color: $light-text !important;
+}
+
+.bg-light :is(h1, h2, h3, h4, h5, h6, .text-muted, .text-body-secondary, .text-light, .text-white) {
+  color: $light-muted !important;
+}
+
+.bg-light a,
+.bg-light a:visited {
+  color: $light-link !important;
+}
+
+.bg-light a:hover,
+.bg-light a:focus-visible {
+  color: $light-text !important;
+}
+
+.bg-white {
+  --bs-body-color: #{$light-text};
+  --bs-body-color-rgb: 16, 21, 16;
+  --bs-emphasis-color: #{$light-text};
+  --bs-emphasis-color-rgb: 16, 21, 16;
+  color: $light-text !important;
+}
+
+.bg-white :is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
+  color: $light-text !important;
+}
+
+.bg-white :is(.text-muted, .text-body-secondary, .text-light, .text-white) {
+  color: $light-muted !important;
+}
+
+.bg-white a,
+.bg-white a:visited {
+  color: $light-link !important;
+}
+
+.bg-white a:hover,
+.bg-white a:focus-visible {
+  color: $light-text !important;
+}
+
+.bg-white.border-bottom {
+  --bs-body-color: #{$text};
+  background-color: $background !important;
+  color: $text;
+}
+
+.prompt-checkout-brand,
+.prompt-checkout-account {
+  color: $text;
+}
+
+.prompt-checkout-brand a,
+.prompt-checkout-account a,
+.prompt-checkout-account .btn {
+  color: $green !important;
+}
+
+.prompt-checkout-brand a:hover,
+.prompt-checkout-account a:hover,
+.prompt-checkout-account .btn:hover {
+  color: $text !important;
+}
+
+.prompt-checkout-brand .prompt-logo__name {
+  color: $text;
+}
+
+.prompt-checkout-brand .prompt-logo__tagline {
+  color: $text-muted;
+}
+
+@media (min-width: 992px) {
+  .checkout-sidebar {
+    --bs-body-color: #{$light-text};
+    --bs-emphasis-color: #{$light-text};
+    --bs-table-color: #{$light-text};
+    color: $light-text;
+  }
+
+  .checkout-sidebar :is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
+    color: $light-text !important;
+  }
+
+  .checkout-sidebar .text-body-tertiary {
+    color: $light-muted !important;
+  }
+}

@@ -1,0 +1,197 @@
+header {
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid $border;
+  background-color: $background;
+}
+
+header .container {
+  padding-block: 0.65rem;
+}
+
+header a {
+  color: $text;
+
+  &:hover {
+    color: $green;
+  }
+}
+
+header .navbar {
+  background-color: transparent;
+}
+
+.prompt-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: $text;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $green;
+    text-decoration: none;
+  }
+}
+
+.prompt-logo__mark {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 1px solid $green;
+  border-radius: 0.35rem;
+  color: $green;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.prompt-logo__name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.prompt-logo__tagline {
+  display: block;
+  margin-top: 0.15rem;
+  color: $text-muted;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.prompt-category-nav {
+  display: flex;
+  align-items: center;
+}
+
+.prompt-category-nav__menu .offcanvas-body {
+  display: flex;
+  align-items: center;
+}
+
+.prompt-category-nav__menu .btn-close {
+  filter: none;
+  opacity: 0.7;
+}
+
+.prompt-category-nav__links {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.prompt-category-nav__links > .nav-link,
+.prompt-category-nav__links > .nav-item > .nav-link {
+  padding: 0.6rem 0.8rem !important;
+  border-radius: 0.3rem;
+  color: $text-muted;
+  font-size: 0.82rem;
+
+  &:hover,
+  &:focus,
+  &[aria-expanded="true"] {
+    background-color: $surface-raised;
+    color: $green;
+  }
+}
+
+body[data-route^="sylius_shop_checkout"] .prompt-category-nav__links .nav-link {
+  color: $text-muted !important;
+
+  &:hover,
+  &:focus,
+  &[aria-expanded="true"] {
+    color: $green !important;
+  }
+}
+
+.prompt-category-nav__menu .dropdown-menu,
+header .dropdown-menu {
+  border: 1px solid $border;
+  border-radius: 0.4rem;
+  background-color: $surface;
+}
+
+.prompt-category-nav__menu .dropdown-menu .nav-link,
+header .dropdown-item {
+  color: $text;
+
+  &:hover,
+  &:focus {
+    background-color: $surface-raised;
+    color: $green;
+  }
+}
+
+header .navbar-brand {
+  color: $green;
+}
+
+.prompt-cart {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $text;
+  text-decoration: none;
+}
+
+.prompt-cart__count {
+  display: grid;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  border-radius: 50%;
+  background-color: $green;
+  color: $black;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.prompt-cart-button {
+  color: $text !important;
+
+  &:hover,
+  &:focus-visible {
+    color: $green !important;
+  }
+
+  svg,
+  [data-test-cart-total] {
+    color: inherit;
+  }
+}
+
+.prompt-cart-button .badge {
+  background-color: $green !important;
+  color: $white !important;
+}
+
+@media (max-width: 991.98px) {
+  .prompt-category-nav__menu {
+    position: fixed;
+    background-color: $surface;
+  }
+
+  .prompt-category-nav__menu .offcanvas-header {
+    border-bottom: 1px solid $border;
+  }
+
+  .prompt-category-nav__menu .offcanvas-body {
+    align-items: flex-start;
+    padding: 1rem !important;
+  }
+
+  .prompt-category-nav__links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .prompt-category-nav__links > .nav-link,
+  .prompt-category-nav__links > .nav-item > .nav-link {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

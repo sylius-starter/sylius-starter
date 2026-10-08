@@ -1,0 +1,60 @@
+.btn {
+  min-height: 2.875rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 50rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.btn-primary {
+  --bs-btn-color: #{$white};
+  --bs-btn-bg: #{$electric};
+  --bs-btn-border-color: #{$electric};
+  --bs-btn-hover-color: #{$ink};
+  --bs-btn-hover-bg: #{$lavender};
+  --bs-btn-hover-border-color: #{$lavender};
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #{$electric};
+  --bs-btn-active-border-color: #{$electric};
+}
+
+.btn-secondary {
+  --bs-btn-color: #{$ink};
+  --bs-btn-bg: #{$lavender};
+  --bs-btn-border-color: #{$lavender};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$electric};
+  --bs-btn-hover-border-color: #{$electric};
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #{$electric};
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: #{$electric};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$electric};
+  --bs-btn-hover-border-color: #{$electric};
+}
+
+.btn-link {
+  color: $electric;
+
+  &:hover {
+    color: $electric;
+  }
+}
+
+#add-to-cart-button {
+  width: 100%;
+}

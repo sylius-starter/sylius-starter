@@ -1,0 +1,58 @@
+.btn {
+  min-height: 2.875rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 50rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.btn-primary {
+  --bs-btn-color: #{$white};
+  --bs-btn-bg: #{$pink};
+  --bs-btn-border-color: #{$pink};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$plum};
+  --bs-btn-hover-border-color: #{$plum};
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #{$plum};
+  --bs-btn-active-border-color: #{$plum};
+}
+
+.btn-secondary {
+  --bs-btn-color: #{$ink};
+  --bs-btn-bg: #{$rose-soft};
+  --bs-btn-border-color: #{$rose-soft};
+  --bs-btn-hover-color: #{$plum};
+  --bs-btn-hover-bg: #{$rose};
+  --bs-btn-hover-border-color: #{$rose};
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #{$pink};
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: #{$pink};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$pink};
+  --bs-btn-hover-border-color: #{$pink};
+}
+
+.btn-link {
+  color: $pink;
+
+  &:hover {
+    color: $plum;
+  }
+}
+
+#add-to-cart-button {
+  width: 100%;
+}

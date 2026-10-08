@@ -1,0 +1,10 @@
+{% set customer = hookable_metadata.context.resource.user.customer|default(null) %}
+
+{% if customer != null and workflow_can(customer, 'accept', 'customer_validation') %}
+    <form action="{{ path('sylius_admin_customer_accept', {id: customer.id}) }}" method="POST">
+        <button type="submit" class="dropdown-item" {{ sylius_test_html_attribute('customer-actions-accept') }}>
+            {{ ux_icon('streamline:user-check-validate-solid', {class: 'icon dropdown-item-icon'}) }}
+            {{ 'sylius.ui.accept'|trans }}
+        </button>
+    </form>
+{% endif %}

@@ -1,0 +1,3 @@
+sylius:
+    customer:
+        register: Votre compte est en attente de validation par un administrateur. Vous pourrez vous connecter une fois votre compte approuvé.

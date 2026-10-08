@@ -1,0 +1,11 @@
+{% set message = action.label %}
+{% if message is empty %}
+    {% set message = 'sylius.ui.update' %}
+{% endif %}
+
+{% set path = path('sylius_admin_customer_reject', {id: data.id}) %}
+{% set action = 'reject' %}
+
+{% if workflow_can(data, action, 'customer_validation') %}
+    {{ component('admin:transition_modal', {id: data.id, action: action, path: path, label: message, icon: 'ri:user-forbid-fill', class: 'text-red'}) }}
+{% endif %}

@@ -1,0 +1,17 @@
+{% from _self import label %}
+
+{{ label(data) }}
+
+{%- macro label(state) -%}
+    {% set label = 'sylius.ui.' ~ state %}
+
+    {% set state_badge = {
+        (constant('App\\Entity\\Customer\\Customer::STATE_NEW')): 'bg-blue-lt',
+        (constant('App\\Entity\\Customer\\Customer::STATE_ACCEPTED')): 'bg-green-lt',
+        (constant('App\\Entity\\Customer\\Customer::STATE_REJECTED')): 'bg-red-lt',
+    } %}
+
+    <span class="badge {{ state_badge[state]|default('') }}" {{ sylius_test_html_attribute('customer-state') }}>
+        {{ label|trans|title }}
+    </span>
+{%- endmacro -%}

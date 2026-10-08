@@ -1,0 +1,7 @@
+{% set form = hookable_metadata.context.form %}
+
+<div class="container flex-grow-1 d-flex flex-column">
+    <div class="row my-4 gx-0 flex-grow-1">
+        {% hook 'content' %}
+    </div>
+</div>

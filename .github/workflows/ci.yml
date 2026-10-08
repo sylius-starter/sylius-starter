@@ -1,0 +1,239 @@
+name: Continuous Integration
+
+"on":
+    push:
+        branches: ["main"]
+    pull_request:
+        branches: ["main"]
+        paths-ignore:
+          - "*.md"
+    schedule:
+        - cron: "0 0 * * MON"
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+    contents: read
+    packages: read
+
+env:
+    ANSICON: 1
+
+jobs:
+    monorepo:
+        name: Validate monorepo
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.4'
+                  coverage: none
+                  tools: composer, castor
+
+            - name: Validate packages and root composer.json
+              run: castor monorepo:validate
+
+            - name: Validate composer.json files
+              run: |
+                  composer validate --no-check-publish --no-check-lock
+                  for package in src/*/; do
+                      echo "::group::${package}"
+                      composer validate --no-check-publish --no-check-lock --working-dir="${package}"
+                      echo "::endgroup::"
+                  done
+
+    cs-fixer:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.4'
+                  tools: composer, castor:1.7.x
+
+            - name: PHP CS Fixer
+              run: castor qa:cs --dry-run
+
+    phpstan:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.4'
+                  tools: composer, castor:1.7.x
+
+            - name: Install packages
+              run: composer install --prefer-dist --no-progress
+
+            - name: Run PHPStan
+              run: castor qa:phpstan
+
+    phpunit:
+        name: Run PHPUnit
+        timeout-minutes: 20
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v6
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: "8.4"
+                    extensions: xml, simplexml, dom, gd
+                    coverage: none
+                    tools: 'composer:v2, flex'
+
+            -   name: Install packages
+                run: composer install --prefer-dist --no-progress
+
+            -   name: Run PHPUnit
+                run: vendor/bin/phpunit
+
+    package-tests:
+        name: "Package ${{ matrix.package.name }} (isolated)"
+        needs: monorepo-packages
+        timeout-minutes: 20
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                package: ${{ fromJson(needs.monorepo-packages.outputs.packages) }}
+        steps:
+            -   uses: actions/checkout@v6
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: "8.4"
+                    extensions: xml, simplexml, dom, gd
+                    coverage: none
+                    tools: composer:v2
+
+            # Install the package alone (internal dependencies resolved from the monorepo
+            # through path repositories) to make sure it does not rely on another one.
+            -   name: Install the package in isolation
+                working-directory: ${{ matrix.package.path }}
+                run: |
+                    composer config repositories.monorepo '{"type": "path", "url": "../*", "options": {"symlink": false, "versions": {"sylius-starter/core": "dev-main"}}}'
+                    composer config minimum-stability dev
+                    composer config prefer-stable true
+                    composer require --dev --no-update "phpunit/phpunit:^13.2" "jolicode/castor:^1.6"
+                    COMPOSER_ROOT_VERSION=dev-main composer update --prefer-dist --no-progress
+
+            -   name: Run the package tests
+                working-directory: ${{ matrix.package.path }}
+                run: |
+                    if [ ! -d tests ]; then
+                        echo "No tests for this package."
+                        exit 0
+                    fi
+                    vendor/bin/phpunit --bootstrap vendor/autoload.php tests
+
+    monorepo-packages:
+        name: List packages
+        runs-on: ubuntu-latest
+        outputs:
+            packages: ${{ steps.packages.outputs.packages }}
+        steps:
+            -   uses: actions/checkout@v6
+
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.4'
+                    coverage: none
+
+            -   id: packages
+                run: echo "packages=$(php .github/scripts/monorepo-matrix.php)" >> "$GITHUB_OUTPUT"
+
+    tasks:
+        name: ${{ matrix.command.name }}
+        timeout-minutes: 20
+        strategy:
+            fail-fast: false
+            matrix:
+                command:
+                    -   name: Google Recaptcha Plugin
+                        value: "castor sylius:add recaptcha && castor sylius:remove recaptcha"
+                    -   name: Sylius API
+                        value: "castor sylius:remove api"
+                    -   name: Symfony BugSnag Plugin
+                        value: "castor sylius:add bugsnag && castor sylius:remove bugsnag"
+                    -   name: Sylius CMS Plugin
+                        value: "castor sylius:add cms && castor sylius:remove cms"
+                    -   name: Synolia GDPR Plugin
+                        value: "castor sylius:add gdpr || true"
+                    -   name: Sylius Invoicing Plugin
+                        value: "castor sylius:add invoicing && castor sylius:remove invoicing"
+                    -   name: Sylius Refund Plugin
+                        value: "castor sylius:add refund"
+                    -   name: Sylius Product Bundle Plugin
+                        value: "castor sylius:add product_bundle"
+                    -   name: Sylius Wishlist Plugin
+                        value: "castor sylius:add wishlist && castor sylius:remove wishlist"
+                    -   name: Sylius Mollie Payment Gateway
+                        value: "castor sylius:payment-gateways:setup --only test_payment_gateway_with_function && castor sylius:payment-gateways:setup mollie"
+                    -   name: Sylius Paypal Payment Gateway
+                        value: "castor sylius:payment-gateways:setup paypal"
+                    -   name: Sylius Stripe Payment Gateway
+                        value: "castor sylius:payment-gateways:setup stripe"
+                    -   name: Canvas theme
+                        value: "castor sylius:theme:setup canvas"
+                    -   name: Blush theme
+                        value: "castor sylius:theme:setup blush"
+                    -   name: Prompt Dark theme
+                        value: "castor sylius:theme:setup prompt_dark"
+                    -   name: Prompt Light theme
+                        value: "castor sylius:theme:setup prompt_light"
+                    -   name: Volt theme
+                        value: "castor sylius:theme:setup volt"
+                    -   name: B2B
+                        value: 'castor sylius:b2b:enable -n hide_prices hide_checkout customer_validation'
+                    -   name: Remove Menu items
+                        value: "castor sylius:menu:remove official_support sylius.ui.administration"
+                    -   name: Run Fixtures
+                        value: "castor sylius:fixtures -n"
+                    -   name: Custom plugin installers
+                        value: "castor sylius:plugin:add test_installer_with_function test_installer_with_class"
+                    -   name: Custom plugin removers
+                        value: "castor sylius:plugin:remove test_remover_with_function test_remover_with_class"
+                    -   name: Custom payment gateways
+                        value: "castor sylius:payment-gateways:setup test_payment_gateway_with_function test_payment_gateway_with_class"
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v4
+
+            - name: Log in to registry
+              shell: bash
+              run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
+            - uses: actions/checkout@v6
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: "8.4"
+                  coverage: none
+                  tools: composer, castor
+
+            - name: Setup Sylius
+              run: |
+                composer create-project sylius/sylius-standard app --no-interaction
+
+            - name: Build & Run Docker
+              run: |
+                  castor build
+                  castor up
+
+            - name: Run Database migrations
+              run: castor app:db:migrate
+
+            - name: "Run '${{ matrix.command.name }}'"
+              run: "${{ matrix.command.value }}"

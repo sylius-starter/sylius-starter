@@ -1,0 +1,65 @@
+footer {
+  margin-top: auto;
+  padding-block: $spacing-12 $spacing-6;
+  border-top: 0;
+  background-color: $plum;
+  color: rgba($white, 0.78);
+
+  --bs-body-color: rgba(255, 255, 255, 0.78);
+  --bs-body-color-rgb: 255, 255, 255;
+  --bs-emphasis-color: #{$white};
+  --bs-emphasis-color-rgb: 255, 255, 255;
+  --bs-secondary-color: rgba(255, 255, 255, 0.78);
+  --bs-tertiary-color: rgba(255, 255, 255, 0.78);
+  --bs-link-color: #{$white};
+  --bs-link-color-rgb: 255, 255, 255;
+  --bs-link-hover-color: #{$pink-bright};
+  --bs-link-hover-color-rgb: 222, 88, 148;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $white !important;
+  }
+}
+
+.blush-footer__brand {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba($white, 0.18);
+}
+
+footer .blush-logo,
+footer .blush-logo__name {
+  color: $white;
+}
+
+footer .blush-logo__mark {
+  background-color: $pink-bright;
+}
+
+footer .blush-logo__tagline {
+  color: rgba($white, 0.7);
+}
+
+footer a,
+footer a:visited,
+footer a:focus,
+footer a:active {
+  color: $white !important;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: $pink-bright !important;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+footer .row.g-2.mb-4 > div > a {
+  border-color: rgba($white, 0.35) !important;
+  background-color: $white;
+}

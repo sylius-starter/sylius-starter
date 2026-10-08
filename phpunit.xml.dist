@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         failOnRisky="true"
+>
+    <testsuites>
+        <testsuite name="b2b">
+            <directory>src/B2b/tests</directory>
+        </testsuite>
+        <testsuite name="core">
+            <directory>src/Core/tests</directory>
+        </testsuite>
+        <testsuite name="import">
+            <directory>src/Import/tests</directory>
+        </testsuite>
+        <testsuite name="menu">
+            <directory>src/Menu/tests</directory>
+        </testsuite>
+        <testsuite name="plugins">
+            <directory>src/Plugins/tests</directory>
+        </testsuite>
+        <testsuite name="upsun">
+            <directory>src/Upsun/tests</directory>
+        </testsuite>
+        <testsuite name="integration">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory>src/*/src</directory>
+        </include>
+    </source>
+</phpunit>

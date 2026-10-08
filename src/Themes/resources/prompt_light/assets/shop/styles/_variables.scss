@@ -1,0 +1,49 @@
+$font-family-sans-serif: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base: $font-family-sans-serif;
+$headings-font-family: $font-family-sans-serif;
+$headings-font-weight: 700;
+
+$black: #101510;
+$white: #F7FAF4;
+$background: #F4F7F1;
+$surface: #FFFFFF;
+$surface-raised: #EEF4EC;
+$green: #3B6A47;
+$green-soft: #E8F2E8;
+$light: #E6F1E5;
+$light-text: #101510;
+$light-muted: #526B5A;
+$light-link: #234C2B;
+$text: #1B2A22;
+$text-muted: #5C6E63;
+$border: #D8E3D9;
+$danger: #C76059;
+
+$body-bg: $background;
+$body-color: $text;
+$primary: $green;
+$secondary: $surface-raised;
+$success: $green;
+$info: #7FAFB8;
+$danger: $danger;
+$dark: $black;
+$link-color: $green;
+$link-hover-color: $black;
+$border-color: $border;
+
+$border-radius: 0.35rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 0.5rem;
+$btn-border-radius: 0.35rem;
+$btn-border-radius-sm: 0.25rem;
+$btn-border-radius-lg: 0.5rem;
+$input-border-color: $border;
+$input-focus-border-color: $green;
+$input-border-radius: 0.35rem;
+$input-border-radius-sm: 0.25rem;
+$input-border-radius-lg: 0.5rem;
+$card-border-radius: 0.5rem;
+$card-border-color: $border;
+
+$spacing-6: 1.5rem;
+$spacing-12: 3rem;

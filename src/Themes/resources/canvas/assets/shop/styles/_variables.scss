@@ -1,0 +1,51 @@
+$font-family-sans-serif: "Jost", sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$headings-font-family: "Cormorant Garamond", serif;
+$headings-font-weight: 500;
+
+$black: #211D1B;
+$white: #FFF;
+
+$background: #F7F6F3;
+$off-white: #FAF8F6;
+$surface: #FFF;
+$surface-soft: #EFEEEB;
+
+$text: #211D1B;
+$text-muted: #716C68;
+
+$border: #DDD9D4;
+$black-hover: #38322F;
+
+$body-bg: $surface;
+$body-color: $text;
+
+$primary: $black;
+$secondary: $surface-soft;
+
+$link-color: $text;
+$link-hover-color: $black-hover;
+
+$border-color: $border;
+
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+
+$btn-border-radius: 0;
+$btn-border-radius-sm: 0;
+$btn-border-radius-lg: 0;
+
+$input-border-color: $border;
+$input-focus-border-color: $black;
+
+$card-border-radius: 0;
+$card-border-color: $border;
+
+$input-border-radius: 0;
+$input-border-radius-sm: 0;
+$input-border-radius-lg: 0;
+
+$spacing-6: 1.5rem;
+$spacing-12: 3rem;

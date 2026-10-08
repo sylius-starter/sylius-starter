@@ -1,0 +1,16 @@
+/app
+/.home
+.castor.stub.php
+.castor/vendor
+.castor/.env.local
+.castor/import/var/
+castor.composer.lock
+
+compose.override.yaml
+compose.generated.yaml
+
+composer.lock
+/vendor
+
+.phpunit.cache
+.php-cs-fixer.cache

@@ -1,0 +1,16 @@
+<div class="col-12 col-md-6">
+    <div class="d-flex flex-column gap-6 justify-content-center h-100 p-6 p-lg-12 bg-ivory">
+        <div class="p-6 bg-white">
+            <p class="h4 mb-5">{{ 'sylius.ui.no_account'|trans }}</p>
+            <a href="{{ path('sylius_shop_register') }}" class="btn btn-primary btn-arrow btn-icon w-100">
+                {{ 'sylius.ui.register'|trans }}
+                <span class="icon">
+                    {{ ux_icon('tabler:arrow-right') }}
+                </span>
+            </a>
+        </div>
+        <div class="p-6 bg-white">
+            {% hook 'login_container' %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $paper;
+  color: $text;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $electric;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 160ms ease;
+
+  &:hover,
+  &.link-reset:hover {
+    color: $electric !important;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $ink;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+::selection {
+  background-color: $lavender;
+  color: $ink;
+}
+
+:focus-visible {
+  outline: 3px solid $electric;
+  outline-offset: 3px;
+}
+
+.volt-checkout-brand,
+.volt-checkout-account {
+  color: $ink;
+}
+
+.volt-checkout-brand a,
+.volt-checkout-account a,
+.volt-checkout-account .btn {
+  color: $electric;
+}
+
+.volt-checkout-brand a:hover,
+.volt-checkout-account a:hover,
+.volt-checkout-account .btn:hover {
+  color: $ink;
+}

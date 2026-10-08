@@ -1,0 +1,10 @@
+<footer>
+    <div class="container">
+        <div class="volt-footer__brand">
+            {% include 'shop/shared/layout/brand/logo.html.twig' with {variant: 'footer'} %}
+        </div>
+        <div class="row">
+            {% hook 'content' %}
+        </div>
+    </div>
+</footer>
