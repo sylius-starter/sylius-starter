@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\B2b;
+namespace SyliusStarter\B2b;
 
-use Castor\Sylius\B2b\Feature\CustomerValidationFeature;
-use Castor\Sylius\B2b\Feature\HideCheckoutFeature;
-use Castor\Sylius\B2b\Feature\HidePricesFeature;
-use Castor\Sylius\Feature\FeatureInterface;
+use SyliusStarter\B2b\Feature\CustomerValidationFeature;
+use SyliusStarter\B2b\Feature\HideCheckoutFeature;
+use SyliusStarter\B2b\Feature\HidePricesFeature;
+use SyliusStarter\Core\Feature\FeatureInterface;
 
 final class B2bFeatures
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Tasks;
+namespace SyliusStarter\Upsun\Tasks;
 
 use Castor\Attribute\AsTask;
-use Castor\Sylius\App;
-use Castor\Sylius\Util\Upsun;
-use Symfony\Component\Dotenv\Exception\FormatException;
+use SyliusStarter\Core\App;
+use SyliusStarter\Upsun\Util\Upsun;
 use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\Dotenv\Exception\FormatException;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 

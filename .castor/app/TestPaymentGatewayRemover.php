@@ -1,7 +1,7 @@
 <?php
 
-use Castor\Sylius\App;
-use Castor\Sylius\Attribute\AsPaymentGatewayRemover;
+use SyliusStarter\Core\App;
+use SyliusStarter\PaymentGateways\Attribute\AsPaymentGatewayRemover;
 use function Castor\io;
 
 #[AsPaymentGatewayRemover(name: 'test_payment_gateway_with_class')]

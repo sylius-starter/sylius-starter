@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Plugin;
+namespace SyliusStarter\Plugins;
 
-use Castor\Sylius\App;
+use SyliusStarter\Core\App;
 
 use function Castor\finder;
 use function Castor\fs;
@@ -30,6 +30,6 @@ final readonly class PluginResourceCopier
 
     private static function resourcesDir(string $plugin): string
     {
-        return \dirname(__DIR__, 2) . '/resources/plugin/' . $plugin;
+        return \dirname(__DIR__) . '/resources/' . $plugin;
     }
 }

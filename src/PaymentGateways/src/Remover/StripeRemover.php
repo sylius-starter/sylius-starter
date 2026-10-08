@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\PaymentGateway\Remover;
+namespace SyliusStarter\PaymentGateways\Remover;
 
-use Castor\Sylius\App;
-use Castor\Sylius\Plugin\Remover\PluginRemoverInterface;
-use Castor\Sylius\Util\Assets;
-use Castor\Sylius\Util\Composer;
-use Castor\Sylius\Util\Docker;
-use Castor\Sylius\Util\Symfony;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\RemoverInterface;
+use SyliusStarter\Core\Util\Assets;
+use SyliusStarter\Core\Util\Composer;
+use SyliusStarter\Core\Util\Docker;
+use SyliusStarter\Core\Util\Symfony;
 
 use function Castor\io;
 
-final readonly class StripeRemover implements PluginRemoverInterface
+final readonly class StripeRemover implements RemoverInterface
 {
     public function name(): string
     {

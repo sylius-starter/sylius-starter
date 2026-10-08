@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Feature;
+namespace SyliusStarter\Core\Feature;
 
-use Castor\Sylius\App;
+use SyliusStarter\Core\App;
 
 interface FeatureInterface
 {

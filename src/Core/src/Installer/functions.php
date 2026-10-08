@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Installer;
+namespace SyliusStarter\Core\Installer;
 
 use Castor\Attribute\AsListener;
 use Castor\Docker\Event\RegisterServiceInstallerEvent;

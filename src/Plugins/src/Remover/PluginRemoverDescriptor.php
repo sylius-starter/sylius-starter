@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Plugin\Remover;
+namespace SyliusStarter\Plugins\Remover;
 
-use Castor\Sylius\Attribute\AsPluginRemover;
+use SyliusStarter\Core\Component\RemoverInterface;
+use SyliusStarter\Plugins\Attribute\AsPluginRemover;
 
 final readonly class PluginRemoverDescriptor
 {
     public function __construct(
         public AsPluginRemover $attribute,
-        public \ReflectionFunction|PluginRemoverInterface $remover,
+        public \ReflectionFunction|RemoverInterface $remover,
     ) {}
 }

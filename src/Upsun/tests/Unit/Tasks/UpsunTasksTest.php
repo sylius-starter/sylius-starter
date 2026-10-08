@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Unit\Tasks;
+namespace SyliusStarter\Upsun\Tests\Unit\Tasks;
 
 use Castor\Attribute\AsTask;
 use Castor\Container;
-use Castor\Sylius\Tasks\UpsunTasks;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use SyliusStarter\Upsun\Tasks\UpsunTasks;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;

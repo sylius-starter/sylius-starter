@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Plugin\Installer;
+namespace SyliusStarter\Plugins\Installer;
 
-use Castor\Sylius\Attribute\AsPluginInstaller;
+use SyliusStarter\Core\Component\InstallerInterface;
+use SyliusStarter\Plugins\Attribute\AsPluginInstaller;
 
 final readonly class PluginInstallerDescriptor
 {
     public function __construct(
         public AsPluginInstaller $attribute,
-        public \ReflectionFunction|PluginInstallerInterface $installer,
+        public \ReflectionFunction|InstallerInterface $installer,
     ) {}
 }

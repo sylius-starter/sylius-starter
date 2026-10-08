@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Unit\Util;
+namespace SyliusStarter\Core\Tests\Unit\Util;
 
 use Castor\Container;
-use Castor\Sylius\App;
-use Castor\Sylius\Util\Symfony;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Util\Symfony;
 use Symfony\Component\Filesystem\Filesystem;
 
 #[CoversClass(Symfony::class)]

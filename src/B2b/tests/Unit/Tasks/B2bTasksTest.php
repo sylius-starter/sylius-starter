@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Unit\Tasks;
+namespace SyliusStarter\B2b\Tests\Unit\Tasks;
 
 use Castor\Attribute\AsRawTokens;
 use Castor\Attribute\AsTask;
 use Castor\Container;
-use Castor\Sylius\Tasks\B2bTasks;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use SyliusStarter\B2b\Tasks\B2bTasks;
 use Symfony\Component\Console\Exception\MissingInputException;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\PaymentGateway;
+namespace SyliusStarter\PaymentGateways;
 
-use Castor\Sylius\Plugin\Installer\PluginInstallerInterface;
-use Castor\Sylius\Plugin\Remover\PluginRemoverInterface;
+use SyliusStarter\Core\Component\InstallerInterface;
+use SyliusStarter\Core\Component\RemoverInterface;
 
 final class PaymentGateways
 {
@@ -26,7 +26,7 @@ final class PaymentGateways
         return self::$installers;
     }
 
-    public static function addInstaller(PluginInstallerInterface $installer): void
+    public static function addInstaller(InstallerInterface $installer): void
     {
         self::$installers[$installer->name()] = $installer;
     }
@@ -36,7 +36,7 @@ final class PaymentGateways
         return self::$removers;
     }
 
-    public static function addRemover(PluginRemoverInterface $remover): void
+    public static function addRemover(RemoverInterface $remover): void
     {
         self::$removers[$remover->name()] = $remover;
     }

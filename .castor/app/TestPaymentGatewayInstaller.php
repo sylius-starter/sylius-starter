@@ -1,7 +1,7 @@
 <?php
 
-use Castor\Sylius\App;
-use Castor\Sylius\Attribute\AsPaymentGatewayInstaller;
+use SyliusStarter\Core\App;
+use SyliusStarter\PaymentGateways\Attribute\AsPaymentGatewayInstaller;
 use function Castor\io;
 
 #[AsPaymentGatewayInstaller(name: 'test_payment_gateway_with_class')]

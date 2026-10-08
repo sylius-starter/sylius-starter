@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Unit\Tasks;
+namespace SyliusStarter\Plugins\Tests\Unit\Tasks;
 
 use Castor\Container;
-use Castor\Sylius\Plugin\Installer\CmsInstaller;
-use Castor\Sylius\Plugin\Installer\PluginInstaller;
-use Castor\Sylius\Plugin\Installer\ProductBundleInstaller;
-use Castor\Sylius\Plugin\Remover\ApiRemover;
-use Castor\Sylius\Plugin\Remover\PluginRemover;
-use Castor\Sylius\Tasks\PluginTasks;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use SyliusStarter\Core\Component\CallableInstaller;
+use SyliusStarter\Core\Component\CallableRemover;
+use SyliusStarter\Plugins\Installer\CmsInstaller;
+use SyliusStarter\Plugins\Installer\ProductBundleInstaller;
+use SyliusStarter\Plugins\Remover\ApiRemover;
+use SyliusStarter\Plugins\Tasks\PluginTasks;
 use Symfony\Component\Console\Exception\MissingInputException;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -67,17 +67,17 @@ final class PluginTasksTest extends TestCase
             'empty_description' => 'empty_description',
             'without_description' => 'without_description',
         ], PluginTasks::choices([
-            'without_description' => new PluginInstaller('without_description', static fn(): null => null),
-            'empty_description' => new PluginInstaller('empty_description', static fn(): null => null, ''),
+            'without_description' => new CallableInstaller('without_description', static fn(): null => null),
+            'empty_description' => new CallableInstaller('empty_description', static fn(): null => null, ''),
         ]));
     }
 
     public function testItSortsChoicesByName(): void
     {
         $choices = PluginTasks::choices([
-            'wishlist' => new PluginInstaller('wishlist', static fn(): null => null, 'Wishlist plugin for Sylius'),
+            'wishlist' => new CallableInstaller('wishlist', static fn(): null => null, 'Wishlist plugin for Sylius'),
             'cms' => new CmsInstaller(),
-            'api' => new PluginRemover('api', static fn(): null => null),
+            'api' => new CallableRemover('api', static fn(): null => null),
         ]);
 
         static::assertSame(['api', 'cms', 'wishlist'], array_keys($choices));

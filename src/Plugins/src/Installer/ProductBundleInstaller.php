@@ -2,19 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Plugin\Installer;
+namespace SyliusStarter\Plugins\Installer;
 
-use Castor\Sylius\App;
-use Castor\Sylius\PhpFile;
-use Castor\Sylius\Util\Assets;
-use Castor\Sylius\Util\Composer;
-use Castor\Sylius\Util\Database;
-use Castor\Sylius\Util\Docker;
-use Castor\Sylius\Util\Symfony;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\InstallerInterface;
+use SyliusStarter\Core\PhpFile;
+use SyliusStarter\Core\Util\Assets;
+use SyliusStarter\Core\Util\Composer;
+use SyliusStarter\Core\Util\Database;
+use SyliusStarter\Core\Util\Docker;
+use SyliusStarter\Core\Util\Symfony;
 
 use function Castor\io;
 
-final readonly class ProductBundleInstaller implements PluginInstallerInterface
+final readonly class ProductBundleInstaller implements InstallerInterface
 {
     public function name(): string
     {

@@ -1,0 +1,41 @@
+{
+    "name": "sylius-starter/b2b",
+    "description": "Castor tasks to enable B2B features on Sylius (hide prices, hide checkout, customer validation)",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "sylius",
+        "castor",
+        "starter"
+    ],
+    "homepage": "https://github.com/sylius-starter/sylius-starter",
+    "authors": [
+        {
+            "name": "Loïc Frémont",
+            "email": "lfremont@jolicode.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "sylius-starter/core": "self.version",
+        "symfony/yaml": "^7.4|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SyliusStarter\\B2b\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SyliusStarter\\B2b\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1-dev"
+        }
+    }
+}

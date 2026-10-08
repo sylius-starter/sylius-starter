@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\PaymentGateway\Installer;
+namespace SyliusStarter\PaymentGateways\Installer;
 
-use Castor\Sylius\App;
-use Castor\Sylius\Plugin\Installer\PluginInstallerInterface;
-use Castor\Sylius\Util\Composer;
-use Castor\Sylius\Util\Database;
-use Castor\Sylius\Util\Docker;
-use Castor\Sylius\Util\Symfony;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\InstallerInterface;
+use SyliusStarter\Core\Util\Composer;
+use SyliusStarter\Core\Util\Database;
+use SyliusStarter\Core\Util\Docker;
+use SyliusStarter\Core\Util\Symfony;
 
 use function Castor\io;
 
-final readonly class PaypalInstaller implements PluginInstallerInterface
+final readonly class PaypalInstaller implements InstallerInterface
 {
     public function name(): string
     {

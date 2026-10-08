@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Theme\Remover;
+namespace SyliusStarter\Themes\Remover;
 
-use Castor\Sylius\App;
-use Castor\Sylius\Plugin\Installer\PluginInstallerInterface;
-use Castor\Sylius\Plugin\Remover\PluginRemoverInterface;
-use Castor\Sylius\Util\Javascript;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\InstallerInterface;
+use SyliusStarter\Core\Component\RemoverInterface;
+use SyliusStarter\Core\Util\Javascript;
 
 use function Castor\finder;
 use function Castor\fs;
 
-final class CanvasRemover implements PluginRemoverInterface
+final class CanvasRemover implements RemoverInterface
 {
     public function name(): string
     {
@@ -26,7 +26,7 @@ final class CanvasRemover implements PluginRemoverInterface
 
     public function __invoke(App $app): void
     {
-        $resourcesDir = \dirname(__DIR__, 3) . '/resources/theme/canvas';
+        $resourcesDir = \dirname(__DIR__, 2) . '/resources/canvas';
 
         foreach (finder()->files()->in($resourcesDir)->files() as $file) {
             fs()->remove($app->directory() . '/' . $file->getRelativePathname());

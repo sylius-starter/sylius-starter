@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Unit\Service;
+namespace SyliusStarter\Core\Tests\Unit\Service;
 
 use Castor\Attribute\AsTask;
-use Castor\Docker\Service\PostgresService;
-use Castor\Docker\Service\PHPService;
 use Castor\Docker\Service\MySQLService;
-use Castor\Sylius\Service\SyliusService;
+use Castor\Docker\Service\PHPService;
+use Castor\Docker\Service\PostgresService;
 use PHPUnit\Framework\TestCase;
+use SyliusStarter\Core\Service\SyliusService;
+use SyliusStarter\Core\Task\TaskProviderRegistry;
 
 final class SyliusServiceTest extends TestCase
 {
@@ -40,90 +41,38 @@ final class SyliusServiceTest extends TestCase
         static::assertSame('MySQL', $service->databaseEngine());
     }
 
-    public function testAddsPluginTasks(): void
+    public function testExposesTasksOfRegisteredProviders(): void
     {
-        $service = new SyliusService();
+        TaskProviderRegistry::register('test_provider', static fn(SyliusService $service): iterable => [[
+            'task' => new AsTask('hello', $service->getName() . ':test', 'Test task'),
+            'function' => static function (): void {},
+        ]]);
 
-        $found = false;
-
-        foreach ($service->getTasks() as $task) {
-            /** @var AsTask $task */
-            $task = $task['task'];
-
-            if ('add' === $task->name && 'sylius:plugin' === $task->namespace) {
-                $found = true;
-
-                break;
-            }
+        try {
+            static::assertContains('app:test:hello', $this->taskNames(new SyliusService()));
+        } finally {
+            TaskProviderRegistry::unregister('test_provider');
         }
-
-        static::assertTrue($found);
     }
 
-    public function testAddsMenuTasks(): void
+    public function testAlwaysExposesTheFixturesTask(): void
     {
-        $service = new SyliusService();
-
-        $found = false;
-
-        foreach ($service->getTasks() as $task) {
-            /** @var AsTask $task */
-            $task = $task['task'];
-
-            if ('remove' === $task->name && 'sylius:menu' === $task->namespace) {
-                $found = true;
-
-                break;
-            }
-        }
-
-        static::assertTrue($found);
+        static::assertContains('app:db:fixtures', $this->taskNames(new SyliusService()));
     }
 
-    public function testAddsUpsunTasks(): void
+    /**
+     * @return list<string>
+     */
+    private function taskNames(SyliusService $service): array
     {
-        $service = new SyliusService();
-        $found = false;
+        $names = [];
 
         foreach ($service->getTasks() as $task) {
-            /** @var AsTask $task */
-            $task = $task['task'];
-
-            if ('check' === $task->name && 'sylius:upsun' === $task->namespace) {
-                $found = true;
-
-                break;
-            }
+            /** @var AsTask $asTask */
+            $asTask = $task['task'];
+            $names[] = $asTask->namespace . ':' . $asTask->name;
         }
 
-        static::assertTrue($found);
-    }
-
-    public function testAddsImportTasks(): void
-    {
-        $service = new SyliusService();
-        $expected = [
-            ['list', 'sylius:import'],
-            ['delete', 'sylius:import'],
-            ['build', 'sylius:import:ai'],
-            ['generate', 'sylius:import:fixtures'],
-            ['load', 'sylius:import:fixtures'],
-        ];
-        $found = [];
-
-        foreach ($service->getTasks() as $task) {
-            /** @var AsTask $task */
-            $task = $task['task'];
-
-            foreach ($expected as [$name, $namespace]) {
-                if ($task->name === $name && $task->namespace === $namespace) {
-                    $found["{$namespace}:{$name}"] = true;
-                }
-            }
-        }
-
-        foreach ($expected as [$name, $namespace]) {
-            static::assertArrayHasKey("{$namespace}:{$name}", $found);
-        }
+        return $names;
     }
 }

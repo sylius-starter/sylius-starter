@@ -1,0 +1,12 @@
+parameters:
+    level: 0
+    paths:
+        - src/B2b/src
+        - src/Core/src
+        - src/Import/src
+        - src/Menu/src
+        - src/PaymentGateways/src
+        - src/Plugins/src
+        - src/Themes/src
+        - src/Upsun/src
+        - .castor/monorepo

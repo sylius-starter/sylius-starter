@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 defined('CASTOR_USE_CHDIR') || define('CASTOR_USE_CHDIR', true);
 
-use Castor\Attribute\AsTask;
 use Castor\Attribute\AsListener;
+use Castor\Attribute\AsTask;
 use Castor\Docker\Event\RegisterServiceEvent;
-use Castor\Docker\Service\PostgresService;
 use Castor\Docker\Service\PhpMode;
-use Castor\Sylius\Attribute\AsPaymentGatewayInstaller;
-use Castor\Sylius\Attribute\AsPaymentGatewayRemover;
-use Castor\Sylius\Attribute\AsPluginInstaller;
-use Castor\Sylius\Attribute\AsPluginRemover;
-use Castor\Sylius\Service\SyliusService;
+use Castor\Docker\Service\PostgresService;
+use SyliusStarter\Core\Service\SyliusService;
+use SyliusStarter\PaymentGateways\Attribute\AsPaymentGatewayInstaller;
+use SyliusStarter\PaymentGateways\Attribute\AsPaymentGatewayRemover;
+use SyliusStarter\Plugins\Attribute\AsPluginInstaller;
+use SyliusStarter\Plugins\Attribute\AsPluginRemover;
 
 use function Castor\io;
 use function Castor\context;
@@ -22,6 +22,7 @@ use function Castor\PHPQa\phpstan;
 use function Castor\PHPQa\php_cs_fixer;
 
 import(__DIR__ . '/.castor/app');
+import(__DIR__ . '/.castor/monorepo');
 
 #[AsTask(description: 'Fix CS', namespace: 'qa', name: 'cs', aliases: ['cs'])]
 function qa_phpcsfixer(bool $dryRun = false): int
@@ -38,7 +39,7 @@ function qa_phpcsfixer(bool $dryRun = false): int
 #[AsTask(description: 'Run PHPStan', namespace: 'qa', name: 'phpstan', aliases: ['phpstan'])]
 function qa_phpstan(bool $generateBaseline = false): int
 {
-    $args = ['analyze', context()->workingDirectory . '/src'];
+    $args = ['analyze', '--configuration', context()->workingDirectory . '/phpstan.dist.neon'];
 
     if ($generateBaseline) {
         $args[] = '-b';

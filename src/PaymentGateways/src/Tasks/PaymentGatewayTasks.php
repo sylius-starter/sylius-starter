@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Tasks;
+namespace SyliusStarter\PaymentGateways\Tasks;
 
 use Castor\Attribute\AsOption;
 use Castor\Attribute\AsRawTokens;
 use Castor\Attribute\AsTask;
-use Castor\Sylius\App;
-use Castor\Sylius\PaymentGateway\PaymentGateways;
+use SyliusStarter\Core\App;
+use SyliusStarter\PaymentGateways\PaymentGateways;
 
 use function Castor\io;
 

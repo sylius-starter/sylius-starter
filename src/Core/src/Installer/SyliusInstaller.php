@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Installer;
+namespace SyliusStarter\Core\Installer;
 
 use Castor\Docker\Installer\AbstractServiceInstaller;
 use Castor\Docker\Installer\Ast\Ast;
@@ -13,15 +13,14 @@ use Castor\Docker\Installer\NeedsDatabase;
 use Castor\Docker\Service\DatabaseServiceInterface;
 use Castor\Docker\Service\PhpMode;
 use Castor\Docker\Service\ServiceInterface;
-use Castor\Sylius\App;
-use Castor\Sylius\EnvFile;
-use Castor\Sylius\PaymentGateway\PaymentGateways;
-use Castor\Sylius\Service\SyliusService;
-use Castor\Sylius\Util\Assets;
-use Castor\Sylius\Util\Database;
-use Castor\Sylius\Util\Docker;
-use Castor\Sylius\Util\Fixtures;
-use Castor\Sylius\Util\Symfony;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\EnvFile;
+use SyliusStarter\Core\Service\SyliusService;
+use SyliusStarter\Core\Util\Assets;
+use SyliusStarter\Core\Util\Database;
+use SyliusStarter\Core\Util\Docker;
+use SyliusStarter\Core\Util\Fixtures;
+use SyliusStarter\Core\Util\Symfony;
 
 use function Castor\context;
 use function Castor\Docker\docker_compose_run;
@@ -41,15 +40,20 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
 
     public function getInputs(): array
     {
-        return [
+        $inputs = [
             new Input('name', 'Application name', InputType::Text, 'app'),
             new Input('directory', 'Directory (relative to castor.php)', InputType::Text, static fn(array $answers): string => (string) ($answers['name'] ?? 'app')),
             new Input('version', 'PHP version', InputType::Text, '8.5'),
             new Input('mode', 'Runtime', InputType::Choice, PhpMode::FrankenPhp->value, [PhpMode::FrankenPhp->value, PhpMode::Fpm->value]),
             new Input('domain', 'Domain', InputType::Text, static fn(array $answers): string => \sprintf('%s.%s', $answers['name'] ?? 'app', context()->data['root_domain'] ?? 'castor.local')),
             new Input('sylius_version', 'Sylius version (empty for latest)', InputType::Text, ''),
-            new Input('payment_gateways', 'Payment gateways', InputType::Choice, array_keys(PaymentGateways::names()), PaymentGateways::names(), true),
         ];
+
+        foreach (SyliusInstallerExtensions::all() as $extension) {
+            array_push($inputs, ...$extension->getInputs());
+        }
+
+        return $inputs;
     }
 
     public function buildStatements(ServiceStatementBuilder $builder, array $answers): void
@@ -96,7 +100,6 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
         $version = (string) $answers['sylius_version'];
         $directory = (string) $answers['directory'];
         $package = 'sylius/sylius-standard' . ($version !== '' ? ':' . $version : '');
-        $paymentGateways = $answers['payment_gateways'] ?? [];
 
         docker_compose_run(
             \sprintf('composer create-project %s . --no-interaction', $package),
@@ -127,6 +130,8 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
         Database::migrate($app);
         Fixtures::load($app);
 
-        run('castor sylius:payment-gateways:setup --only --no-interaction ' . implode(', ', $paymentGateways));
+        foreach (SyliusInstallerExtensions::all() as $extension) {
+            $extension->afterScaffold($app, $answers);
+        }
     }
 }

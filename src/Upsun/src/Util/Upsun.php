@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Util;
+namespace SyliusStarter\Upsun\Util;
 
-use Castor\Sylius\App;
+use SyliusStarter\Core\App;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
 final readonly class Upsun

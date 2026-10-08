@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Plugin\Remover;
+namespace SyliusStarter\Plugins\Remover;
 
-use Castor\Sylius\App;
-use Castor\Sylius\Util\Composer;
-use Castor\Sylius\Util\Database;
-use Castor\Sylius\Util\Docker;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\RemoverInterface;
+use SyliusStarter\Core\Util\Composer;
+use SyliusStarter\Core\Util\Database;
+use SyliusStarter\Core\Util\Docker;
 
 use function Castor\io;
 
-final readonly class InvoicingRemover implements PluginRemoverInterface
+final readonly class InvoicingRemover implements RemoverInterface
 {
     public function name(): string
     {

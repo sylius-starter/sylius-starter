@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Tasks;
+namespace SyliusStarter\B2b\Tasks;
 
 use Castor\Attribute\AsRawTokens;
 use Castor\Attribute\AsTask;
-use Castor\Sylius\App;
-use Castor\Sylius\B2b\B2bFeatures;
-use Castor\Sylius\Util\Symfony;
-use Castor\Sylius\Util\Yaml;
+use SyliusStarter\B2b\B2bFeatures;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Util\Symfony;
+use SyliusStarter\Core\Util\Yaml;
 
 use function Castor\io;
 

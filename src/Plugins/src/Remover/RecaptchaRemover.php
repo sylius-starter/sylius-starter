@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Plugin\Installer;
+namespace SyliusStarter\Plugins\Remover;
 
-use Castor\Sylius\App;
-use Castor\Sylius\Plugin\Remover\PluginRemoverInterface;
-use Castor\Sylius\Util\Composer;
-use Castor\Sylius\Util\Docker;
-use Castor\Sylius\Util\Symfony;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\RemoverInterface;
+use SyliusStarter\Core\Util\Composer;
+use SyliusStarter\Core\Util\Docker;
+use SyliusStarter\Core\Util\Symfony;
 
 use function Castor\finder;
 use function Castor\fs;
 use function Castor\io;
 
-final readonly class RecaptchaRemover implements PluginRemoverInterface
+final readonly class RecaptchaRemover implements RemoverInterface
 {
     public function name(): string
     {
@@ -32,7 +32,7 @@ final readonly class RecaptchaRemover implements PluginRemoverInterface
 
         Composer::allowContribRecipes($app);
 
-        $resourcesDir = \dirname(__DIR__, 3) . '/resources/plugin/recaptcha';
+        $resourcesDir = \dirname(__DIR__, 2) . '/resources/recaptcha';
 
         foreach (finder()->files()->in($resourcesDir)->files() as $file) {
             fs()->remove($app->directory() . '/' . $file->getRelativePathname());

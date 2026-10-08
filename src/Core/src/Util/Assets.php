@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Util;
+namespace SyliusStarter\Core\Util;
 
-use Castor\Sylius\App;
+use SyliusStarter\Core\App;
 
 use function Castor\io;
 

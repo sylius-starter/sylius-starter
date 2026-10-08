@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Tasks;
+namespace SyliusStarter\Plugins\Tasks;
 
 use Castor\Attribute\AsRawTokens;
 use Castor\Attribute\AsTask;
-use Castor\Sylius\App;
-use Castor\Sylius\Plugin\Installer\PluginInstaller;
-use Castor\Sylius\Plugin\Installer\PluginInstallerInterface;
-use Castor\Sylius\Plugin\Remover\PluginRemoverInterface;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\ComponentChoices;
+use SyliusStarter\Core\Component\InstallerInterface;
+use SyliusStarter\Core\Component\RemoverInterface;
 
 use function Castor\io;
 
@@ -84,33 +84,21 @@ final class PluginTasks
     }
 
     /**
-     * @param array<string, PluginInstallerInterface|PluginRemoverInterface> $components
+     * @param array<string, InstallerInterface|RemoverInterface> $components
      *
      * @return array<string, string>
      */
     public static function choices(array $components): array
     {
-        $choices = [];
-
-        foreach ($components as $name => $component) {
-            $description = $component->description();
-
-            $choices[$name] = null === $description || '' === $description
-                ? $name
-                : \sprintf('%s - %s', $name, $description);
-        }
-
-        ksort($choices);
-
-        return $choices;
+        return ComponentChoices::build($components);
     }
 
-    public static function addInstaller(PluginInstallerInterface $installer): void
+    public static function addInstaller(InstallerInterface $installer): void
     {
         self::$installers[$installer->name()] = $installer;
     }
 
-    public static function addRemover(PluginRemoverInterface $remover): void
+    public static function addRemover(RemoverInterface $remover): void
     {
         self::$removers[$remover->name()] = $remover;
     }

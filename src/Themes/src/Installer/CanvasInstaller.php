@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Theme\Installer;
+namespace SyliusStarter\Themes\Installer;
 
-use Castor\Sylius\App;
-use Castor\Sylius\Plugin\Installer\PluginInstallerInterface;
-use Castor\Sylius\Util\Assets;
-use Castor\Sylius\Util\Docker;
-use Castor\Sylius\Util\Javascript;
-use Castor\Sylius\Util\Symfony;
-use Castor\Sylius\Util\Yaml;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\InstallerInterface;
+use SyliusStarter\Core\Util\Assets;
+use SyliusStarter\Core\Util\Docker;
+use SyliusStarter\Core\Util\Javascript;
+use SyliusStarter\Core\Util\Symfony;
+use SyliusStarter\Core\Util\Yaml;
 
 use function Castor\finder;
 use function Castor\fs;
 
-final class CanvasInstaller implements PluginInstallerInterface
+final class CanvasInstaller implements InstallerInterface
 {
     public function name(): string
     {
@@ -24,14 +24,14 @@ final class CanvasInstaller implements PluginInstallerInterface
 
     public function description(): ?string
     {
-        return 'https://github.com/castor-php/sylius/blob/main/docs/themes/canvas.md';
+        return 'https://github.com/sylius-starter/sylius-starter/blob/main/docs/themes/canvas.md';
     }
 
     public function __invoke(App $app): void
     {
         Yaml::import($app, 'config/packages/_sylius.yaml', '../sylius/twig_hooks/**/**.php');
 
-        $resourcesDir = \dirname(__DIR__, 3) . '/resources/theme/canvas';
+        $resourcesDir = \dirname(__DIR__, 2) . '/resources/canvas';
 
         foreach (finder()->files()->in($resourcesDir)->files() as $file) {
             fs()->copy($resourcesDir . '/' . $file->getRelativePathname(), $app->directory() . '/' . $file->getRelativePathname());

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Plugin\Installer;
+namespace SyliusStarter\Core\Component;
 
-use Castor\Sylius\App;
+use SyliusStarter\Core\App;
 
-interface PluginInstallerInterface
+interface InstallerInterface
 {
     public function name(): string;
 

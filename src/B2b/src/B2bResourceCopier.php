@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\B2b;
+namespace SyliusStarter\B2b;
 
-use Castor\Sylius\App;
+use SyliusStarter\Core\App;
 use Symfony\Component\Yaml\Yaml;
 
 use function Castor\finder;
@@ -48,6 +48,6 @@ final readonly class B2bResourceCopier
 
     private static function resourcesDir(string $feature): string
     {
-        return \dirname(__DIR__, 2) . '/resources/b2b/' . $feature;
+        return \dirname(__DIR__) . '/resources/' . $feature;
     }
 }

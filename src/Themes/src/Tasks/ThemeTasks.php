@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Tasks;
+namespace SyliusStarter\Themes\Tasks;
 
 use Castor\Attribute\AsArgument;
 use Castor\Attribute\AsTask;
-use Castor\Sylius\App;
-use Castor\Sylius\Plugin\Installer\PluginInstallerInterface;
-use Castor\Sylius\Theme\Themes;
-use Castor\Sylius\Util\Assets;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\ComponentChoices;
+use SyliusStarter\Core\Util\Assets;
+use SyliusStarter\Themes\Themes;
 
 use function Castor\io;
 
@@ -41,13 +41,7 @@ final class ThemeTasks
                     Assets::build($app);
                 };
 
-                $choices = [];
-                foreach ($themeInstallers as $name => $installer) {
-                    $description = $installer instanceof PluginInstallerInterface ? $installer->description() : null;
-                    $choices[$name] = null === $description || '' === $description
-                        ? $name
-                        : \sprintf('%s - %s', $name, $description);
-                }
+                $choices = ComponentChoices::build($themeInstallers);
                 $choices['default'] = 'default';
                 ksort($choices);
 

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Theme\Remover;
+namespace SyliusStarter\Themes\Remover;
 
-use Castor\Sylius\App;
-use Castor\Sylius\Plugin\Remover\PluginRemoverInterface;
-use Castor\Sylius\Util\Javascript;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Component\RemoverInterface;
+use SyliusStarter\Core\Util\Javascript;
 
 use function Castor\finder;
 use function Castor\fs;
 
-final class PromptLightThemeRemover implements PluginRemoverInterface
+final class PromptLightThemeRemover implements RemoverInterface
 {
     public function name(): string
     {
@@ -25,7 +25,7 @@ final class PromptLightThemeRemover implements PluginRemoverInterface
 
     public function __invoke(App $app): void
     {
-        $resourcesDir = \dirname(__DIR__, 3) . '/resources/theme/prompt_light';
+        $resourcesDir = \dirname(__DIR__, 2) . '/resources/prompt_light';
 
         foreach (finder()->files()->in($resourcesDir)->files() as $file) {
             fs()->remove($app->directory() . '/' . $file->getRelativePathname());

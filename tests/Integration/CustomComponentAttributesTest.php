@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Unit\Attribute;
+namespace SyliusStarter\Tests\Integration;
 
 use Castor\Exception\FunctionConfigurationException;
-use Castor\Sylius\App;
-use Castor\Sylius\Attribute\AsPaymentGatewayInstaller;
-use Castor\Sylius\Attribute\AsPluginInstaller;
-use Castor\Sylius\Attribute\AsPluginRemover;
-use Castor\Sylius\Attribute\AsThemeInstaller;
-use Castor\Sylius\Attribute\AsThemeRemover;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use SyliusStarter\Core\App;
+use SyliusStarter\PaymentGateways\Attribute\AsPaymentGatewayInstaller;
+use SyliusStarter\Plugins\Attribute\AsPluginInstaller;
+use SyliusStarter\Plugins\Attribute\AsPluginRemover;
+use SyliusStarter\Themes\Attribute\AsThemeInstaller;
+use SyliusStarter\Themes\Attribute\AsThemeRemover;
 
-use function Castor\Sylius\PaymentGateway\resolve_payment_gateway_installer;
-use function Castor\Sylius\Plugin\resolve_plugin_installer;
-use function Castor\Sylius\Plugin\resolve_plugin_remover;
-use function Castor\Sylius\Theme\resolve_theme_installer;
-use function Castor\Sylius\Theme\resolve_theme_remover;
+use function SyliusStarter\PaymentGateways\resolve_payment_gateway_installer;
+use function SyliusStarter\Plugins\resolve_plugin_installer;
+use function SyliusStarter\Plugins\resolve_plugin_remover;
+use function SyliusStarter\Themes\resolve_theme_installer;
+use function SyliusStarter\Themes\resolve_theme_remover;
 
 #[CoversClass(App::class)]
 final class CustomComponentAttributesTest extends TestCase

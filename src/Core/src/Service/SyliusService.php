@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Service;
+namespace SyliusStarter\Core\Service;
 
 use Castor\Attribute\AsRawTokens;
 use Castor\Attribute\AsTask;
@@ -11,15 +11,9 @@ use Castor\Docker\Service\MariaDBService;
 use Castor\Docker\Service\MySQLService;
 use Castor\Docker\Service\PostgresService;
 use Castor\Docker\Service\SymfonyService;
-use Castor\Sylius\App;
-use Castor\Sylius\Tasks\B2bTasks;
-use Castor\Sylius\Tasks\ImportTasks;
-use Castor\Sylius\Tasks\MenuTasks;
-use Castor\Sylius\Tasks\PaymentGatewayTasks;
-use Castor\Sylius\Tasks\PluginTasks;
-use Castor\Sylius\Tasks\ThemeTasks;
-use Castor\Sylius\Tasks\UpsunTasks;
-use Castor\Sylius\Util\Fixtures;
+use SyliusStarter\Core\App;
+use SyliusStarter\Core\Task\TaskProviderRegistry;
+use SyliusStarter\Core\Util\Fixtures;
 
 class SyliusService extends SymfonyService
 {
@@ -40,13 +34,8 @@ class SyliusService extends SymfonyService
     {
         yield from parent::getTasks();
 
-        yield from (new PluginTasks($this->name, $this->getDirectory()))();
-        yield from (new PaymentGatewayTasks($this->name, $this->getDirectory()))();
-        yield from (new ThemeTasks($this->name, $this->getDirectory()))();
-        yield from (new MenuTasks($this->name, $this->getDirectory()))();
-        yield from (new ImportTasks($this->name, $this->getDirectory(), $this->getDomains()[0] ?? null))();
-        yield from (new B2bTasks($this->name, $this->getDirectory()))();
-        yield from (new UpsunTasks($this->name, $this->getDirectory(), $this->databaseEngine()))();
+        // Tasks contributed by the installed sylius-starter/* packages
+        yield from TaskProviderRegistry::tasksFor($this);
 
         yield from $this->tasks;
 

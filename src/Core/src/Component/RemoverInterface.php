@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\Plugin\Remover;
+namespace SyliusStarter\Core\Component;
 
-use Castor\Sylius\App;
+use SyliusStarter\Core\App;
 
-interface PluginRemoverInterface
+interface RemoverInterface
 {
     public function name(): string;
 

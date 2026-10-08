@@ -7,14 +7,32 @@
          failOnRisky="true"
 >
     <testsuites>
-        <testsuite name="unit">
-            <directory>tests/Unit</directory>
+        <testsuite name="b2b">
+            <directory>src/B2b/tests</directory>
+        </testsuite>
+        <testsuite name="core">
+            <directory>src/Core/tests</directory>
+        </testsuite>
+        <testsuite name="import">
+            <directory>src/Import/tests</directory>
+        </testsuite>
+        <testsuite name="menu">
+            <directory>src/Menu/tests</directory>
+        </testsuite>
+        <testsuite name="plugins">
+            <directory>src/Plugins/tests</directory>
+        </testsuite>
+        <testsuite name="upsun">
+            <directory>src/Upsun/tests</directory>
+        </testsuite>
+        <testsuite name="integration">
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 
     <source>
         <include>
-            <directory>src</directory>
+            <directory>src/*/src</directory>
         </include>
     </source>
 </phpunit>

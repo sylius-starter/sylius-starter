@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\PaymentGateway\Installer;
+namespace SyliusStarter\PaymentGateways\Installer;
 
-use Castor\Sylius\Attribute\AsPaymentGatewayInstaller;
-use Castor\Sylius\Plugin\Installer\PluginInstallerInterface;
+use SyliusStarter\Core\Component\InstallerInterface;
+use SyliusStarter\PaymentGateways\Attribute\AsPaymentGatewayInstaller;
 
 final readonly class PaymentGatewayInstallerDescriptor
 {
     public function __construct(
         public AsPaymentGatewayInstaller $attribute,
-        public \ReflectionFunction|PluginInstallerInterface $installer,
+        public \ReflectionFunction|InstallerInterface $installer,
     ) {}
 }

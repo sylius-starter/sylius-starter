@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius\PaymentGateway\Remover;
+namespace SyliusStarter\PaymentGateways\Remover;
 
-use Castor\Sylius\Attribute\AsPaymentGatewayRemover;
-use Castor\Sylius\Plugin\Remover\PluginRemoverInterface;
+use SyliusStarter\Core\Component\RemoverInterface;
+use SyliusStarter\PaymentGateways\Attribute\AsPaymentGatewayRemover;
 
 final readonly class PaymentGatewayRemoverDescriptor
 {
     public function __construct(
         public AsPaymentGatewayRemover $attribute,
-        public \ReflectionFunction|PluginRemoverInterface $remover,
+        public \ReflectionFunction|RemoverInterface $remover,
     ) {}
 }

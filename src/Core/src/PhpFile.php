@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Castor\Sylius;
+namespace SyliusStarter\Core;
 
 use PhpParser\Node;
 use PhpParser\Node\FunctionLike;

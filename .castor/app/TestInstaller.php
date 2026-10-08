@@ -1,7 +1,7 @@
 <?php
 
-use Castor\Sylius\App;
-use Castor\Sylius\Attribute\AsPluginInstaller;
+use SyliusStarter\Core\App;
+use SyliusStarter\Plugins\Attribute\AsPluginInstaller;
 use function Castor\io;
 
 #[AsPluginInstaller(name: 'test_installer_with_class')]
