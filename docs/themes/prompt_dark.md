@@ -17,5 +17,7 @@ panel.
 - **Shopping flow** — matching cart and checkout styling, with light sage
   summary panels for contrast.
 - **Checkout** — the checkout header uses the Prompt wordmark and category navigation.
+- **Translations** — the hero texts live in a `prompt` translation domain
+  (`translations/prompt.en.yaml` and `prompt.fr.yaml`).
 
 Install it with `castor sylius:theme:setup prompt_dark`.

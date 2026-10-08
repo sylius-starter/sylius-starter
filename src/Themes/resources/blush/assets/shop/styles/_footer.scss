@@ -63,3 +63,9 @@ footer .row.g-2.mb-4 > div > a {
   border-color: rgba($white, 0.35) !important;
   background-color: $white;
 }
+
+.blush-footer__copy a {
+  color: $white !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.2em;
+}

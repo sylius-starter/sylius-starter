@@ -18,5 +18,7 @@ soft rose panels and a deep plum footer.
   deals and new-collection blocks are hidden.
 - **Shopping flow** — matching buttons, forms and checkout branding, including
   the Blush wordmark and category navigation in the checkout header.
+- **Translations** — the hero texts live in a `blush` translation domain
+  (`translations/blush.en.yaml` and `blush.fr.yaml`).
 
 Install it with `castor sylius:theme:setup blush`.

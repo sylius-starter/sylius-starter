@@ -141,7 +141,7 @@ header .navbar-brand {
   }
 
   svg,
-  [data-test-cart-total] {
+  span:not(.badge) {
     color: inherit;
   }
 }

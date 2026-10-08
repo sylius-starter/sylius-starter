@@ -15,5 +15,7 @@ crisp dark typography and calmer contrast.
   latest products, without losing the terminal aesthetic.
 - **Shopping flow** — matching cart, checkout and product cards with calmer contrast
   for better readability.
+- **Translations** — the hero texts live in a `prompt` translation domain
+  (`translations/prompt.en.yaml` and `prompt.fr.yaml`).
 
 Install it with `castor sylius:theme:setup prompt_light`.

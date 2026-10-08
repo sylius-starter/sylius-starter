@@ -13,8 +13,8 @@
   padding: clamp(2rem, 6vw, 5rem);
   border-radius: 2rem;
   background:
-    radial-gradient(circle at 78% 48%, rgba($electric, 0.95) 0 17%, transparent 17.2%),
-    radial-gradient(circle at 78% 48%, $lavender 0 27%, transparent 27.2%),
+    radial-gradient(circle at 75% 50%, rgba($electric, 0.95) 0 16%, transparent 16.2%),
+    radial-gradient(circle at 75% 50%, $lavender 0 25%, transparent 25.2%),
     $ink;
   color: $white;
   isolation: isolate;
@@ -127,7 +127,7 @@
 .volt-hero__orbit {
   position: absolute;
   top: 50%;
-  right: 9%;
+  right: calc(25% - clamp(5.5rem, 13vw, 11rem));
   display: grid;
   width: clamp(11rem, 26vw, 22rem);
   aspect-ratio: 1;
@@ -242,9 +242,9 @@
 
   h2 {
     margin: 0;
-    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-    font-weight: 800;
-    letter-spacing: -0.055em;
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
   }
 }
 

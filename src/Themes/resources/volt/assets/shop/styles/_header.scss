@@ -44,7 +44,7 @@ header .navbar-brand {
 }
 
 .volt-logo--header {
-  margin-inline-start: -0.75rem;
+  margin-inline-start: 0;
 }
 
 .volt-logo__mark {
@@ -266,8 +266,3 @@ header .dropdown-item {
   }
 }
 
-@media (max-width: 575.98px) {
-  .volt-logo--header {
-    margin-inline-start: -0.5rem;
-  }
-}
