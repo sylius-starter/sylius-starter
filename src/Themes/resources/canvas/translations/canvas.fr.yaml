@@ -1,0 +1,20 @@
+canvas:
+    hero:
+        issue: 'Canvas — N° 01'
+        season: 'Édition d’automne'
+        title: 'L’art de s’habiller <em>au quotidien</em>.'
+        lead: 'Des pièces discrètes, des matières honnêtes et des coupes qui durent. Une garde-robe composée lentement, un essentiel à la fois.'
+        cta: 'Découvrir l’édition'
+        note: 'De nouvelles pièces chaque semaine'
+        vertical: 'Collection automne · hiver'
+    values:
+        label: 'Nos engagements'
+        craft:
+            title: 'Un savoir-faire réfléchi.'
+            text: 'Des fibres naturelles, choisies pour bien vieillir.'
+        delivery:
+            title: 'Une livraison soignée.'
+            text: 'Emballé à la main, expédié sous 48 heures.'
+        returns:
+            title: 'Des retours simples.'
+            text: '30 jours pour changer d’avis, gratuitement.'

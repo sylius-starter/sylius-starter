@@ -1,0 +1,17 @@
+<div class="canvas-collage">
+    {% for product in latest_products %}
+        <a class="canvas-collage__item canvas-collage__item--{{ loop.index }}" href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}">
+            <span class="canvas-collage__media">
+                {{ component('sylius_shop:main_image', {product: product, class: 'w-100 h-100 object-fit-cover'}) }}
+            </span>
+            <span class="canvas-collage__caption">
+                <span class="canvas-collage__number">N° {{ '%02d'|format(loop.index) }}</span>
+                <span class="canvas-collage__name">{{ product.name }}</span>
+            </span>
+        </a>
+    {% else %}
+        <span class="canvas-collage__item canvas-collage__item--1 canvas-collage__item--empty" aria-hidden="true"></span>
+        <span class="canvas-collage__item canvas-collage__item--2 canvas-collage__item--empty" aria-hidden="true"></span>
+        <span class="canvas-collage__item canvas-collage__item--3 canvas-collage__item--empty" aria-hidden="true"></span>
+    {% endfor %}
+</div>

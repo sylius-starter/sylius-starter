@@ -20,6 +20,7 @@ return App::config([
                 'latest_products' => [
                     'props' => [
                         'limit' => 4,
+                        'template' => 'shop/product/common/list.html.twig',
                     ],
                 ],
             ],
