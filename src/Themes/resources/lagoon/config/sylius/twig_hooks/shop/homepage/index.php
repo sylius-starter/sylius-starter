@@ -11,12 +11,21 @@ return App::config([
                 'banner' => [
                     'template' => 'shop/homepage/banner.html.twig',
                 ],
+                'latest_deals' => [
+                    'enabled' => false,
+                ],
                 'new_collection' => [
                     'enabled' => false,
                 ],
                 'promise' => [
                     'template' => 'shop/homepage/promise.html.twig',
                     'priority' => 150,
+                ],
+                'latest_products' => [
+                    'props' => [
+                        'limit' => 4,
+                        'template' => 'shop/product/common/list.html.twig',
+                    ],
                 ],
             ],
         ],

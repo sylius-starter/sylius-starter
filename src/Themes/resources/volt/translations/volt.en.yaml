@@ -1,0 +1,19 @@
+volt:
+    hero:
+        eyebrow: 'VOLT® / EVERYDAY GOODS'
+        title: 'GO<br><span>YOUR</span><br>OWN WAY.'
+        lead: 'Thoughtful essentials for whatever moves you.'
+        cta: 'Shop the latest drops'
+        tag: 'MADE TO MOVE'
+    perks:
+        shipping:
+            title: 'Fast shipping'
+            text: 'Out the door within 48 hours'
+        returns:
+            title: '30-day returns'
+            text: 'Changed your mind? No stress'
+        payment:
+            title: 'Secure checkout'
+            text: 'Card, PayPal and more'
+    products:
+        eyebrow: 'FRESH DROPS'

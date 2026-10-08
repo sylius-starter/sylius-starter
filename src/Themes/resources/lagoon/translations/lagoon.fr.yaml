@@ -23,7 +23,6 @@ lagoon:
             text: 'Carte, PayPal et plus'
     products:
         eyebrow:
-            deals: 'Bonnes affaires'
             latest: 'Nouveautés'
     promise:
         eyebrow: 'Pourquoi Lagoon'

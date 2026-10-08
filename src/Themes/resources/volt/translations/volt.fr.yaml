@@ -1,0 +1,19 @@
+volt:
+    hero:
+        eyebrow: 'VOLT® / ESSENTIELS DU QUOTIDIEN'
+        title: 'TRACE<br><span>TA</span><br>ROUTE.'
+        lead: 'Des essentiels pensés pour tout ce qui vous fait bouger.'
+        cta: 'Voir les nouveautés'
+        tag: 'FAIT POUR BOUGER'
+    perks:
+        shipping:
+            title: 'Livraison rapide'
+            text: 'Expédié sous 48 heures'
+        returns:
+            title: 'Retours 30 jours'
+            text: 'Vous changez d’avis ? Aucun souci'
+        payment:
+            title: 'Paiement sécurisé'
+            text: 'Carte, PayPal et plus'
+    products:
+        eyebrow: 'NOUVEAUTÉS'

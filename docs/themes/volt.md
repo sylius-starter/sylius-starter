@@ -16,8 +16,14 @@ assets.
   a dark footer with white links and light-backed payment logos, a full-width
   add-to-cart button, and no default header top bar.
 - **Product page** — the price sits directly below the product name, before reviews.
-- **Homepage** — an oversized, responsive graphic hero with a direct link to
-  the latest products; new collection blocks are hidden.
+- **Homepage** — an oversized, responsive graphic hero aligned on the page
+  grid, a strip of three perks (shipping, returns, secure checkout), then the
+  four latest products with a large heading; the deals and new collection
+  blocks are hidden.
+- **Typography** — Jost is loaded as a variable font (100–900), so bold
+  headings use the real weights instead of synthesized ones.
+- **Translations** — the Volt-specific texts live in a `volt` translation
+  domain (`translations/volt.en.yaml` and `volt.fr.yaml`).
 - **Checkout** — the checkout header uses the Volt wordmark and responsive
   category navigation.
 

@@ -11,8 +11,17 @@ return App::config([
                 'banner' => [
                     'template' => 'shop/homepage/banner.html.twig',
                 ],
+                'latest_deals' => [
+                    'enabled' => false,
+                ],
                 'new_collection' => [
                     'enabled' => false,
+                ],
+                'latest_products' => [
+                    'props' => [
+                        'limit' => 4,
+                        'template' => 'shop/product/common/list.html.twig',
+                    ],
                 ],
             ],
         ],
