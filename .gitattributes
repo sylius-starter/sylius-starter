@@ -2,8 +2,15 @@
 /.gitattributes export-ignore
 /.github export-ignore
 /.gitignore export-ignore
-/tests export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/.phpstan export-ignore
+/AGENTS.md export-ignore
+/castor.composer.json export-ignore
 /castor.php export-ignore
 /compose.yaml export-ignore
+/docs export-ignore
+/phpstan.dist.neon export-ignore
 /phpunit.xml.dist export-ignore
 /scripts export-ignore
+/tests export-ignore
+/src/*/tests export-ignore

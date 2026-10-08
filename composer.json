@@ -1,23 +1,14 @@
 {
-    "name": "castor-php/sylius",
-    "description": "Castor plugin for Sylius",
+    "name": "sylius-starter/sylius-starter",
+    "description": "Sylius Starter: Castor tooling to bootstrap and customize Sylius applications (monorepo of all sylius-starter/* packages)",
     "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Castor\\Sylius\\": "src/"
-        },
-        "files": [
-            "src/Import/constants.php",
-            "src/Import/ImportContext.php",
-            "src/Import/ImportBootstrap.php",
-            "src/Import/bootstrap.php",
-            "src/Installer/functions.php",
-            "src/PaymentGateway/functions.php",
-            "src/Plugin/functions.php",
-            "src/Theme/functions.php"
-        ]
-    },
+    "keywords": [
+        "sylius",
+        "castor",
+        "starter"
+    ],
+    "homepage": "https://github.com/sylius-starter/sylius-starter",
     "authors": [
         {
             "name": "Loïc Frémont",
@@ -27,6 +18,7 @@
     "require": {
         "php": ">=8.3",
         "castor-php/docker": "^0.6.0",
+        "nikic/php-parser": "^5.0",
         "symfony/ai-ollama-platform": "^0.12.0",
         "symfony/ai-open-router-platform": "^0.12.0",
         "symfony/ai-platform": "^0.12.0",
@@ -38,7 +30,62 @@
         "jolicode/castor": "^1.6",
         "phpunit/phpunit": "^13.2"
     },
+    "replace": {
+        "sylius-starter/core": "self.version",
+        "sylius-starter/b2b": "self.version",
+        "sylius-starter/import": "self.version",
+        "sylius-starter/menu": "self.version",
+        "sylius-starter/payment-gateways": "self.version",
+        "sylius-starter/plugins": "self.version",
+        "sylius-starter/themes": "self.version",
+        "sylius-starter/upsun": "self.version"
+    },
     "suggest": {
         "jolicode/castor-api": "Expose import tasks over HTTP"
+    },
+    "autoload": {
+        "psr-4": {
+            "SyliusStarter\\Core\\": "src/Core/src/",
+            "SyliusStarter\\B2b\\": "src/B2b/src/",
+            "SyliusStarter\\Import\\": "src/Import/src/",
+            "SyliusStarter\\Menu\\": "src/Menu/src/",
+            "SyliusStarter\\PaymentGateways\\": "src/PaymentGateways/src/",
+            "SyliusStarter\\Plugins\\": "src/Plugins/src/",
+            "SyliusStarter\\Themes\\": "src/Themes/src/",
+            "SyliusStarter\\Upsun\\": "src/Upsun/src/"
+        },
+        "files": [
+            "src/Core/src/Installer/functions.php",
+            "src/B2b/src/functions.php",
+            "src/Import/src/constants.php",
+            "src/Import/src/ImportContext.php",
+            "src/Import/src/ImportBootstrap.php",
+            "src/Import/src/bootstrap.php",
+            "src/Import/src/functions.php",
+            "src/Menu/src/functions.php",
+            "src/PaymentGateways/src/functions.php",
+            "src/Plugins/src/functions.php",
+            "src/Themes/src/functions.php",
+            "src/Upsun/src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SyliusStarter\\Core\\Tests\\": "src/Core/tests/",
+            "SyliusStarter\\B2b\\Tests\\": "src/B2b/tests/",
+            "SyliusStarter\\Import\\Tests\\": "src/Import/tests/",
+            "SyliusStarter\\Menu\\Tests\\": "src/Menu/tests/",
+            "SyliusStarter\\PaymentGateways\\Tests\\": "src/PaymentGateways/tests/",
+            "SyliusStarter\\Plugins\\Tests\\": "src/Plugins/tests/",
+            "SyliusStarter\\Themes\\Tests\\": "src/Themes/tests/",
+            "SyliusStarter\\Upsun\\Tests\\": "src/Upsun/tests/",
+            "SyliusStarter\\Tests\\": "tests/",
+            "SyliusStarter\\Monorepo\\": ".castor/monorepo/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1-dev"
+        }
     }
 }
