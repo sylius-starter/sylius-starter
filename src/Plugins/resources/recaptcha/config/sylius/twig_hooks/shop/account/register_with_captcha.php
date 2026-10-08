@@ -10,6 +10,8 @@ return App::config([
             'sylius_shop.account.register.content.form' => [
                 'captcha' => [
                     'template' => 'shop/account/register/content/form/captcha.html.twig',
+                    // Between "credentials" (100) and "buttons" (0)
+                    'priority' => 50,
                 ],
             ],
         ],
