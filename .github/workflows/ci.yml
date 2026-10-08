@@ -152,8 +152,58 @@ jobs:
             -   id: packages
                 run: echo "packages=$(php .github/scripts/monorepo-matrix.php)" >> "$GITHUB_OUTPUT"
 
+    test-application:
+        name: Build the test application
+        timeout-minutes: 30
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v4
+
+            - name: Log in to registry
+              shell: bash
+              run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
+            - uses: actions/checkout@v6
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: "8.4"
+                  coverage: none
+                  tools: composer, castor
+
+            - name: Setup Sylius
+              run: composer create-project sylius/sylius-standard app --no-interaction
+
+            - name: Build Docker images
+              run: |
+                  docker image ls --format '{{.Repository}}:{{.Tag}}' | sort > /tmp/images-before
+                  castor build
+                  docker image ls --format '{{.Repository}}:{{.Tag}}' | grep -v '<none>' | sort > /tmp/images-after
+                  comm -13 /tmp/images-before /tmp/images-after > /tmp/images
+                  echo "Built images:" && cat /tmp/images
+
+            # The app directory is archived with tar to keep permissions and symlinks
+            # (upload-artifact does not), and the images are exported to be loaded by
+            # every task instead of being rebuilt.
+            - name: Export the test application
+              run: |
+                  mkdir -p test-application
+                  tar -cf - app | zstd -T0 -q -o test-application/app.tar.zst
+                  docker save $(cat /tmp/images) | zstd -T0 -q -o test-application/images.tar.zst
+                  ls -lh test-application
+
+            - uses: actions/upload-artifact@v4
+              with:
+                  name: test-application
+                  path: test-application
+                  retention-days: 1
+                  compression-level: 0
+
     tasks:
         name: ${{ matrix.command.name }}
+        needs: test-application
         timeout-minutes: 20
         strategy:
             fail-fast: false
@@ -207,9 +257,6 @@ jobs:
                         value: "castor sylius:payment-gateways:setup test_payment_gateway_with_function test_payment_gateway_with_class"
         runs-on: ubuntu-latest
         steps:
-            - name: Set up Docker Buildx
-              uses: docker/setup-buildx-action@v4
-
             - name: Log in to registry
               shell: bash
               run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
@@ -223,14 +270,19 @@ jobs:
                   coverage: none
                   tools: composer, castor
 
-            - name: Setup Sylius
-              run: |
-                composer create-project sylius/sylius-standard app --no-interaction
+            - uses: actions/download-artifact@v4
+              with:
+                  name: test-application
+                  path: test-application
 
-            - name: Build & Run Docker
+            - name: Restore the test application
               run: |
-                  castor build
-                  castor up
+                  zstd -d -q -c test-application/app.tar.zst | tar -xf -
+                  zstd -d -q -c test-application/images.tar.zst | docker load
+                  rm -rf test-application
+
+            - name: Run Docker
+              run: castor up
 
             - name: Run Database migrations
               run: castor app:db:migrate
