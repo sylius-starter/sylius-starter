@@ -1,0 +1,10 @@
+{% set message = action.label %}
+{% if message is empty %}
+    {% set message = 'sylius.ui.update' %}
+{% endif %}
+
+{% set path = path('sylius_admin_customer_accept', {id: data.id}) %}
+
+{% if workflow_can(data, 'accept', 'customer_validation') %}
+    {{ component('admin:transition_modal', {id: data.id, action: 'accept', path: path, label: message, icon: 'streamline:user-check-validate-solid', class: 'text-green'}) }}
+{% endif %}

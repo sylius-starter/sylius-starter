@@ -1,0 +1,330 @@
+#sylius_shop_cart {
+  .table {
+    --bs-table-color: #{$text};
+    --bs-table-bg: transparent;
+    --bs-table-border-color: #{$border};
+    color: $text;
+  }
+
+  .table thead th {
+    padding-bottom: 0.8rem;
+    border-bottom-color: $border;
+    color: $text-muted;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .table tbody td {
+    border-bottom-color: $border;
+    color: $text;
+    vertical-align: middle;
+  }
+
+  .table .text-black-50 {
+    color: $text-muted !important;
+  }
+
+  .table .link-reset {
+    color: $text;
+    text-decoration: none;
+
+    &:hover {
+      color: $green;
+    }
+  }
+
+  .table .text-body-tertiary {
+    color: $text-muted !important;
+    font-size: 0.72rem;
+  }
+
+  .table .btn-transparent {
+    color: $text-muted;
+
+    &:hover,
+    &:focus-visible {
+      color: $danger;
+    }
+  }
+
+  .table .form-control {
+    min-width: 4.5rem;
+    text-align: center;
+  }
+
+  > .row > .col-12 > .mb-4 > .bg-light {
+    border: 1px solid $border;
+    border-radius: 0.5rem;
+  }
+
+  .bg-light .form-control {
+    border-color: $border;
+    background-color: $white;
+    color: $light-text;
+
+    &::placeholder {
+      color: $light-muted;
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: $light-link;
+      background-color: $white;
+      color: $light-text;
+      box-shadow: 0 0 0 0.2rem rgba($light-link, 0.15);
+    }
+  }
+
+  .btn-outline-gray {
+    --bs-btn-color: #{$light-link};
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: #{$light-link};
+    --bs-btn-hover-color: #{$white};
+    --bs-btn-hover-bg: #{$light-link};
+    --bs-btn-hover-border-color: #{$light-link};
+    --bs-btn-active-color: #{$white};
+    --bs-btn-active-bg: #{$light-text};
+    --bs-btn-active-border-color: #{$light-text};
+  }
+
+  .btn-light {
+    --bs-btn-color: #{$text};
+    --bs-btn-bg: #{$surface-raised};
+    --bs-btn-border-color: #{$border};
+    --bs-btn-hover-color: #{$danger};
+    --bs-btn-hover-bg: #{$surface};
+    --bs-btn-hover-border-color: #{$danger};
+  }
+
+  .position-relative > .bg-light {
+    border: 1px solid rgba($light-text, 0.12);
+    box-shadow: 0 0.75rem 2rem rgba($black, 0.12);
+
+    h3 {
+      margin-bottom: 1.5rem !important;
+      color: $light-text !important;
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    .hstack {
+      color: $light-muted;
+      font-size: 0.82rem;
+    }
+
+    .hstack > :last-child {
+      color: $light-text;
+      font-weight: 600;
+    }
+
+    .hstack.border-top {
+      border-color: rgba($light-text, 0.2) !important;
+    }
+
+    .hstack .h5,
+    .hstack .h5.text-end {
+      color: $light-text !important;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+  }
+}
+
+#offcanvasCart {
+  --bs-offcanvas-width: min(34rem, 100vw);
+  --bs-offcanvas-bg: #{$surface};
+  --bs-offcanvas-color: #{$text};
+
+  border-left: 1px solid $border;
+  box-shadow: -1.5rem 0 2rem rgba($black, 0.12);
+}
+
+#offcanvasCart .offcanvas-header {
+  padding: 1.35rem 1.5rem;
+  border-bottom: 1px solid $border;
+  background-color: $surface;
+}
+
+#offcanvasCart .offcanvas-title {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: $text;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  &::before {
+    color: $green;
+    content: ">_";
+  }
+}
+
+#offcanvasCart .btn-close {
+  filter: invert(1);
+  opacity: 0.72;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+#offcanvasCart .offcanvas-body {
+  padding: 0.5rem 1.25rem;
+}
+
+#offcanvasCart .offcanvas-body > .table {
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0 0.75rem;
+}
+
+#offcanvasCart .offcanvas-body > .table > tbody > tr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid $border;
+  border-radius: 0.5rem;
+  background-color: $surface;
+}
+
+#offcanvasCart .offcanvas-body > .table > tbody > tr > td {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: $text;
+  vertical-align: middle;
+}
+
+#offcanvasCart .offcanvas-body > .table > tbody > tr > td:first-child > .d-flex {
+  gap: 1rem !important;
+}
+
+#offcanvasCart .offcanvas-body > .table > tbody > tr > td:first-child .flex-shrink-0 {
+  width: 4.5rem !important;
+}
+
+#offcanvasCart .offcanvas-body > .table > tbody > tr > td:first-child .overflow-auto {
+  border: 1px solid $border;
+  border-radius: 0.3rem !important;
+  background-color: $surface-raised !important;
+}
+
+#offcanvasCart .offcanvas-body .h6 {
+  margin-bottom: 0.4rem;
+  color: $text;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+#offcanvasCart .offcanvas-body .link-reset {
+  color: $text;
+  text-decoration: none;
+
+  &:hover {
+    color: $green;
+  }
+}
+
+#offcanvasCart .offcanvas-body .text-body-tertiary {
+  color: $text-muted !important;
+  font-size: 0.68rem;
+  line-height: 1.6;
+}
+
+#offcanvasCart .offcanvas-body > .table > tbody > tr > td:nth-child(2) {
+  min-width: 2rem;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid $border;
+  border-radius: 0.3rem;
+  background-color: $surface-raised;
+  color: $text-muted;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+#offcanvasCart .offcanvas-body > .table > tbody > tr > td:last-child {
+  color: $text;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+#offcanvasCart > .offcanvas-cart-live-region > .p-3 {
+  padding: 0 !important;
+  border-top: 1px solid $border;
+  background-color: $surface;
+}
+
+#offcanvasCart .offcanvas-footer {
+  padding: 0.5rem 1.25rem 1.25rem;
+}
+
+#offcanvasCart .offcanvas-footer > .d-flex {
+  align-items: baseline;
+  padding-block: 1rem !important;
+}
+
+#offcanvasCart .offcanvas-footer .h5 {
+  margin: 0;
+  color: $text;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+#offcanvasCart .offcanvas-footer .h5.text-end {
+  color: $green;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+#offcanvasCart .offcanvas-footer .btn {
+  width: 100%;
+}
+
+#offcanvasCart .offcanvas-footer .btn-light {
+  --bs-btn-color: #{$text};
+  --bs-btn-bg: #{$surface-raised};
+  --bs-btn-border-color: #{$border};
+  --bs-btn-hover-color: #{$green};
+  --bs-btn-hover-bg: #{$surface};
+  --bs-btn-hover-border-color: #{$green};
+}
+
+@media (max-width: 575.98px) {
+  #offcanvasCart .offcanvas-header {
+    padding-inline: 1rem;
+  }
+
+  #offcanvasCart .offcanvas-body {
+    padding-inline: 0.75rem;
+  }
+
+  #offcanvasCart .offcanvas-body > .table > tbody > tr {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.6rem;
+    padding: 0.75rem;
+  }
+
+  #offcanvasCart .offcanvas-body > .table > tbody > tr > td:first-child {
+    grid-column: 1 / -1;
+  }
+
+  #offcanvasCart .offcanvas-body > .table > tbody > tr > td:nth-child(2) {
+    justify-self: start;
+  }
+
+  #offcanvasCart .offcanvas-body > .table > tbody > tr > td:last-child {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  #offcanvasCart .offcanvas-footer {
+    padding-inline: 1rem;
+  }
+}

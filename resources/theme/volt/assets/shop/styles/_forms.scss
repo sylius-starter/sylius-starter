@@ -1,0 +1,38 @@
+.form-label {
+  margin-bottom: 0.5rem;
+  color: $ink;
+  font-weight: 700;
+}
+
+.form-control,
+.form-select {
+  min-height: 2.875rem;
+  border: 1px solid $border;
+  border-radius: 0.75rem;
+  background-color: $white;
+  color: $text;
+
+  &:focus {
+    border-color: $electric;
+    box-shadow: 0 0 0 3px rgba($electric, 0.14);
+  }
+
+  &::placeholder {
+    color: $text-muted;
+    opacity: 1;
+  }
+}
+
+.form-check-input {
+  border-color: $border;
+
+  &:checked {
+    border-color: $electric;
+    background-color: $electric;
+  }
+
+  &:focus {
+    border-color: $electric;
+    box-shadow: 0 0 0 3px rgba($electric, 0.14);
+  }
+}

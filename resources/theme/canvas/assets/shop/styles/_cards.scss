@@ -1,0 +1,27 @@
+.card {
+  border-radius: 0;
+  border-color: $border;
+
+  background-color: $white;
+  box-shadow: none;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+
+  color: $text;
+  font-weight: 500;
+}
+
+.card-text {
+  color: $text-muted;
+}
+
+.card-footer {
+  border-top-color: $border;
+  background-color: $white;
+}

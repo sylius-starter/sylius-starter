@@ -1,0 +1,38 @@
+@import "fonts";
+@import "variables";
+
+// Bootstrap / Sylius theme styles are loaded by the parent theme.
+// This file only contains the Naïs customizations.
+
+@import "base";
+@import "breadcrumbs";
+@import "buttons";
+@import "forms";
+@import "cards";
+@import "header";
+@import "footer";
+
+.bg-canvas {
+  background-color: $black !important;
+  color: $white !important;
+}
+
+.bg-canvas-soft {
+  background-color: $surface-soft !important;
+}
+
+.bg-ivory {
+  background-color: $background !important;
+}
+
+.bg-off-white {
+  background-color: $off-white !important;
+}
+
+.text-canvas {
+  color: $black !important;
+}
+
+.text-canvas-muted {
+  color: $text-muted !important;
+}

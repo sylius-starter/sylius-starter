@@ -1,0 +1,81 @@
+.accordion-flat {
+  --bs-accordion-bg: transparent;
+  --bs-accordion-border-color: transparent;
+
+  .accordion-item {
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    border: 1px solid $border;
+    border-radius: 1rem;
+    background-color: $white;
+    box-shadow: 0 4px 16px rgba($ink, 0.035);
+  }
+
+  .accordion-header {
+    margin: 0;
+  }
+
+  .accordion-item .accordion-button {
+    gap: 1rem;
+    padding: 0.65rem 1.5rem;
+    background-color: $white;
+    color: $ink;
+    font-family: $font-family-base;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    box-shadow: none;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease;
+
+    &:hover {
+      background-color: $paper;
+      color: $electric;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      position: relative;
+      z-index: 1;
+      outline: 3px solid $electric;
+      outline-offset: -3px;
+    }
+
+    &:not(.collapsed) {
+      background-color: $lavender;
+      color: $electric;
+      box-shadow: none;
+    }
+
+    &::after {
+      width: 1rem;
+      height: 1rem;
+      flex: 0 0 auto;
+      margin-left: auto;
+      background-color: $electric;
+      background-image: none;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E") no-repeat center / contain;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E") no-repeat center / contain;
+    }
+
+    .h5 {
+      margin: 0;
+      padding: 0 !important;
+      color: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+  }
+
+  .accordion-item .accordion-body {
+    padding: 1.5rem 1.75rem 1.75rem;
+    border-top: 1px solid $border;
+    color: $text;
+    line-height: 1.7;
+  }
+}

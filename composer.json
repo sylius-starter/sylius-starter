@@ -1,0 +1,44 @@
+{
+    "name": "castor-php/sylius",
+    "description": "Castor plugin for Sylius",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Castor\\Sylius\\": "src/"
+        },
+        "files": [
+            "src/Import/constants.php",
+            "src/Import/ImportContext.php",
+            "src/Import/ImportBootstrap.php",
+            "src/Import/bootstrap.php",
+            "src/Installer/functions.php",
+            "src/PaymentGateway/functions.php",
+            "src/Plugin/functions.php",
+            "src/Theme/functions.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Loïc Frémont",
+            "email": "lfremont@jolicode.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "castor-php/docker": "^0.6.0",
+        "symfony/ai-ollama-platform": "^0.12.0",
+        "symfony/ai-open-router-platform": "^0.12.0",
+        "symfony/ai-platform": "^0.12.0",
+        "symfony/dotenv": "^7.4|^8.0",
+        "symfony/http-client": "^7.4|^8.0",
+        "symfony/yaml": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "jolicode/castor": "^1.6",
+        "phpunit/phpunit": "^13.2"
+    },
+    "suggest": {
+        "jolicode/castor-api": "Expose import tasks over HTTP"
+    }
+}

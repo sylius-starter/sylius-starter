@@ -1,0 +1,147 @@
+@import "variables";
+
+// Sylius base styles are loaded by the parent theme.
+@import "base";
+@import "accordions";
+@import "breadcrumbs";
+@import "buttons";
+@import "cards";
+@import "cart";
+@import "forms";
+@import "header";
+@import "footer";
+
+.prompt-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.85fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  margin-block: clamp(2.5rem, 7vw, 6rem);
+}
+
+.prompt-hero__copy {
+  max-width: 40rem;
+}
+
+.prompt-hero__eyebrow,
+.prompt-terminal__label,
+.prompt-products__eyebrow {
+  color: $green;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prompt-hero h1 {
+  max-width: 10ch;
+  margin-block: 1rem;
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  line-height: 1.02;
+}
+
+.prompt-hero__description {
+  max-width: 33rem;
+  margin-bottom: 1.75rem;
+  color: $text-muted;
+  line-height: 1.75;
+}
+
+.prompt-terminal {
+  overflow: hidden;
+  border: 1px solid $border;
+  border-radius: 0.55rem;
+  background-color: $surface;
+  box-shadow: 0 1.25rem 3rem rgba($black, 0.08);
+}
+
+.prompt-terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid $border;
+  background-color: $surface-raised;
+}
+
+.prompt-terminal__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background-color: $text-muted;
+
+  &:first-child {
+    background-color: $danger;
+  }
+
+  &:nth-child(2) {
+    background-color: #E4BF70;
+  }
+
+  &:nth-child(3) {
+    background-color: $green;
+  }
+}
+
+.prompt-terminal__label {
+  margin-left: auto;
+  font-size: 0.62rem;
+}
+
+.prompt-terminal__body {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  font-size: clamp(0.7rem, 1.1vw, 0.86rem);
+  line-height: 1.8;
+}
+
+.prompt-terminal__command {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: $text;
+  overflow-wrap: anywhere;
+
+  &::before {
+    margin-right: 0.55rem;
+    color: $green;
+    content: "$";
+  }
+}
+
+.prompt-terminal__result {
+  margin: 0 0 1.25rem 1rem;
+  color: $text-muted;
+
+  strong {
+    color: $green;
+    font-weight: 600;
+  }
+}
+
+.prompt-terminal__result:last-child {
+  margin-bottom: 0;
+}
+
+.prompt-products {
+  scroll-margin-top: 2rem;
+  padding-block: 1rem clamp(3rem, 7vw, 6rem);
+}
+
+.prompt-products__eyebrow {
+  margin-bottom: 0.5rem;
+  font-size: 0.66rem;
+}
+
+.prompt-products h2 {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 767.98px) {
+  .prompt-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .prompt-terminal__body {
+    font-size: 0.72rem;
+  }
+}

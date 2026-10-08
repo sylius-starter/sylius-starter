@@ -1,0 +1,5 @@
+sylius_mailer:
+    emails:
+        sylius.customer_validation.registration:
+            subject: sylius.email.customer_validation.registration.subject
+            template: email/customer_validation_registration.html.twig

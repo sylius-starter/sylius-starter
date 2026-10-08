@@ -1,0 +1,46 @@
+$font-family-sans-serif: "Jost", "Arial", sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$headings-font-family: $font-family-sans-serif;
+$headings-font-weight: 700;
+
+$ink: #302B43;
+$electric: #6554B8;
+$lavender: #E9E5F4;
+$paper: #FBFAFD;
+$white: #FFF;
+$text: #39354B;
+$text-muted: #716C80;
+$border: #E7E3EF;
+
+$body-bg: $paper;
+$body-color: $text;
+
+$primary: $electric;
+$secondary: $lavender;
+$success: #46785F;
+$info: $electric;
+
+$link-color: $electric;
+$link-hover-color: $electric;
+$border-color: $border;
+
+$border-radius: 1rem;
+$border-radius-sm: 0.75rem;
+$border-radius-lg: 1.5rem;
+
+$btn-border-radius: 50rem;
+$btn-border-radius-sm: 50rem;
+$btn-border-radius-lg: 50rem;
+
+$input-border-color: $border;
+$input-focus-border-color: $electric;
+$input-border-radius: 0.75rem;
+$input-border-radius-sm: 0.75rem;
+$input-border-radius-lg: 0.75rem;
+
+$card-border-radius: 1.25rem;
+$card-border-color: transparent;
+
+$spacing-6: 1.5rem;
+$spacing-12: 3rem;

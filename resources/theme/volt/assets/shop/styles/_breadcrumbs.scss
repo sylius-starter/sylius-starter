@@ -1,0 +1,27 @@
+.breadcrumb {
+  --bs-breadcrumb-divider: "/";
+  --bs-breadcrumb-divider-color: #{$text-muted};
+  --bs-breadcrumb-margin-bottom: 1.5rem;
+
+  padding: 0.9rem 1.1rem 0.9rem 0;
+  border-radius: 0.85rem;
+  background-color: $paper;
+  color: $ink;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+
+  .breadcrumb-item a {
+    color: $electric;
+    text-decoration: underline;
+
+    &:hover {
+      color: $electric;
+    }
+  }
+
+  .breadcrumb-item.active {
+    color: $ink;
+  }
+}

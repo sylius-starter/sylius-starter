@@ -1,0 +1,77 @@
+footer {
+  margin-top: auto;
+  padding-top: $spacing-12;
+  padding-bottom: $spacing-6;
+
+  background-color: $black;
+  color: $white;
+
+  border-top: 0;
+
+  --bs-body-color: #{$white};
+  --bs-body-color-rgb: 255, 255, 255;
+
+  --bs-emphasis-color: #{$white};
+  --bs-emphasis-color-rgb: 255, 255, 255;
+
+  --bs-secondary-color: #{$white};
+  --bs-secondary-color-rgb: 255, 255, 255;
+
+  --bs-tertiary-color: #{$white};
+  --bs-tertiary-color-rgb: 255, 255, 255;
+
+  --bs-link-color: #{$white};
+  --bs-link-color-rgb: 255, 255, 255;
+
+  --bs-link-hover-color: #{$white};
+  --bs-link-hover-color-rgb: 255, 255, 255;
+
+  p,
+  span,
+  small,
+  strong,
+  label,
+  li {
+    color: $white !important;
+  }
+
+  a,
+  a:visited,
+  a:focus,
+  a:active {
+    color: $white !important;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $white !important;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  .text-body,
+  .text-dark,
+  .text-muted,
+  .text-black,
+  .text-secondary,
+  .text-tertiary,
+  .link-dark,
+  .link-secondary {
+    color: $white !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $white !important;
+  }
+}
+
+footer .row.g-2.mb-4 > div > a {
+  border-color: rgba($white, 0.35) !important;
+  background-color: $white;
+}

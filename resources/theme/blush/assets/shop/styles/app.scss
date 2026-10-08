@@ -1,0 +1,157 @@
+@import "variables";
+
+// Sylius base styles are loaded by the parent theme.
+@import "base";
+@import "buttons";
+@import "cards";
+@import "forms";
+@import "header";
+@import "footer";
+
+.blush-hero {
+  position: relative;
+  display: grid;
+  width: min(calc(100% - 2rem), 78rem);
+  min-height: clamp(28rem, 52vw, 40rem);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  overflow: hidden;
+  margin: clamp(1rem, 2.5vw, 2rem) auto clamp(3rem, 6vw, 5rem);
+  padding: clamp(2rem, 6vw, 5rem);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at 79% 45%, rgba($pink-bright, 0.16) 0 19%, transparent 19.2%),
+    radial-gradient(circle at 79% 45%, rgba($pink, 0.08) 0 31%, transparent 31.2%),
+    $rose;
+}
+
+.blush-hero__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 38rem;
+}
+
+.blush-hero__eyebrow,
+.blush-hero__art-label,
+.blush-products__eyebrow {
+  color: $pink;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.blush-hero h1 {
+  max-width: 11ch;
+  margin: 1.25rem 0;
+  font-size: clamp(3rem, 6.6vw, 5.8rem);
+  line-height: 0.98;
+}
+
+.blush-hero__description {
+  max-width: 31rem;
+  margin-bottom: 1.75rem;
+  color: $muted;
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.blush-hero__art {
+  position: relative;
+  display: grid;
+  min-height: 20rem;
+  place-items: center;
+}
+
+.blush-hero__disc {
+  position: relative;
+  display: grid;
+  width: clamp(14rem, 29vw, 23rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, $pink-bright, $pink 72%);
+  box-shadow:
+    0 1.5rem 3rem rgba($plum, 0.14),
+    inset 0 0 0 0.8rem rgba($white, 0.12);
+  color: $white;
+  font-family: $headings-font-family;
+  font-size: clamp(7rem, 18vw, 14rem);
+  font-weight: 800;
+  letter-spacing: -0.12em;
+  line-height: 1;
+}
+
+.blush-hero__art-label {
+  position: absolute;
+  top: 15%;
+  right: 2%;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba($plum, 0.08);
+  border-radius: 50rem;
+  background-color: $white;
+  color: $plum;
+  font-size: 0.65rem;
+  transform: rotate(7deg);
+}
+
+.blush-hero__spark {
+  position: absolute;
+  right: 7%;
+  bottom: 14%;
+  display: grid;
+  width: 3.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background-color: $gold;
+  color: $plum;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.blush-products {
+  scroll-margin-top: 2rem;
+  padding-block: 0.5rem clamp(3rem, 7vw, 6rem);
+}
+
+.blush-products__eyebrow {
+  margin-bottom: 0.5rem;
+  font-size: 0.68rem;
+}
+
+.blush-products h2 {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 767.98px) {
+  .blush-hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .blush-hero h1 {
+    max-width: 9ch;
+  }
+
+  .blush-hero__art {
+    min-height: 16rem;
+  }
+
+  .blush-hero__disc {
+    width: 15rem;
+  }
+
+  .blush-hero__art-label {
+    top: 3%;
+    right: 4%;
+  }
+
+  .blush-hero__spark {
+    right: 6%;
+    bottom: 5%;
+  }
+}

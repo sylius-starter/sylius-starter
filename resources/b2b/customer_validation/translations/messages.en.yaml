@@ -1,0 +1,7 @@
+sylius:
+    email:
+        customer_validation:
+            registration:
+                subject: Registration received
+                title: Thank you for registering
+                message: Your account is awaiting approval by an administrator. You will be able to sign in once it has been approved.

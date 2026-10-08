@@ -1,0 +1,94 @@
+footer {
+  margin-top: auto;
+  padding-top: $spacing-12;
+  padding-bottom: $spacing-6;
+  border-top: 0;
+  background-color: $ink;
+  color: $white;
+  --bs-body-color: #{$white};
+  --bs-body-color-rgb: 255, 255, 255;
+  --bs-emphasis-color: #{$white};
+  --bs-emphasis-color-rgb: 255, 255, 255;
+  --bs-secondary-color: #{$white};
+  --bs-tertiary-color: #{$white};
+  --bs-link-color: #{$white};
+  --bs-link-color-rgb: 255, 255, 255;
+  --bs-link-hover-color: #{$lavender};
+  --bs-link-hover-color-rgb: 233, 229, 244;
+
+  p,
+  span,
+  small,
+  strong,
+  label,
+  li,
+  .text-body,
+  .text-dark,
+  .text-muted,
+  .text-black,
+  .text-secondary,
+  .text-tertiary,
+  .link-dark,
+  .link-secondary {
+    color: $white !important;
+  }
+
+  a,
+  a:visited,
+  a:focus,
+  a:active {
+    color: $white !important;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $lavender !important;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $white !important;
+  }
+}
+
+footer .row.g-2.mb-4 > div > a {
+  border-color: rgba($white, 0.35) !important;
+  background-color: $white;
+}
+
+.volt-footer__brand {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba($white, 0.18);
+}
+
+footer .volt-logo {
+  color: $white;
+}
+
+footer .volt-logo:hover,
+footer .volt-logo:focus {
+  color: $lavender;
+}
+
+footer .volt-logo__mark-bg {
+  fill: $lavender;
+}
+
+footer .volt-logo__bolt {
+  fill: $ink;
+}
+
+footer .volt-logo__name {
+  color: $white !important;
+}
+
+footer .volt-logo__tagline {
+  color: $white !important;
+}

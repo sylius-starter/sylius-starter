@@ -1,0 +1,135 @@
+header {
+  background-color: $white;
+  border-bottom: 1px solid $border;
+}
+
+header a {
+  color: $text;
+
+  &:hover {
+    color: $black-hover;
+  }
+}
+
+header .navbar {
+  background-color: $white;
+}
+
+header .navbar-brand {
+  color: $black;
+  font-weight: 500;
+}
+
+.canvas-logo {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.7rem;
+  color: $black;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $black-hover;
+    text-decoration: none;
+  }
+}
+
+.canvas-logo--header {
+  margin-inline-start: -0.75rem;
+}
+
+.canvas-logo__mark {
+  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+}
+
+.canvas-logo__mark-bg {
+  fill: $black;
+}
+
+.canvas-logo__mark-letter {
+  fill: none;
+  stroke: $white;
+  stroke-linecap: square;
+  stroke-width: 3;
+}
+
+.canvas-logo__name {
+  color: currentColor;
+  font-family: $font-family-base;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+header .nav-link {
+  color: $text;
+
+  &:hover,
+  &:focus {
+    color: $black;
+  }
+}
+
+.canvas-checkout-brand,
+.canvas-checkout-account {
+  color: $text;
+}
+
+.canvas-checkout-brand a,
+.canvas-checkout-account a,
+.canvas-checkout-account .btn {
+  color: $text;
+
+  &:hover,
+  &:focus-visible {
+    color: $black-hover;
+  }
+}
+
+.canvas-checkout-nav .nav-link {
+  color: $text;
+
+  &:hover,
+  &:focus {
+    color: $black;
+  }
+}
+
+.canvas-checkout-nav .dropdown-menu {
+  border-radius: 0;
+  border-color: $border;
+  background-color: $white;
+  box-shadow: 0 8px 24px rgba($black, 0.08);
+}
+
+.canvas-checkout-nav .dropdown-item {
+  color: $text;
+
+  &:hover,
+  &:focus {
+    background-color: $surface-soft;
+    color: $black;
+  }
+}
+
+header .dropdown-menu {
+  border-radius: 0;
+  border-color: $border;
+  background-color: $white;
+  box-shadow: 0 8px 24px rgba($black, 0.08);
+}
+
+header .dropdown-item {
+  color: $text;
+
+  &:hover,
+  &:focus {
+    background-color: $surface-soft;
+    color: $black;
+  }
+}

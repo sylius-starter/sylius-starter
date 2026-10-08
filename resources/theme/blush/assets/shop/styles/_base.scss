@@ -1,0 +1,102 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $paper;
+  color: $ink;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $pink;
+  text-underline-offset: 0.2em;
+  transition: color 160ms ease;
+
+  &:hover,
+  &.link-reset:hover {
+    color: $plum;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $ink;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+}
+
+::selection {
+  background-color: $pink-bright;
+  color: $white;
+}
+
+:focus-visible {
+  outline: 3px solid $pink-bright;
+  outline-offset: 3px;
+}
+
+.text-muted,
+.text-body-secondary {
+  color: $muted !important;
+}
+
+.bg-light {
+  --bs-body-color: #{$ink};
+  --bs-body-color-rgb: 42, 32, 36;
+  --bs-emphasis-color: #{$ink};
+  --bs-emphasis-color-rgb: 42, 32, 36;
+  background-color: $rose !important;
+  color: $ink !important;
+}
+
+.bg-light :is(.text-muted, .text-body-secondary) {
+  color: $muted !important;
+}
+
+.bg-white {
+  --bs-body-color: #{$ink};
+  --bs-body-color-rgb: 42, 32, 36;
+  --bs-emphasis-color: #{$ink};
+  --bs-emphasis-color-rgb: 42, 32, 36;
+  color: $ink !important;
+}
+
+.bg-white :is(.text-muted, .text-body-secondary) {
+  color: $muted !important;
+}
+
+.blush-checkout-brand,
+.blush-checkout-account {
+  color: $ink;
+}
+
+.blush-checkout-brand a,
+.blush-checkout-account a,
+.blush-checkout-account .btn {
+  color: $pink !important;
+}
+
+.blush-checkout-brand a:hover,
+.blush-checkout-account a:hover,
+.blush-checkout-account .btn:hover {
+  color: $plum !important;
+}

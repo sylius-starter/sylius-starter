@@ -1,0 +1,59 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $surface;
+  color: $text;
+
+  font-family: $font-family-base;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $text;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 150ms ease;
+
+  &:hover {
+    color: $black-hover;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: $text;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background-color: $black;
+  color: $white;
+}

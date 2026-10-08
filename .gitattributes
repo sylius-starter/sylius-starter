@@ -1,0 +1,9 @@
+/.castor export-ignore
+/.gitattributes export-ignore
+/.github export-ignore
+/.gitignore export-ignore
+/tests export-ignore
+/castor.php export-ignore
+/compose.yaml export-ignore
+/phpunit.xml.dist export-ignore
+/scripts export-ignore

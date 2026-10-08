@@ -1,0 +1,34 @@
+.card {
+  overflow: hidden;
+  border: 1px solid rgba($ink, 0.04);
+  border-radius: 1.25rem;
+  background-color: $white;
+  box-shadow: 0 8px 24px rgba($ink, 0.045);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+
+  &:hover {
+    box-shadow: 0 16px 36px rgba($ink, 0.1);
+    transform: translateY(-4px);
+  }
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+  color: $ink;
+  font-weight: 800;
+}
+
+.card-text {
+  color: $text-muted;
+}
+
+.card-footer {
+  border-top-color: $border;
+  background-color: $white;
+}

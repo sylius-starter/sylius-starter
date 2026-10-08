@@ -1,0 +1,26 @@
+.form-control,
+.form-select {
+  min-height: 2.875rem;
+  border-color: $border;
+  border-radius: 0.5rem;
+  color: $ink;
+
+  &:focus {
+    border-color: $pink;
+    box-shadow: 0 0 0 0.2rem rgba($pink, 0.14);
+  }
+}
+
+.form-check-input {
+  border-color: $border;
+
+  &:checked {
+    border-color: $pink;
+    background-color: $pink;
+  }
+
+  &:focus {
+    border-color: $pink;
+    box-shadow: 0 0 0 0.2rem rgba($pink, 0.14);
+  }
+}
