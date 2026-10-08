@@ -8,6 +8,7 @@ use Sylius\Bundle\ShopBundle\Form\Type\CustomerRegistrationType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 use Tito10047\AltchaBundle\Type\AltchaType;
+use Tito10047\AltchaBundle\Validator\Altcha;
 
 final class AltchaCustomerRegistrationTypeExtension extends AbstractTypeExtension
 {
@@ -15,6 +16,8 @@ final class AltchaCustomerRegistrationTypeExtension extends AbstractTypeExtensio
     {
         $builder->add('altcha', AltchaType::class, [
             'label' => false,
+            // Sylius validates the registration form with the "sylius" group, not "Default"
+            'constraints' => new Altcha(groups: ['sylius']),
         ]);
     }
 

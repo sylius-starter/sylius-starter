@@ -10,6 +10,8 @@ return App::config([
             'sylius_shop.account.register.content.form' => [
                 'altcha' => [
                     'template' => 'shop/account/register/content/form/altcha.html.twig',
+                    // Between "credentials" (100) and "buttons" (0)
+                    'priority' => 50,
                 ],
             ],
         ],

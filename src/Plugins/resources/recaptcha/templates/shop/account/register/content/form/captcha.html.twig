@@ -1,4 +1,10 @@
-<fieldset class="mb-5 mb-md-9">
+{#
+    The registration form is a LiveComponent. The reCAPTCHA token is written into the hidden
+    input by JavaScript (no "change" event), so it is not part of the component model: a
+    re-render would empty the field. "data-live-ignore" (with a stable id) keeps the field
+    and its scripts untouched; the token is still sent with the regular form submission.
+#}
+<fieldset id="sylius-shop-register-captcha" class="mb-5 mb-md-9" data-live-ignore>
     <div class="row gx-5">
         <div class="col-12 col-md-6">
             {{ form_row(hookable_metadata.context.form.captcha, sylius_test_form_attribute('captcha')) }}
