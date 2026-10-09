@@ -119,7 +119,7 @@ final readonly class Fixtures
     {
         $suite ??= 'default';
         $currency ??= 'EUR';
-        $hostname = $app->domain();
+        $hostname = $app->hostname();
         $file = \sprintf('%s/config/sylius/fixtures/%s/channels.php', $app->directory(), $suite);
         $locales = var_export(self::defaultChannelLocaleCodes(), true);
 

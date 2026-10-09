@@ -46,6 +46,7 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
             new Input('version', 'PHP version', InputType::Text, '8.5'),
             new Input('mode', 'Runtime', InputType::Choice, PhpMode::FrankenPhp->value, [PhpMode::FrankenPhp->value, PhpMode::Fpm->value]),
             new Input('domain', 'Domain', InputType::Text, static fn(array $answers): string => \sprintf('%s.%s', $answers['name'] ?? 'app', context()->data['root_domain'] ?? 'castor.local')),
+            new Input('subdomain', 'Subdomain (empty to use the domain as hostname)', InputType::Text, ''),
             new Input('sylius_version', 'Sylius version (empty for latest)', InputType::Text, ''),
         ];
 
@@ -67,8 +68,9 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
         ;
         $builder->addImport(PhpMode::class);
 
-        if (($answers['domain'] ?? '') !== '') {
-            $expression->callMethod('withDomain', [(string) $answers['domain']]);
+        $routedDomains = self::routedDomains($answers);
+        if ([] !== $routedDomains) {
+            $expression->callMethod('withDomain', $routedDomains);
         }
 
         if (($answers['database'] ?? null) !== null) {
@@ -82,8 +84,9 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
             ->withDirectory(context()->workingDirectory . '/' . $answers['directory'])
         ;
 
-        if (($answers['domain'] ?? '') !== '') {
-            $service->withDomain((string) $answers['domain']);
+        $routedDomains = self::routedDomains($answers);
+        if ([] !== $routedDomains) {
+            $service->withDomain(...$routedDomains);
         }
 
         if (($answers['database_instance'] ?? null) instanceof DatabaseServiceInterface) {
@@ -97,6 +100,7 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
     {
         $name = (string) $answers['name'];
         $domain = (string) $answers['domain'];
+        $subdomain = self::normalizedSubdomain($answers);
         $version = (string) $answers['sylius_version'];
         $directory = (string) $answers['directory'];
         $package = 'sylius/sylius-standard' . ($version !== '' ? ':' . $version : '');
@@ -107,7 +111,12 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
             workDir: '/var/www',
         );
 
-        $app = new App($name, $directory, $domain);
+        $app = new App(
+            $name,
+            $directory,
+            '' !== $domain ? $domain : null,
+            $subdomain,
+        );
 
         $envFile = \sprintf('%s/.env', $directory);
 
@@ -133,5 +142,42 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
         foreach (SyliusInstallerExtensions::all() as $extension) {
             $extension->afterScaffold($app, $answers);
         }
+    }
+
+    /**
+     * Domains registered on the Castor service: apex first (used by import as App domain),
+     * then the shop hostname when a subdomain is configured.
+     *
+     * @param array<string, mixed> $answers
+     *
+     * @return list<string>
+     */
+    private static function routedDomains(array $answers): array
+    {
+        $domain = trim((string) ($answers['domain'] ?? ''));
+        if ('' === $domain) {
+            return [];
+        }
+
+        $domains = [$domain];
+        $subdomain = self::normalizedSubdomain($answers);
+        if (null !== $subdomain) {
+            $hostname = $subdomain . '.' . $domain;
+            if ($hostname !== $domain) {
+                $domains[] = $hostname;
+            }
+        }
+
+        return $domains;
+    }
+
+    /**
+     * @param array<string, mixed> $answers
+     */
+    private static function normalizedSubdomain(array $answers): ?string
+    {
+        $subdomain = trim((string) ($answers['subdomain'] ?? ''));
+
+        return '' === $subdomain ? null : $subdomain;
     }
 }

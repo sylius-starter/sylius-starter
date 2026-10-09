@@ -665,14 +665,16 @@ function remove_adyen(App $app): void
 
 Both forms receive the targeted Sylius application as a `SyliusStarter\Core\App` instance:
 
-| Method        | Returns                                            |
-|---------------|----------------------------------------------------|
-| `name()`      | The Castor service name, e.g. `app`                |
-| `directory()` | The absolute path to the application directory     |
-| `domain()`    | The application domain, `null` when not configured |
+| Method        | Returns                                                                            |
+|---------------|------------------------------------------------------------------------------------|
+| `name()`      | The Castor service name, e.g. `app`                                                |
+| `directory()` | The absolute path to the application directory                                     |
+| `domain()`    | The apex domain, `null` when not configured                                        |
+| `subdomain()` | Optional shop subdomain prefix, `null` when the channel uses the apex domain       |
+| `hostname()`  | Shop hostname (`subdomain.domain` or apex), `null` when no domain is configured    |
 
 > **Note:** The `sylius:*` tasks build the `App` with the service name and the application directory only, so
-> `domain()` currently returns `null`.
+> `domain()` / `subdomain()` / `hostname()` currently return `null` unless the task passes them (import does).
 
 ### Helpers
 
