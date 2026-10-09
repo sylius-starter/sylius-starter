@@ -1,0 +1,21 @@
+{% set aurora_list_key = hookable_metadata.configuration['test_attribute']|default('latest-products') %}
+{% set aurora_eyebrows = {'latest-products': 'aurora.products.eyebrow.latest'} %}
+
+<section id="aurora-{{ aurora_list_key }}" class="aurora-products aurora-products--{{ aurora_list_key }}">
+    <div class="container" role="region" aria-labelledby="{{ aurora_list_key ~ '-heading' }}">
+        <div class="aurora-section-head">
+            {% if aurora_eyebrows[aurora_list_key] is defined %}
+                <p class="aurora-eyebrow">{{ aurora_eyebrows[aurora_list_key]|trans({}, 'aurora') }}</p>
+            {% endif %}
+            <h2 id="{{ aurora_list_key ~ '-heading' }}">{{ hookable_metadata.configuration.title|default('sylius.ui.latest_products')|trans }}</h2>
+        </div>
+
+        <div {{ sylius_test_html_attribute(hookable_metadata.configuration.test_attribute|default('latest-products')) }}>
+            <div class="products-grid">
+                {% for product in latest_products %}
+                    <div>{{ component('sylius_shop:product:card', {product: product, template: hookable_metadata.configuration.product_template|default('@SyliusShop/product/common/card.html.twig'), hookableMetadata: hookable_metadata}) }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

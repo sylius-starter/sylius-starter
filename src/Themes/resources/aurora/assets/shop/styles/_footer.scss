@@ -1,0 +1,138 @@
+footer.aurora-footer {
+  margin-top: auto;
+  padding: 0;
+  border-top: 0;
+  background-color: $white;
+  color: $text-muted;
+  font-size: 0.92rem;
+}
+
+// Services: the mockup's "Se faire accompagner" rows on a lavender band.
+
+.aurora-services {
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  background-color: $lavender;
+  scroll-margin-top: 1.5rem;
+}
+
+.aurora-services__title {
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  color: $ink;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.aurora-services__rows {
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid $electric;
+  list-style: none;
+}
+
+.aurora-services__row {
+  display: grid;
+  // Fixed action column, so that descriptions line up whatever the button label.
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr) 13rem;
+  gap: 1.5rem clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  padding-block: clamp(1.75rem, 3vw, 2.5rem);
+  border-bottom: 1px solid $lavender-strong;
+
+  p {
+    margin: 0;
+  }
+
+  .btn {
+    min-width: 11rem;
+    justify-self: end;
+  }
+}
+
+.aurora-services__name {
+  color: $ink;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+.aurora-services__tag {
+  margin-top: 0.35rem !important;
+  color: $violet;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.aurora-services__text {
+  color: $text-muted;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+// Light footer body.
+
+.aurora-footer__main {
+  padding-top: clamp(3rem, 5vw, 4rem);
+  padding-bottom: 1.5rem;
+
+  > .row {
+    padding-top: 2.5rem;
+  }
+
+  a,
+  .nav-link {
+    color: $text-muted;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $violet;
+    }
+  }
+
+  .fw-medium,
+  h2,
+  h3,
+  h4 {
+    color: $violet;
+    font-size: 0.72rem;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+}
+
+.aurora-footer__brand {
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid $border;
+
+  p {
+    max-width: 24rem;
+    margin: 1rem 0 0;
+    line-height: 1.6;
+  }
+
+  .aurora-logo,
+  .aurora-logo:hover {
+    color: $ink;
+  }
+}
+
+.aurora-footer__copy a {
+  color: $electric !important;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 991.98px) {
+  .aurora-services__row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    .btn {
+      justify-self: start;
+    }
+  }
+}

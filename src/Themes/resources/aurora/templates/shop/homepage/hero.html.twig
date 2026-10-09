@@ -1,0 +1,67 @@
+{# Theme markup for the core hero slot (StorefrontHero). `hero` holds contributed data (import...); theme copy is the fallback. #}
+<section class="aurora-hero" aria-labelledby="aurora-hero-title">
+    <div class="container">
+        <div class="aurora-hero__grid">
+            <div class="aurora-hero__copy">
+                <p class="aurora-hero__kicker">{% if hero.eyebrow %}{{ hero.eyebrow }}{% else %}{{ 'aurora.hero.kicker'|trans({}, 'aurora') }}{% endif %}</p>
+                <h1 id="aurora-hero-title">{% if hero.title %}{{ hero.title }}{% else %}{{ 'aurora.hero.title'|trans({}, 'aurora')|raw }}{% endif %}</h1>
+                <p class="aurora-hero__lead">{% if hero.lead %}{{ hero.lead }}{% else %}{{ 'aurora.hero.lead'|trans({}, 'aurora')|raw }}{% endif %}</p>
+
+                <div class="aurora-hero__actions">
+                    <a class="btn btn-primary aurora-btn-arrow" href="{{ hero.ctaUrl ?? '#aurora-latest-products' }}">
+                        {% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'aurora.hero.cta'|trans({}, 'aurora') }}{% endif %}
+                    </a>
+                    <a class="aurora-hero__link" href="#aurora-promise">
+                        {{ 'aurora.promise.eyebrow'|trans({}, 'aurora') }}
+                    </a>
+                </div>
+
+                <ul class="aurora-usp" role="list">
+                    <li>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>
+                        <span><strong>{{ 'aurora.usp.shipping.title'|trans({}, 'aurora') }}</strong>{{ 'aurora.usp.shipping.text'|trans({}, 'aurora') }}</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 1 0 2.35-5.65"/><path d="M4 4v4h4"/></svg>
+                        <span><strong>{{ 'aurora.usp.returns.title'|trans({}, 'aurora') }}</strong>{{ 'aurora.usp.returns.text'|trans({}, 'aurora') }}</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.6 2.6L16.2 9.5"/></svg>
+                        <span><strong>{{ 'aurora.usp.payment.title'|trans({}, 'aurora') }}</strong>{{ 'aurora.usp.payment.text'|trans({}, 'aurora') }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="aurora-hero__visual">
+                {% if hero.image %}
+                    <img class="aurora-hero__image" src="{{ hero.image }}" alt="{{ hero.imageAlt ?? '' }}">
+                {% else %}
+                    {{ component('sylius_shop:product:list', {limit: 3, template: 'shop/homepage/hero/showcase.html.twig'}) }}
+                {% endif %}
+
+                <div class="aurora-float aurora-float--stat" aria-hidden="true">
+                    <span class="aurora-float__value">{{ 'aurora.hero.float.value'|trans({}, 'aurora') }}</span>
+                    <span class="aurora-float__text">{{ 'aurora.hero.float.stat'|trans({}, 'aurora') }}</span>
+                </div>
+                <div class="aurora-float aurora-float--note" aria-hidden="true">
+                    <span class="aurora-float__title">{{ 'aurora.hero.float.title'|trans({}, 'aurora') }}</span>
+                    <span class="aurora-float__text">{{ 'aurora.hero.float.text'|trans({}, 'aurora') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="aurora-proof">
+        <div class="container">
+            <p class="aurora-proof__label">{{ 'aurora.proof.label'|trans({}, 'aurora') }}</p>
+            <ul class="aurora-proof__items" role="list">
+                {% for item in 1..4 %}
+                    <li>
+                        <span class="aurora-proof__value">{{ ('aurora.proof.item_' ~ item ~ '.value')|trans({}, 'aurora') }}</span>
+                        <span class="aurora-proof__text">{{ ('aurora.proof.item_' ~ item ~ '.text')|trans({}, 'aurora') }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

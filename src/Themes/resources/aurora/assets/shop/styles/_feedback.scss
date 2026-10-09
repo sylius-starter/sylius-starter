@@ -1,0 +1,31 @@
+:root {
+  --bs-success: #{$success};
+  --bs-success-rgb: 35, 148, 107;
+  --bs-success-text-emphasis: #17654A;
+  --bs-success-bg-subtle: #E8F6F0;
+  --bs-success-border-subtle: #B8E3D2;
+
+  --bs-info: #{$info};
+  --bs-info-rgb: 47, 85, 232;
+  --bs-info-text-emphasis: #{$electric-dark};
+  --bs-info-bg-subtle: #{$lavender};
+  --bs-info-border-subtle: #{$lavender-strong};
+}
+
+.alert {
+  border-radius: $radius-sm;
+}
+
+.alert-success {
+  --bs-alert-color: var(--bs-success-text-emphasis);
+  --bs-alert-bg: var(--bs-success-bg-subtle);
+  --bs-alert-border-color: var(--bs-success-border-subtle);
+  --bs-alert-link-color: var(--bs-success-text-emphasis);
+}
+
+.alert-info {
+  --bs-alert-color: var(--bs-info-text-emphasis);
+  --bs-alert-bg: var(--bs-info-bg-subtle);
+  --bs-alert-border-color: var(--bs-info-border-subtle);
+  --bs-alert-link-color: var(--bs-info-text-emphasis);
+}

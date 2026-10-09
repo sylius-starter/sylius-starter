@@ -1,0 +1,102 @@
+aurora:
+    hero:
+        kicker: 'Free delivery, zero hidden fees.'
+        title: '<em>Your style,</em> delivered in days.'
+        lead: 'Pieces designed to be worn every day, ready to ship in 48 hours. Honest prices, <strong>no hidden fees</strong> and a team that answers when you need it.'
+        cta: 'Shop the latest'
+        spotlight: 'New in'
+        discover: 'View the product'
+        float:
+            value: '0 €'
+            stat: 'shipping fees on every order'
+            title: 'Yours to try'
+            text: '30 days to return it, label included'
+    usp:
+        shipping:
+            title: 'Shipped in 48 h'
+            text: 'Tracked to your door'
+        returns:
+            title: 'Free returns'
+            text: '30 days, no questions'
+        payment:
+            title: 'Secure payment'
+            text: 'Card, PayPal and more'
+    proof:
+        label: 'Our promise, in numbers'
+        item_1:
+            value: '48 h'
+            text: 'to ship your order'
+        item_2:
+            value: '30 days'
+            text: 'to change your mind'
+        item_3:
+            value: '0 €'
+            text: 'shipping, returns included'
+        item_4:
+            value: '7/7'
+            text: 'a human answers you'
+    products:
+        eyebrow:
+            latest: 'New arrivals'
+    promise:
+        eyebrow: 'Why Aurora'
+        title: 'The shop you were waiting for.'
+        lead: '<strong>Aurora</strong> takes care of the boring part: from the click to your doorstep, every step is <strong>visible, fast and free</strong>.'
+        item_1:
+            title: 'One click, one order.'
+            text: 'No account required, your cart is saved for you.'
+        item_2:
+            title: 'Shipped within 48 hours.'
+            text: 'You follow your parcel at every step.'
+        item_3:
+            title: 'Returns that cost nothing.'
+            text: '30 days to change your mind, label included.'
+        item_4:
+            title: 'Real people behind the screen.'
+            text: 'Our team answers you, seven days a week.'
+        commitments:
+            eyebrow: 'Our commitments'
+            title: 'Simple, end to end.'
+        journey:
+            title: 'From click to doorstep.'
+        cta: 'Shop the new arrivals'
+        secondary_cta: 'Our services'
+        log:
+            title: 'order #A-2048 · live tracking'
+            footer: 'Your next order is just one click away.'
+            event_1:
+                time: '09:12'
+                label: 'Order confirmed'
+                detail: 'payment accepted · confirmation e-mail sent'
+            event_2:
+                time: '11:40'
+                label: 'Packed with care'
+                detail: 'quality checked · recyclable packaging'
+            event_3:
+                time: '16:05'
+                label: 'Shipped'
+                detail: 'tracking number sent by e-mail'
+            event_4:
+                time: 'tomorrow'
+                label: 'Delivered to your door'
+                detail: 'or at the pickup point of your choice'
+    footer:
+        tagline: 'The online shop that keeps its promises. Delivered fast, returned for free.'
+        services:
+            eyebrow: 'Our services'
+            title: 'Here for you, before and after.'
+            shipping:
+                title: 'Fast delivery'
+                tag: 'Free, from the first item'
+                text: 'Your order leaves our warehouse within 48 hours and you follow it until it reaches your door or your pickup point.'
+                cta: 'Start shopping'
+            returns:
+                title: 'Easy returns'
+                tag: '30 days'
+                text: 'Changed your mind? Start a return from your account, print the label and drop the parcel off: we refund you as soon as it arrives.'
+                cta: 'My account'
+            support:
+                title: 'Customer service'
+                tag: '7 days a week'
+                text: 'A question about a size, an order or a delivery? Write to us, a member of the team answers you personally.'
+                cta: 'Contact us'

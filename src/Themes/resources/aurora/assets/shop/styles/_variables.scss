@@ -1,0 +1,46 @@
+// Aurora — electric blue rising into violet over a midnight sky, on lavender light.
+$font-family-sans-serif: "InterVariable", "Inter", "Helvetica Neue", "Arial", sans-serif;
+$font-family-monospace: ui-monospace, "SFMono-Regular", "JetBrains Mono", "Menlo", monospace;
+$font-family-base: $font-family-sans-serif;
+
+$headings-font-family: $font-family-sans-serif;
+$headings-font-weight: 800;
+
+$midnight: #1A1830;
+$midnight-deep: #12101F;
+$electric: #2F55E8;
+$electric-dark: #2241BD;
+$violet: #6D35D6;
+$violet-dark: #5626B3;
+$violet-soft: #A98BF0;
+$lavender: #F4F2FD;
+$lavender-strong: #E3DDFA;
+$ink: #18141F;
+$white: #FFF;
+$text: #3A3546;
+$text-muted: #77717F;
+$border: #ECE8F3;
+
+$body-bg: $white;
+$body-color: $text;
+
+$primary: $violet;
+$secondary: $lavender;
+$success: #23946B;
+$info: $electric;
+
+$link-color: $electric;
+$link-hover-color: $violet;
+$border-color: $border;
+
+$radius-sm: 0.75rem;
+$radius: 1.1rem;
+$radius-lg: 1.5rem;
+
+$gradient-aurora: linear-gradient(100deg, $electric 0%, $violet 100%);
+
+$shadow-soft: 0 10px 30px rgba($midnight, 0.05);
+$shadow-float: 0 24px 60px rgba($midnight, 0.12);
+$shadow-violet: 0 12px 28px rgba($violet, 0.28);
+
+$ease: cubic-bezier(0.2, 0.7, 0.2, 1);

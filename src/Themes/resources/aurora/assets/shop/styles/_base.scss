@@ -1,0 +1,139 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $white;
+  color: $text;
+  font-family: $font-family-base;
+  font-feature-settings: "cv03", "cv04", "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $electric;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: color 160ms ease;
+
+  &:hover,
+  &.link-reset:hover {
+    color: $violet;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3 {
+  color: $ink;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+h1,
+.h1 {
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+}
+
+h2,
+.h2 {
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+}
+
+h3,
+.h3 {
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+h4,
+h5,
+h6,
+.h4,
+.h5,
+.h6 {
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background-color: $lavender-strong;
+  color: $midnight;
+}
+
+:focus-visible {
+  outline: 3px solid $electric;
+  outline-offset: 3px;
+}
+
+// Shared editorial helpers
+
+.aurora-eyebrow {
+  margin-bottom: 0.9rem;
+  color: $violet;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.aurora-section-head {
+  max-width: 44rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.aurora-section-head--wide {
+  max-width: 48rem;
+}
+
+.aurora-section-head__lead {
+  margin: 1.25rem 0 0;
+  color: $text-muted;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+}
+
+[id^="aurora-"] {
+  scroll-margin-top: 1.5rem;
+}
+
+.aurora-checkout-brand,
+.aurora-checkout-account {
+  color: $ink;
+}
+
+.aurora-checkout-account a,
+.aurora-checkout-account .btn {
+  color: $violet;
+}
+
+.aurora-checkout-account a:hover,
+.aurora-checkout-account .btn:hover {
+  color: $midnight;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+}

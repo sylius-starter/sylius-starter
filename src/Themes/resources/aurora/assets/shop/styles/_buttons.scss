@@ -1,0 +1,129 @@
+.btn {
+  min-height: 2.875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms $ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Violet pill, as on every call to action of the mockup.
+.btn-primary {
+  --bs-btn-color: #{$white};
+  --bs-btn-bg: #{$violet};
+  --bs-btn-border-color: #{$violet};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$violet-dark};
+  --bs-btn-hover-border-color: #{$violet-dark};
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #{$violet-dark};
+  --bs-btn-active-border-color: #{$violet-dark};
+  --bs-btn-disabled-bg: #{$violet};
+  --bs-btn-disabled-border-color: #{$violet};
+
+  &:hover {
+    box-shadow: $shadow-violet;
+  }
+}
+
+// White pill with violet text ("Décrire mon projet", "En savoir plus").
+.btn-secondary,
+.btn-outline-primary,
+.btn-outline-gray {
+  --bs-btn-color: #{$violet};
+  --bs-btn-bg: #{$white};
+  --bs-btn-border-color: #{$border};
+  --bs-btn-hover-color: #{$violet-dark};
+  --bs-btn-hover-bg: #{$lavender};
+  --bs-btn-hover-border-color: #{$lavender-strong};
+  --bs-btn-active-color: #{$violet-dark};
+  --bs-btn-active-bg: #{$lavender};
+  --bs-btn-active-border-color: #{$violet-soft};
+}
+
+.btn-link {
+  color: $electric;
+
+  &:hover {
+    color: $violet;
+  }
+}
+
+// Aurora signature: the blue-to-violet gradient pill.
+.aurora-btn-glow {
+  --bs-btn-color: #{$white};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-active-color: #{$white};
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-border-color: transparent;
+
+  background-image: $gradient-aurora;
+  background-size: 160% 100%;
+  background-position: 0 0;
+  box-shadow: 0 10px 24px rgba($electric, 0.28);
+  transition:
+    background-position 400ms $ease,
+    box-shadow 180ms ease,
+    transform 180ms $ease;
+
+  &:hover {
+    background-position: 100% 0;
+    box-shadow: $shadow-violet;
+  }
+}
+
+// Ghost pill used on the midnight panels.
+.aurora-btn-ghost {
+  --bs-btn-color: #{$violet};
+  --bs-btn-bg: #{$white};
+  --bs-btn-border-color: #{$white};
+  --bs-btn-hover-color: #{$violet-dark};
+  --bs-btn-hover-bg: #{$lavender};
+  --bs-btn-hover-border-color: #{$lavender};
+  --bs-btn-active-color: #{$violet-dark};
+  --bs-btn-active-bg: #{$lavender};
+  --bs-btn-active-border-color: #{$lavender};
+}
+
+.aurora-btn-arrow::after {
+  display: inline-block;
+  margin-inline-start: 0.5rem;
+  content: "→";
+  transition: transform 180ms $ease;
+}
+
+.aurora-btn-arrow:hover::after {
+  transform: translateX(3px);
+}
+
+#add-to-cart-button {
+  --bs-btn-color: #{$white};
+  --bs-btn-bg: #{$violet};
+  --bs-btn-border-color: #{$violet};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$violet-dark};
+  --bs-btn-hover-border-color: #{$violet-dark};
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #{$violet-dark};
+  --bs-btn-active-border-color: #{$violet-dark};
+
+  width: 100%;
+  min-height: 3.25rem;
+  font-size: 1rem;
+  box-shadow: $shadow-violet;
+}
