@@ -14,6 +14,10 @@ The theme restyles the shop through SCSS overrides and Sylius Twig hooks:
   neutrals, with a terracotta accent (`#B75D17`) for primary buttons.
 - **Layout** — squared corners everywhere (no border radius), minimal borders and
   generous spacing; the footer is rendered in dark charcoal.
+- **Product cards** — square, hairline-bordered cards without shadow, the image
+  flush to the top and a slow zoom; the border turns charcoal and the name
+  terracotta on hover. The whole card is clickable, on the homepage and on
+  category pages alike.
 - **Header** — the default top bar and navbar are replaced by a single taxon navigation.
 - **Checkout** — the checkout header uses the Canvas wordmark and category navigation.
 - **Branding** — a dedicated Canvas wordmark appears in the header; the footer has no logo,

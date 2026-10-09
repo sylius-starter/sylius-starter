@@ -51,6 +51,6 @@ lavender sections and midnight panels. It is set in tightly-tracked *Inter*
 | Under the hero | — | proof strip of key numbers |
 | Promise | "You replace / You keep" comparison | numbered commitments and an order timeline, same split card |
 | Footer | dark band with "how it works" steps | lavender services rows with calls to action |
-| Product cards | mint frame | white cards, edge-to-edge image, lift on hover |
+| Product cards | white cards, mint image well | white cards, lavender image well, violet title on hover |
 
 Install it with `castor sylius:theme:setup aurora`.
