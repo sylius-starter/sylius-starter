@@ -67,3 +67,9 @@ classes or semantic structure instead.
 The code is split into packages under `src/<Package>/` (`composer.json`, `src/`, `tests/`, `resources/`). The root
 `composer.json` is generated: after changing a package `composer.json`, run `castor monorepo:merge`, then check with
 `castor monorepo:validate`. A package must never use another task package's namespace, only `SyliusStarter\Core`.
+
+## Storefront slots
+
+The homepage hero is a shared slot owned by core: themes ship `templates/shop/homepage/hero.html.twig`, packages feed
+data through `App\Storefront\Hero\HeroContributorInterface`, and only core configures the `banner`/`hero` hookables.
+Prefix any hookable a package adds with the package name. See `docs/storefront/hero.md`.

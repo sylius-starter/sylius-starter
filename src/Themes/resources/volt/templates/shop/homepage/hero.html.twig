@@ -1,19 +1,24 @@
+{# Theme markup for the core hero slot (StorefrontHero). `hero` holds contributed data (import...); theme copy is the fallback. #}
 <section class="volt-home-top" aria-labelledby="volt-hero-title">
     <div class="container">
         <div class="volt-hero">
             <div class="volt-hero__copy">
-                <p class="volt-hero__eyebrow">{{ 'volt.hero.eyebrow'|trans({}, 'volt') }}</p>
-                <h1 id="volt-hero-title">{{ 'volt.hero.title'|trans({}, 'volt')|raw }}</h1>
-                <p class="volt-hero__lead">{{ 'volt.hero.lead'|trans({}, 'volt') }}</p>
-                <a class="volt-hero__cta" href="#volt-products">
-                    {{ 'volt.hero.cta'|trans({}, 'volt') }}
+                <p class="volt-hero__eyebrow">{% if hero.eyebrow %}{{ hero.eyebrow }}{% else %}{{ 'volt.hero.eyebrow'|trans({}, 'volt') }}{% endif %}</p>
+                <h1 id="volt-hero-title">{% if hero.title %}{{ hero.title }}{% else %}{{ 'volt.hero.title'|trans({}, 'volt')|raw }}{% endif %}</h1>
+                <p class="volt-hero__lead">{% if hero.lead %}{{ hero.lead }}{% else %}{{ 'volt.hero.lead'|trans({}, 'volt') }}{% endif %}</p>
+                <a class="volt-hero__cta" href="{{ hero.ctaUrl ?? '#volt-products' }}">
+                    {% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'volt.hero.cta'|trans({}, 'volt') }}{% endif %}
                     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
             </div>
-            <div class="volt-hero__orbit" aria-hidden="true">
-                <div class="volt-hero__disc">V</div>
-                <span class="volt-hero__tag">{{ 'volt.hero.tag'|trans({}, 'volt') }}</span>
-            </div>
+            {% if hero.image %}
+                <img class="volt-hero__image" src="{{ hero.image }}" alt="{{ hero.imageAlt ?? '' }}">
+            {% else %}
+                <div class="volt-hero__orbit" aria-hidden="true">
+                    <div class="volt-hero__disc">V</div>
+                    <span class="volt-hero__tag">{{ 'volt.hero.tag'|trans({}, 'volt') }}</span>
+                </div>
+            {% endif %}
         </div>
 
         <ul class="volt-perks" role="list">

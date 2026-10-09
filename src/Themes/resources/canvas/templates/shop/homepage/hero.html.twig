@@ -1,3 +1,4 @@
+{# Theme markup for the core hero slot (StorefrontHero). `hero` holds contributed data (import...); theme copy is the fallback. #}
 <section class="canvas-cover" aria-labelledby="canvas-cover-title">
     <div class="container">
         <div class="canvas-cover__grid">
@@ -7,11 +8,11 @@
                     <span class="canvas-cover__rule" aria-hidden="true"></span>
                     <span>{{ 'canvas.hero.season'|trans({}, 'canvas') }}</span>
                 </p>
-                <h1 id="canvas-cover-title">{{ 'canvas.hero.title'|trans({}, 'canvas')|raw }}</h1>
-                <p class="canvas-cover__lead">{{ 'canvas.hero.lead'|trans({}, 'canvas') }}</p>
+                <h1 id="canvas-cover-title">{% if hero.title %}{{ hero.title }}{% else %}{{ 'canvas.hero.title'|trans({}, 'canvas')|raw }}{% endif %}</h1>
+                <p class="canvas-cover__lead">{% if hero.lead %}{{ hero.lead }}{% else %}{{ 'canvas.hero.lead'|trans({}, 'canvas') }}{% endif %}</p>
                 <div class="canvas-cover__actions">
-                    <a class="btn btn-primary canvas-cover__cta" href="#canvas-products">
-                        {{ 'canvas.hero.cta'|trans({}, 'canvas') }}
+                    <a class="btn btn-primary canvas-cover__cta" href="{{ hero.ctaUrl ?? '#canvas-products' }}">
+                        {% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'canvas.hero.cta'|trans({}, 'canvas') }}{% endif %}
                         <span aria-hidden="true">→</span>
                     </a>
                     <span class="canvas-cover__note">{{ 'canvas.hero.note'|trans({}, 'canvas') }}</span>
@@ -19,7 +20,11 @@
             </div>
 
             <div class="canvas-cover__visual">
-                {{ component('sylius_shop:product:list', {limit: 3, template: 'shop/homepage/banner/collage.html.twig'}) }}
+                {% if hero.image %}
+                    <img class="canvas-cover__image" src="{{ hero.image }}" alt="{{ hero.imageAlt ?? '' }}">
+                {% else %}
+                    {{ component('sylius_shop:product:list', {limit: 3, template: 'shop/homepage/hero/collage.html.twig'}) }}
+                {% endif %}
                 <span class="canvas-cover__vertical" aria-hidden="true">{{ 'canvas.hero.vertical'|trans({}, 'canvas') }}</span>
             </div>
         </div>

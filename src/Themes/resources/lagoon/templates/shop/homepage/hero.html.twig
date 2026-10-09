@@ -1,14 +1,15 @@
+{# Theme markup for the core hero slot (StorefrontHero). `hero` holds contributed data (import...); theme copy is the fallback. #}
 <section class="lagoon-hero" aria-labelledby="lagoon-hero-title">
     <div class="container">
         <div class="lagoon-hero__grid">
             <div class="lagoon-hero__copy">
-                <p class="lagoon-hero__kicker">{{ 'lagoon.hero.kicker'|trans({}, 'lagoon') }}</p>
-                <h1 id="lagoon-hero-title">{{ 'lagoon.hero.title'|trans({}, 'lagoon')|raw }}</h1>
-                <p class="lagoon-hero__lead">{{ 'lagoon.hero.lead'|trans({}, 'lagoon')|raw }}</p>
+                <p class="lagoon-hero__kicker">{% if hero.eyebrow %}{{ hero.eyebrow }}{% else %}{{ 'lagoon.hero.kicker'|trans({}, 'lagoon') }}{% endif %}</p>
+                <h1 id="lagoon-hero-title">{% if hero.title %}{{ hero.title }}{% else %}{{ 'lagoon.hero.title'|trans({}, 'lagoon')|raw }}{% endif %}</h1>
+                <p class="lagoon-hero__lead">{% if hero.lead %}{{ hero.lead }}{% else %}{{ 'lagoon.hero.lead'|trans({}, 'lagoon')|raw }}{% endif %}</p>
 
                 <div class="lagoon-hero__actions">
-                    <a class="btn btn-primary lagoon-btn-arrow" href="#lagoon-latest-products">
-                        {{ 'lagoon.hero.cta'|trans({}, 'lagoon') }}
+                    <a class="btn btn-primary lagoon-btn-arrow" href="{{ hero.ctaUrl ?? '#lagoon-latest-products' }}">
+                        {% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'lagoon.hero.cta'|trans({}, 'lagoon') }}{% endif %}
                     </a>
                     <a class="lagoon-hero__link" href="#lagoon-promise">
                         {{ 'lagoon.promise.eyebrow'|trans({}, 'lagoon') }}
@@ -32,7 +33,11 @@
             </div>
 
             <div class="lagoon-hero__visual">
-                {{ component('sylius_shop:product:list', {limit: 1, template: 'shop/homepage/banner/spotlight.html.twig'}) }}
+                {% if hero.image %}
+                    <img class="lagoon-hero__image" src="{{ hero.image }}" alt="{{ hero.imageAlt ?? '' }}">
+                {% else %}
+                    {{ component('sylius_shop:product:list', {limit: 1, template: 'shop/homepage/hero/spotlight.html.twig'}) }}
+                {% endif %}
 
                 <div class="lagoon-float lagoon-float--stat" aria-hidden="true">
                     <span class="lagoon-float__value">30</span>
