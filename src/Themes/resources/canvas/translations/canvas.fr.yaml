@@ -5,7 +5,6 @@ canvas:
         title: 'L’art de s’habiller <em>au quotidien</em>.'
         lead: 'Des pièces discrètes, des matières honnêtes et des coupes qui durent. Une garde-robe composée lentement, un essentiel à la fois.'
         cta: 'Découvrir l’édition'
-        note: 'De nouvelles pièces chaque semaine'
         vertical: 'Collection automne · hiver'
     values:
         label: 'Nos engagements'
@@ -18,3 +17,20 @@ canvas:
         returns:
             title: 'Des retours simples.'
             text: '30 jours pour changer d’avis, gratuitement.'
+    promise:
+        link: 'Lire notre manifeste'
+        label: 'Le manifeste'
+        title: 'Moins de pièces, <em>plus d’attention</em>.'
+        lead: 'Nous ne suivons pas les saisons, nous les traversons. Chaque pièce Canvas est dessinée pour être portée longtemps, réparée si besoin et transmise un jour. C’est une façon plus lente de s’habiller, et nous la croyons plus juste.'
+        notes:
+            matter:
+                title: 'La matière'
+                text: 'Lin, laine, coton biologique : des fibres qui se patinent au lieu de s’user.'
+            make:
+                title: 'La façon'
+                text: 'Des ateliers que nous connaissons par leur nom, en Europe, à petite échelle.'
+            time:
+                title: 'Le temps'
+                text: 'Des coupes intemporelles, pensées pour dix ans plutôt que pour une saison.'
+        signature: '— L’atelier Canvas'
+        cta: 'Découvrir les pièces'

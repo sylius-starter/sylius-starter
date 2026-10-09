@@ -251,6 +251,8 @@ async function main() {
       const navigation = await send('Page.navigate', { url: url.href });
       if (navigation.errorText) throw new Error(`Could not open ${url.href}: ${navigation.errorText}`);
       await loaded;
+      // Hide the Symfony web debug toolbar (dev env), including the space it reserves at the bottom of the page.
+      await evaluate(`document.head.insertAdjacentHTML('beforeend', '<style>[id^="sfwdt"], .sf-toolbar, .sf-minitoolbar { display: none !important; }</style>')`);
       await evaluate('document.fonts.ready', { awaitPromise: true });
       await delay(1000);
 

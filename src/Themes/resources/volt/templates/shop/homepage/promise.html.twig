@@ -1,0 +1,25 @@
+<section id="volt-promise" class="volt-promise" aria-labelledby="volt-promise-title">
+    <div class="container">
+        <div class="volt-promise__grid">
+            <div class="volt-promise__card volt-promise__card--main">
+                <p class="volt-pill">{{ 'volt.promise.eyebrow'|trans({}, 'volt') }}</p>
+                <h2 id="volt-promise-title">{{ 'volt.promise.title'|trans({}, 'volt')|raw }}</h2>
+                <p class="volt-promise__lead">{{ 'volt.promise.lead'|trans({}, 'volt') }}</p>
+                <a class="volt-hero__cta" href="#volt-products">
+                    {{ 'volt.promise.cta'|trans({}, 'volt') }}
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+
+            {% for item in ['drops', 'tested', 'repair'] %}
+                <div class="volt-promise__card volt-promise__card--{{ item }}">
+                    <p class="volt-promise__stat">
+                        <span class="volt-promise__value">{{ ('volt.promise.items.' ~ item ~ '.value')|trans({}, 'volt') }}</span>
+                        <span class="volt-promise__label">{{ ('volt.promise.items.' ~ item ~ '.label')|trans({}, 'volt') }}</span>
+                    </p>
+                    <p class="volt-promise__text">{{ ('volt.promise.items.' ~ item ~ '.text')|trans({}, 'volt') }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

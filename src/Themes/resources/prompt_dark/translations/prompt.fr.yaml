@@ -4,3 +4,27 @@ prompt:
         title: 'De belles choses.<br>Prêtes quand vous l’êtes.'
         description: 'Une sélection réfléchie d’essentiels du quotidien, choisis pour votre façon de vivre.'
         cta: 'Parcourir la collection'
+    promise:
+        link: 'Pourquoi Prompt ?'
+        eyebrow: '00 / README'
+        title: 'Moins de bruit.<br>De meilleures choses.'
+        lead: 'Faire ses achats ne devrait pas demander quarante onglets ouverts. Nous avons retiré ce qui fatigue et gardé ce qui compte.'
+        cta: 'Parcourir la collection'
+        diff:
+            label: 'git diff shopping prompt'
+            hunk: 'avant → après'
+            before: 'Avant :'
+            after: 'Après :'
+            stat: '1 fichier modifié, 4 insertions(+), 4 suppressions(-)'
+            item_1:
+                before: 'quarante avis à lire avant d’oser commander'
+                after: 'une sélection courte, déjà comparée pour vous'
+            item_2:
+                before: 'des « offres limitées » toutes les cinq minutes'
+                after: 'des prix justes, toute l’année'
+            item_3:
+                before: 'trois colis et beaucoup trop de plastique'
+                after: 'un seul colis, expédié sous 48 heures'
+            item_4:
+                before: 'un chatbot qui ne comprend jamais la question'
+                after: 'une vraie personne qui répond dans la journée'

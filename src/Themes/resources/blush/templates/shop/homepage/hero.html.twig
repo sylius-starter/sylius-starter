@@ -5,7 +5,10 @@
             <p class="blush-hero__eyebrow">{% if hero.eyebrow %}{{ hero.eyebrow }}{% else %}{{ 'blush.hero.eyebrow'|trans({}, 'blush') }}{% endif %}</p>
             <h1>{% if hero.title %}{{ hero.title }}{% else %}{{ 'blush.hero.title'|trans({}, 'blush')|raw }}{% endif %}</h1>
             <p class="blush-hero__description">{% if hero.lead %}{{ hero.lead }}{% else %}{{ 'blush.hero.description'|trans({}, 'blush') }}{% endif %}</p>
-            <a class="btn btn-primary" href="{{ hero.ctaUrl ?? '#blush-products' }}">{% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'blush.hero.cta'|trans({}, 'blush') }}{% endif %}</a>
+            <div class="blush-hero__actions">
+                <a class="btn btn-primary" href="{{ hero.ctaUrl ?? '#blush-products' }}">{% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'blush.hero.cta'|trans({}, 'blush') }}{% endif %}</a>
+                <a class="blush-hero__link" href="#blush-promise">{{ 'blush.promise.link'|trans({}, 'blush') }}</a>
+            </div>
         </div>
         {% if hero.image %}
             <img class="blush-hero__image" src="{{ hero.image }}" alt="{{ hero.imageAlt ?? '' }}">

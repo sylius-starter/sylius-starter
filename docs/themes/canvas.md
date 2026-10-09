@@ -21,8 +21,10 @@ The theme restyles the shop through SCSS overrides and Sylius Twig hooks:
 - **Homepage** — an editorial "magazine cover" hero: a large Cormorant headline
   with a terracotta italic accent, a call to action, and a collage of the
   **three latest products of the channel** (real images, numbered captions, no
-  external image); then a strip of three numbered commitments and the four
-  latest products with squared pictures. The deals and collection blocks are
+  external image); then a strip of three numbered commitments, an editorial
+  manifesto with a drop cap and three notes (the promise block, through the
+  `theme_promise` hookable, linked from the hero) and the four latest products
+  with squared pictures. The deals and collection blocks are
   removed.
 - **Product page** — a full-width breadcrumb band, the price directly below the
   product name and before reviews, a full-width add-to-cart button, and a listing

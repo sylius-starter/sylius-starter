@@ -1,0 +1,35 @@
+<section id="prompt-promise" class="container prompt-promise" aria-labelledby="prompt-promise-title">
+    <div class="prompt-promise__copy">
+        <p class="prompt-promise__eyebrow">{{ 'prompt.promise.eyebrow'|trans({}, 'prompt') }}</p>
+        <h2 id="prompt-promise-title">{{ 'prompt.promise.title'|trans({}, 'prompt')|raw }}</h2>
+        <p class="prompt-promise__lead">{{ 'prompt.promise.lead'|trans({}, 'prompt') }}</p>
+        <a class="btn btn-primary" href="#prompt-products">{{ 'prompt.promise.cta'|trans({}, 'prompt') }}</a>
+    </div>
+
+    <div class="prompt-diff">
+        <div class="prompt-terminal__bar" aria-hidden="true">
+            <span class="prompt-terminal__dot"></span>
+            <span class="prompt-terminal__dot"></span>
+            <span class="prompt-terminal__dot"></span>
+            <span class="prompt-terminal__label">{{ 'prompt.promise.diff.label'|trans({}, 'prompt') }}</span>
+        </div>
+        <div class="prompt-diff__body">
+            <p class="prompt-diff__hunk" aria-hidden="true">@@ {{ 'prompt.promise.diff.hunk'|trans({}, 'prompt') }} @@</p>
+            <ul class="prompt-diff__lines" role="list">
+                {% for item in 1..4 %}
+                    <li class="prompt-diff__line prompt-diff__line--del">
+                        <span class="prompt-diff__sign" aria-hidden="true">-</span>
+                        <span class="visually-hidden">{{ 'prompt.promise.diff.before'|trans({}, 'prompt') }}</span>
+                        {{ ('prompt.promise.diff.item_' ~ item ~ '.before')|trans({}, 'prompt') }}
+                    </li>
+                    <li class="prompt-diff__line prompt-diff__line--add">
+                        <span class="prompt-diff__sign" aria-hidden="true">+</span>
+                        <span class="visually-hidden">{{ 'prompt.promise.diff.after'|trans({}, 'prompt') }}</span>
+                        {{ ('prompt.promise.diff.item_' ~ item ~ '.after')|trans({}, 'prompt') }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <p class="prompt-diff__stat" aria-hidden="true">{{ 'prompt.promise.diff.stat'|trans({}, 'prompt') }}</p>
+        </div>
+    </div>
+</section>

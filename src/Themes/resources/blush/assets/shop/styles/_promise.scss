@@ -1,0 +1,133 @@
+// Homepage promise: four small commitments, presented as rose cards next to the intro.
+
+.blush-promise {
+  scroll-margin-top: 2rem;
+  padding-block: clamp(1rem, 3vw, 2rem) clamp(3rem, 7vw, 6rem);
+}
+
+.blush-promise__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.blush-promise__eyebrow {
+  margin-bottom: 0.75rem;
+  color: $pink;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.blush-promise h2 {
+  margin-bottom: 1.25rem;
+  font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+  line-height: 1;
+}
+
+.blush-promise__lead {
+  max-width: 28rem;
+  margin-bottom: 1.75rem;
+  color: $muted;
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  line-height: 1.7;
+}
+
+.blush-promise__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.blush-promise__card {
+  padding: clamp(1.4rem, 2.6vw, 2rem);
+  border-radius: 1.25rem;
+  background-color: $rose;
+  transition: transform 160ms ease;
+
+  &:nth-child(even) {
+    transform: translateY(1.5rem);
+  }
+
+  h3 {
+    margin: 1.1rem 0 0.4rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    margin: 0;
+    color: $muted;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+}
+
+.blush-promise__badge {
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background-color: $pink;
+  color: $white;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.blush-promise__card--wrap .blush-promise__badge {
+  background-color: $gold;
+  color: $plum;
+}
+
+.blush-promise__card--returns .blush-promise__badge {
+  background-color: $coral;
+}
+
+.blush-promise__card--care .blush-promise__badge {
+  background-color: $plum;
+}
+
+// Secondary link next to the hero call to action.
+.blush-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.blush-hero__link {
+  color: $plum;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba($pink, 0.45);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+
+  &:hover {
+    color: $pink;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .blush-promise__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .blush-promise__list {
+    grid-template-columns: 1fr;
+  }
+
+  .blush-promise__card:nth-child(even) {
+    transform: none;
+  }
+}

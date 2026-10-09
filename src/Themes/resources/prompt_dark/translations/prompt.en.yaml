@@ -4,3 +4,27 @@ prompt:
         title: 'Good things.<br>Ready when you are.'
         description: 'A considered collection of everyday essentials, picked for the way you live.'
         cta: 'Browse the collection'
+    promise:
+        link: 'Why Prompt?'
+        eyebrow: '00 / README'
+        title: 'Less noise.<br>Better things.'
+        lead: 'Shopping should not take forty open tabs. We removed what wears you out and kept what matters.'
+        cta: 'Browse the collection'
+        diff:
+            label: 'git diff shopping prompt'
+            hunk: 'before → after'
+            before: 'Before:'
+            after: 'After:'
+            stat: '1 file changed, 4 insertions(+), 4 deletions(-)'
+            item_1:
+                before: 'forty reviews to read before daring to order'
+                after: 'a short selection, already compared for you'
+            item_2:
+                before: '“limited offers” every five minutes'
+                after: 'fair prices, all year round'
+            item_3:
+                before: 'three parcels and far too much plastic'
+                after: 'a single parcel, shipped within 48 hours'
+            item_4:
+                before: 'a chatbot that never gets the question'
+                after: 'a real person who replies the same day'

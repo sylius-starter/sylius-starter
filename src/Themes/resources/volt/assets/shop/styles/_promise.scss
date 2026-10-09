@@ -1,0 +1,177 @@
+// Homepage promise: the "Volt pact", a bento of one statement and three bold figures.
+
+.volt-promise {
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+  scroll-margin-top: 1rem;
+}
+
+.volt-promise__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+}
+
+.volt-promise__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid $border;
+  border-radius: 2rem;
+  background-color: $white;
+}
+
+.volt-promise__card--main {
+  grid-row: span 2;
+  justify-content: flex-start;
+  gap: 0;
+  border: 0;
+  background-color: $ink;
+  color: $white;
+
+  .volt-pill {
+    align-self: flex-start;
+  }
+
+  h2 {
+    margin: 0 0 1.25rem;
+    color: $white;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 0.92;
+
+    span {
+      display: inline-block;
+      color: $lavender;
+      transform: skewX(-6deg);
+    }
+  }
+
+  .volt-hero__cta {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+}
+
+.volt-promise__lead {
+  max-width: 24rem;
+  margin-bottom: 2rem;
+  color: rgba($white, 0.78);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  line-height: 1.6;
+}
+
+.volt-promise__card--drops {
+  border: 0;
+  background-color: $electric;
+  color: $white;
+
+  .volt-promise__value,
+  .volt-promise__label {
+    color: $white;
+  }
+
+  .volt-promise__text {
+    color: rgba($white, 0.82);
+  }
+}
+
+.volt-promise__card--tested {
+  border: 0;
+  background-color: $lavender;
+}
+
+.volt-promise__card--repair {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: flex-end;
+
+  .volt-promise__text {
+    max-width: 22rem;
+  }
+}
+
+.volt-promise__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.volt-promise__value {
+  color: $ink;
+  font-size: clamp(3rem, 6vw, 4.75rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.volt-promise__label {
+  color: $electric;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.volt-promise__text {
+  margin: 0;
+  color: $text-muted;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+// Secondary link next to the hero call to action.
+.volt-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+}
+
+.volt-hero__link {
+  color: $white;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-decoration-color: rgba($lavender, 0.5);
+  text-decoration-thickness: 2px;
+  text-transform: uppercase;
+  text-underline-offset: 0.35em;
+
+  &:hover,
+  &:focus {
+    color: $lavender;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .volt-promise__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .volt-promise__card--main {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .volt-promise__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .volt-promise__card--main,
+  .volt-promise__card--repair {
+    grid-column: auto;
+  }
+
+  .volt-promise__card--repair {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

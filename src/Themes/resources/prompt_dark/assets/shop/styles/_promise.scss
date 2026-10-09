@@ -1,0 +1,141 @@
+// Homepage promise: what changes with Prompt, written as a diff.
+
+.prompt-promise {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  margin-block: clamp(1rem, 4vw, 3rem) clamp(3rem, 7vw, 6rem);
+  scroll-margin-top: 2rem;
+}
+
+.prompt-promise__copy {
+  order: 2;
+}
+
+.prompt-promise__eyebrow {
+  margin-bottom: 0.5rem;
+  color: $green;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prompt-promise h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  line-height: 1.08;
+}
+
+.prompt-promise__lead {
+  max-width: 30rem;
+  margin-bottom: 1.75rem;
+  color: $text-muted;
+  line-height: 1.75;
+}
+
+.prompt-diff {
+  overflow: hidden;
+  border: 1px solid $border;
+  border-radius: 0.55rem;
+  background-color: $surface;
+  box-shadow: 0 1.25rem 3rem rgba($black, 0.18);
+}
+
+.prompt-diff__body {
+  padding: clamp(1rem, 2.5vw, 1.5rem) 0;
+  font-size: clamp(0.74rem, 1.1vw, 0.86rem);
+  line-height: 1.7;
+}
+
+.prompt-diff__hunk,
+.prompt-diff__stat {
+  margin: 0;
+  padding-inline: clamp(1rem, 2.5vw, 1.5rem);
+  color: $text-muted;
+}
+
+.prompt-diff__hunk {
+  margin-bottom: 0.75rem;
+  color: $info;
+}
+
+.prompt-diff__stat {
+  margin-top: 0.75rem;
+}
+
+.prompt-diff__lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prompt-diff__line {
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.3rem clamp(1rem, 2.5vw, 1.5rem);
+  color: $text;
+}
+
+.prompt-diff__line--del {
+  background-color: rgba($danger, 0.1);
+  color: $text-muted;
+
+  .prompt-diff__sign {
+    color: $danger;
+  }
+}
+
+.prompt-diff__line--add {
+  margin-bottom: 0.5rem;
+  background-color: rgba($green, 0.14);
+
+  .prompt-diff__sign {
+    color: $green;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.prompt-diff__sign {
+  flex: 0 0 auto;
+  font-weight: 700;
+}
+
+// Secondary link next to the hero call to action.
+.prompt-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.prompt-hero__link {
+  color: $green;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  &::before {
+    margin-right: 0.45rem;
+    content: ">";
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .prompt-promise {
+    grid-template-columns: 1fr;
+  }
+
+  .prompt-promise__copy {
+    order: 0;
+  }
+}

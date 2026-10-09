@@ -17,8 +17,9 @@ assets.
   add-to-cart button, and no default header top bar.
 - **Product page** — the price sits directly below the product name, before reviews.
 - **Homepage** — an oversized, responsive graphic hero aligned on the page
-  grid, a strip of three perks (shipping, returns, secure checkout), then the
-  four latest products with a large heading; the deals and new collection
+  grid, a strip of three perks (shipping, returns, secure checkout), the
+  *"Volt pact"* bento with three bold figures (the promise block, through the
+  `theme_promise` hookable, linked from the hero), then the four latest products with a large heading; the deals and new collection
   blocks are hidden.
 - **Typography** — Jost is loaded as a variable font (100–900), so bold
   headings use the real weights instead of synthesized ones.

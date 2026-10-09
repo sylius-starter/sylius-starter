@@ -13,12 +13,14 @@ soft rose panels and a deep plum footer.
   (`#B54878`) accents and plum (`#2D141F`) typography and footer.
 - **Components** — rounded buttons and product cards, a custom wordmark and
   responsive taxon navigation.
-- **Homepage** — a French editorial hero with a CSS illustration and a direct
-  link to the latest products, followed by four latest products; the latest
-  deals and new-collection blocks are hidden.
+- **Homepage** — a French editorial hero with a CSS illustration, a direct
+  link to the latest products and a link to the promise block; then the
+  *"Our little promises"* block (four rose cards with coloured badges, through
+  the `theme_promise` hookable) and four latest products; the latest deals and
+  new-collection blocks are hidden.
 - **Shopping flow** — matching buttons, forms and checkout branding, including
   the Blush wordmark and category navigation in the checkout header.
-- **Translations** — the hero texts live in a `blush` translation domain
+- **Translations** — the homepage texts live in a `blush` translation domain
   (`translations/blush.en.yaml` and `blush.fr.yaml`).
 
 Install it with `castor sylius:theme:setup blush`.

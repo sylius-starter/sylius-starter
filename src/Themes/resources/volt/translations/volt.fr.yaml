@@ -17,3 +17,22 @@ volt:
             text: 'Carte, PayPal et plus'
     products:
         eyebrow: 'NOUVEAUTÉS'
+    promise:
+        link: 'Le pacte Volt'
+        eyebrow: 'LE PACTE VOLT'
+        title: 'On bouge.<br><span>Pas</span> nos valeurs.'
+        lead: 'Des pièces qui suivent votre rythme, conçues sans compromis sur ce qui compte vraiment.'
+        cta: 'Voir les nouveautés'
+        items:
+            drops:
+                value: '4'
+                label: 'drops par an'
+                text: 'Pas un de plus. Chaque collection prend le temps d’être bien faite.'
+            tested:
+                value: '100 km'
+                label: 'avant chaque sortie'
+                text: 'Chaque pièce est portée, lavée et malmenée par l’équipe avant d’arriver chez vous.'
+            repair:
+                value: '2 ans'
+                label: 'de réparations offertes'
+                text: 'Une couture qui lâche ? On répare, sans discuter.'

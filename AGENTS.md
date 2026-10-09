@@ -38,6 +38,20 @@ node scripts/capture-theme-screenshots.mjs lagoon --include-cart
 
 The cart uses an isolated temporary browser profile and does not alter another browser session's cart.
 
+To refresh the screenshots of several themes in one go, run from the repository root:
+
+```bash
+castor docs:screenshots                        # asks which themes to capture ("all" by default)
+castor docs:screenshots canvas volt            # only these themes
+castor docs:screenshots all --restore=canvas   # every theme, then switch back to canvas
+```
+
+For each theme, the task runs `castor sylius:theme:setup <theme>` then the screenshot script with `--include-cart`
+(`--skip-cart` to leave the cart out), and stops at the first failure. Without `--restore`, the last captured theme
+stays active.
+
+The script hides the Symfony web debug toolbar, so the app can stay in the `dev` environment.
+
 The script requires Node.js 22+ and Google Chrome or Chromium. Set `CHROME_BIN` if the browser executable is not detected automatically. The selected theme must be active on the storefront.
 
 ## Running commands in the Sylius app
