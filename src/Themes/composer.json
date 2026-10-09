@@ -17,7 +17,8 @@
     ],
     "require": {
         "php": ">=8.3",
-        "sylius-starter/core": "self.version"
+        "sylius-starter/core": "self.version",
+        "castor-php/docker": "^0.6.0"
     },
     "autoload": {
         "psr-4": {

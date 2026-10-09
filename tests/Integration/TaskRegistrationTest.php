@@ -11,6 +11,7 @@ use SyliusStarter\Core\Installer\SyliusInstallerExtensions;
 use SyliusStarter\Core\Service\SyliusService;
 use SyliusStarter\Core\Task\TaskProviderRegistry;
 use SyliusStarter\PaymentGateways\Installer\PaymentGatewaysSyliusInstallerExtension;
+use SyliusStarter\Themes\Installer\ThemesSyliusInstallerExtension;
 
 /**
  * Every package registers its tasks in the core TaskProviderRegistry from a
@@ -47,6 +48,11 @@ final class TaskRegistrationTest extends TestCase
     public function testPaymentGatewaysExtendTheSyliusInstaller(): void
     {
         static::assertInstanceOf(PaymentGatewaysSyliusInstallerExtension::class, SyliusInstallerExtensions::all()['payment_gateways'] ?? null);
+    }
+
+    public function testThemesExtendTheSyliusInstaller(): void
+    {
+        static::assertInstanceOf(ThemesSyliusInstallerExtension::class, SyliusInstallerExtensions::all()['themes'] ?? null);
     }
 
     /**
