@@ -13,6 +13,7 @@ use Castor\Docker\Service\PostgresService;
 use Castor\Docker\Service\SymfonyService;
 use SyliusStarter\Core\App;
 use SyliusStarter\Core\Task\TaskProviderRegistry;
+use SyliusStarter\Core\Util\Assets;
 use SyliusStarter\Core\Util\Fixtures;
 
 class SyliusService extends SymfonyService
@@ -47,6 +48,20 @@ class SyliusService extends SymfonyService
             'function' => function (#[AsRawTokens] array $rawTokens = []): void {
                 $app = new App($this->getName(), $this->getDirectory());
                 Fixtures::load($app, ...$rawTokens);
+            },
+        ];
+
+        yield [
+            'task' => new AsTask('install', $this->name . ':assets', 'Installs Yarn dependencies and Symfony bundle assets'),
+            'function' => function (): void {
+                Assets::install(new App($this->getName(), $this->getDirectory()));
+            },
+        ];
+
+        yield [
+            'task' => new AsTask('build', $this->name . ':assets', 'Builds shop/admin Webpack Encore assets'),
+            'function' => function (): void {
+                Assets::build(new App($this->getName(), $this->getDirectory()));
             },
         ];
     }

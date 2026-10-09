@@ -60,6 +60,14 @@ final class SyliusServiceTest extends TestCase
         static::assertContains('app:db:fixtures', $this->taskNames(new SyliusService()));
     }
 
+    public function testExposesAssetTasks(): void
+    {
+        $names = $this->taskNames(new SyliusService());
+
+        static::assertContains('app:assets:build', $names);
+        static::assertContains('app:assets:install', $names);
+    }
+
     /**
      * @return list<string>
      */

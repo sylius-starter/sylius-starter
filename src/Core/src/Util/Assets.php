@@ -18,10 +18,12 @@ final readonly class Assets
         Docker::run($app, 'bin/console assets:install');
     }
 
-    public static function build(App $app): void
+    public static function build(App $app, bool $production = true): void
     {
         io()->title('Building the assets');
 
-        Docker::run($app, 'yarn build');
+        Docker::run($app, 'yarn install');
+        Docker::run($app, $production ? 'yarn build:prod' : 'yarn build');
+        Docker::run($app, 'bin/console assets:install');
     }
 }
