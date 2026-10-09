@@ -10,6 +10,7 @@ use SyliusStarter\Core\App;
 use SyliusStarter\Core\Component\CallableInstaller;
 use SyliusStarter\Core\Component\CallableRemover;
 use SyliusStarter\Core\Component\ComponentResolver;
+use SyliusStarter\Core\Installer\SyliusInstallerExtensions;
 use SyliusStarter\Core\Service\SyliusService;
 use SyliusStarter\Core\Task\TaskProviderRegistry;
 use SyliusStarter\Themes\Attribute\AsThemeInstaller;
@@ -20,6 +21,7 @@ use SyliusStarter\Themes\Installer\LagoonInstaller;
 use SyliusStarter\Themes\Installer\PromptDarkThemeInstaller;
 use SyliusStarter\Themes\Installer\PromptLightThemeInstaller;
 use SyliusStarter\Themes\Installer\ThemeInstallerDescriptor;
+use SyliusStarter\Themes\Installer\ThemesSyliusInstallerExtension;
 use SyliusStarter\Themes\Installer\VoltInstaller;
 use SyliusStarter\Themes\Remover\BlushRemover;
 use SyliusStarter\Themes\Remover\CanvasRemover;
@@ -34,6 +36,8 @@ TaskProviderRegistry::register(
     'themes',
     static fn(SyliusService $service): iterable => (new ThemeTasks($service->getName(), $service->getDirectory()))(),
 );
+
+SyliusInstallerExtensions::register('themes', new ThemesSyliusInstallerExtension());
 
 #[AsListener(AfterBootEvent::class)]
 function initialize(AfterBootEvent $afterBootEvent): void
