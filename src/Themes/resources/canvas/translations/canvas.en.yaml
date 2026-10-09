@@ -5,7 +5,6 @@ canvas:
         title: 'The art of <em>everyday</em> dressing.'
         lead: 'Quiet pieces, honest materials and cuts that last. A wardrobe composed slowly, one essential at a time.'
         cta: 'Discover the edit'
-        note: 'New pieces every week'
         vertical: 'Autumn · Winter collection'
     values:
         label: 'Our commitments'
@@ -18,3 +17,20 @@ canvas:
         returns:
             title: 'Easy returns.'
             text: '30 days to change your mind, free of charge.'
+    promise:
+        link: 'Read our manifesto'
+        label: 'The manifesto'
+        title: 'Fewer pieces, <em>more care</em>.'
+        lead: 'We do not follow the seasons, we live through them. Every Canvas piece is designed to be worn for a long time, mended when needed and handed down one day. It is a slower way to dress, and we believe a fairer one.'
+        notes:
+            matter:
+                title: 'Material'
+                text: 'Linen, wool, organic cotton: fibres that gain character instead of wearing out.'
+            make:
+                title: 'Making'
+                text: 'Workshops we know by name, in Europe, working at a small scale.'
+            time:
+                title: 'Time'
+                text: 'Timeless cuts, designed for ten years rather than a single season.'
+        signature: '— The Canvas atelier'
+        cta: 'Discover the pieces'

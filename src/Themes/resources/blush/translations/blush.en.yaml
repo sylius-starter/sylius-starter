@@ -7,3 +7,22 @@ blush:
         label: 'A LOVELY SELECTION'
     products:
         eyebrow: 'THE SHOP / TO DISCOVER'
+    promise:
+        link: 'Our promises'
+        eyebrow: 'OUR LITTLE PROMISES'
+        title: 'Choose less,<br>love more.'
+        lead: 'Every Blush piece has a story, and we want it to carry on at home with you. Here is what we promise, order after order.'
+        cta: 'See the selection'
+        items:
+            choice:
+                title: 'Hand-picked'
+                text: 'Every item is tried and loved by the team before it reaches the shop.'
+            wrap:
+                title: 'Wrapped with love'
+                text: 'Tissue paper, a handwritten note and no needless plastic.'
+            returns:
+                title: 'Worry-free returns'
+                text: '30 days to change your mind, return label included.'
+            care:
+                title: 'Always listening'
+                text: 'A real person replies to you, within 24 hours.'

@@ -14,7 +14,7 @@ return App::config([
                 'new_collection' => [
                     'enabled' => false,
                 ],
-                'lagoon_promise' => [
+                'theme_promise' => [
                     'template' => 'shop/homepage/promise.html.twig',
                     'priority' => 150,
                 ],

@@ -6,10 +6,13 @@
                 <p class="volt-hero__eyebrow">{% if hero.eyebrow %}{{ hero.eyebrow }}{% else %}{{ 'volt.hero.eyebrow'|trans({}, 'volt') }}{% endif %}</p>
                 <h1 id="volt-hero-title">{% if hero.title %}{{ hero.title }}{% else %}{{ 'volt.hero.title'|trans({}, 'volt')|raw }}{% endif %}</h1>
                 <p class="volt-hero__lead">{% if hero.lead %}{{ hero.lead }}{% else %}{{ 'volt.hero.lead'|trans({}, 'volt') }}{% endif %}</p>
-                <a class="volt-hero__cta" href="{{ hero.ctaUrl ?? '#volt-products' }}">
-                    {% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'volt.hero.cta'|trans({}, 'volt') }}{% endif %}
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </a>
+                <div class="volt-hero__actions">
+                    <a class="volt-hero__cta" href="{{ hero.ctaUrl ?? '#volt-products' }}">
+                        {% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'volt.hero.cta'|trans({}, 'volt') }}{% endif %}
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                    <a class="volt-hero__link" href="#volt-promise">{{ 'volt.promise.link'|trans({}, 'volt') }}</a>
+                </div>
             </div>
             {% if hero.image %}
                 <img class="volt-hero__image" src="{{ hero.image }}" alt="{{ hero.imageAlt ?? '' }}">

@@ -17,3 +17,22 @@ volt:
             text: 'Card, PayPal and more'
     products:
         eyebrow: 'FRESH DROPS'
+    promise:
+        link: 'The Volt pact'
+        eyebrow: 'THE VOLT PACT'
+        title: 'We move.<br><span>Our</span> values don’t.'
+        lead: 'Pieces that keep up with your pace, designed with no compromise on what really matters.'
+        cta: 'Shop the latest drops'
+        items:
+            drops:
+                value: '4'
+                label: 'drops a year'
+                text: 'Not one more. Each collection takes the time it needs to be done right.'
+            tested:
+                value: '100 km'
+                label: 'before every release'
+                text: 'Every piece is worn, washed and pushed around by the team before it reaches you.'
+            repair:
+                value: '2 yrs'
+                label: 'of free repairs'
+                text: 'A seam gives way? We fix it, no questions asked.'

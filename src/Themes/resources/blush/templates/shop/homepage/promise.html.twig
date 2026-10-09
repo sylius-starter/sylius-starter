@@ -1,0 +1,22 @@
+<section id="blush-promise" class="blush-promise" aria-labelledby="blush-promise-title">
+    <div class="container">
+        <div class="blush-promise__grid">
+            <div class="blush-promise__intro">
+                <p class="blush-promise__eyebrow">{{ 'blush.promise.eyebrow'|trans({}, 'blush') }}</p>
+                <h2 id="blush-promise-title">{{ 'blush.promise.title'|trans({}, 'blush')|raw }}</h2>
+                <p class="blush-promise__lead">{{ 'blush.promise.lead'|trans({}, 'blush') }}</p>
+                <a class="btn btn-primary" href="#blush-products">{{ 'blush.promise.cta'|trans({}, 'blush') }}</a>
+            </div>
+
+            <ul class="blush-promise__list" role="list">
+                {% for item, symbol in {choice: '✳', wrap: '♡', returns: '↺', care: '✓'} %}
+                    <li class="blush-promise__card blush-promise__card--{{ item }}">
+                        <span class="blush-promise__badge" aria-hidden="true">{{ symbol }}</span>
+                        <h3>{{ ('blush.promise.items.' ~ item ~ '.title')|trans({}, 'blush') }}</h3>
+                        <p>{{ ('blush.promise.items.' ~ item ~ '.text')|trans({}, 'blush') }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

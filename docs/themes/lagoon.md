@@ -18,7 +18,8 @@ shipped by the Sylius shop, so no extra font file is needed).
 - **Homepage** — a split hero with oversized copy, three reassurance items and a
   floating "storefront window" that showcases the **latest product of the
   channel** (real image and link, no static asset), a *"You replace / You keep"*
-  comparison section on a mint background, then the four latest products; the
+  comparison section on a mint background (the promise block, through the
+  `theme_promise` hookable), then the four latest products; the
   deals and new collection blocks are hidden.
 - **Footer** — a deep-teal band with numbered "how it works" steps above a light
   footer with the Lagoon wordmark and Sylius links.

@@ -46,5 +46,8 @@ final class MyHeroContributor implements HeroContributorInterface
 - Only core configures the `banner` and `hero` hookables of `sylius_shop.homepage.index`
   (checked by `tests/Integration/StorefrontHeroContractTest.php`).
 - Themes may disable native Sylius hookables they do not want (`latest_deals`, `new_collection`...).
-- Hookables a package adds are prefixed with its name (`import_collections`, `lagoon_promise`...), so a theme disabling a
+- Hookables a package adds are prefixed with its name (`import_collections`, `theme_promise`...), so a theme disabling a
   native block never hides another package's content.
+- Every theme renders a promise block (`templates/shop/homepage/promise.html.twig`) through the shared `theme_promise`
+  hookable, priority 150 (between the hero and the latest products). Only themes declare `theme_*` hookables
+  (checked by `tests/Integration/ThemePromiseContractTest.php`).

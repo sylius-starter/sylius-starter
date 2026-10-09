@@ -12,10 +12,12 @@ crisp dark typography and calmer contrast.
 - **Components** — the same monospaced terminal framing, but with airy light panels,
   bright callouts and high-contrast controls.
 - **Homepage** — a lighter command-console hero that keeps the direct link to the
-  latest products, without losing the terminal aesthetic.
+  latest products, without losing the terminal aesthetic; then the promise block,
+  a *"before / after"* written as a `git diff` (through the `theme_promise`
+  hookable), and the latest products.
 - **Shopping flow** — matching cart, checkout and product cards with calmer contrast
   for better readability.
-- **Translations** — the hero texts live in a `prompt` translation domain
+- **Translations** — the homepage texts live in a `prompt` translation domain
   (`translations/prompt.en.yaml` and `prompt.fr.yaml`).
 
 Install it with `castor sylius:theme:setup prompt_light`.

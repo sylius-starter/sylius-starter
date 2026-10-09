@@ -14,6 +14,10 @@ return App::config([
                 'new_collection' => [
                     'enabled' => false,
                 ],
+                'theme_promise' => [
+                    'template' => 'shop/homepage/promise.html.twig',
+                    'priority' => 150,
+                ],
                 'latest_products' => [
                     'props' => [
                         'limit' => 4,

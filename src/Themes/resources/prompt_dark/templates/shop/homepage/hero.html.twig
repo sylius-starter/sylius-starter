@@ -4,7 +4,10 @@
         <p class="prompt-hero__eyebrow">{% if hero.eyebrow %}{{ hero.eyebrow }}{% else %}{{ 'prompt.hero.eyebrow'|trans({}, 'prompt') }}{% endif %}</p>
         <h1>{% if hero.title %}{{ hero.title }}{% else %}{{ 'prompt.hero.title'|trans({}, 'prompt')|raw }}{% endif %}</h1>
         <p class="prompt-hero__description">{% if hero.lead %}{{ hero.lead }}{% else %}{{ 'prompt.hero.description'|trans({}, 'prompt') }}{% endif %}</p>
-        <a class="btn btn-primary" href="{{ hero.ctaUrl ?? '#prompt-products' }}">{% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'prompt.hero.cta'|trans({}, 'prompt') }}{% endif %}</a>
+        <div class="prompt-hero__actions">
+            <a class="btn btn-primary" href="{{ hero.ctaUrl ?? '#prompt-products' }}">{% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'prompt.hero.cta'|trans({}, 'prompt') }}{% endif %}</a>
+            <a class="prompt-hero__link" href="#prompt-promise">{{ 'prompt.promise.link'|trans({}, 'prompt') }}</a>
+        </div>
     </div>
 
     {% if hero.image %}

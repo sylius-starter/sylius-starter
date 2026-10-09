@@ -1,0 +1,34 @@
+<section id="canvas-promise" class="canvas-promise" aria-labelledby="canvas-promise-title">
+    <div class="container">
+        <div class="canvas-promise__grid">
+            <div class="canvas-promise__head">
+                <p class="canvas-promise__label">
+                    <span>{{ 'canvas.promise.label'|trans({}, 'canvas') }}</span>
+                    <span class="canvas-cover__rule" aria-hidden="true"></span>
+                </p>
+                <h2 id="canvas-promise-title">{{ 'canvas.promise.title'|trans({}, 'canvas')|raw }}</h2>
+            </div>
+
+            <div class="canvas-promise__body">
+                <p class="canvas-promise__lead">{{ 'canvas.promise.lead'|trans({}, 'canvas') }}</p>
+
+                <dl class="canvas-promise__notes">
+                    {% for item in ['matter', 'make', 'time'] %}
+                        <div>
+                            <dt>{{ ('canvas.promise.notes.' ~ item ~ '.title')|trans({}, 'canvas') }}</dt>
+                            <dd>{{ ('canvas.promise.notes.' ~ item ~ '.text')|trans({}, 'canvas') }}</dd>
+                        </div>
+                    {% endfor %}
+                </dl>
+
+                <div class="canvas-promise__footer">
+                    <p class="canvas-promise__signature">{{ 'canvas.promise.signature'|trans({}, 'canvas') }}</p>
+                    <a class="canvas-promise__cta" href="#canvas-products">
+                        {{ 'canvas.promise.cta'|trans({}, 'canvas') }}
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

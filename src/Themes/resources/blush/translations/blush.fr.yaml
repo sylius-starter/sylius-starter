@@ -7,3 +7,22 @@ blush:
         label: 'UNE BELLE SÉLECTION'
     products:
         eyebrow: 'LA BOUTIQUE / À DÉCOUVRIR'
+    promise:
+        link: 'Nos promesses'
+        eyebrow: 'NOS PETITES PROMESSES'
+        title: 'Choisir moins,<br>aimer plus.'
+        lead: 'Chaque pièce Blush a une histoire, et nous tenons à ce qu’elle continue chez vous. Voici ce que nous vous promettons, commande après commande.'
+        cta: 'Voir la sélection'
+        items:
+            choice:
+                title: 'Choisi avec soin'
+                text: 'Chaque article est testé et adopté par l’équipe avant d’arriver en boutique.'
+            wrap:
+                title: 'Emballé avec amour'
+                text: 'Papier de soie, petit mot écrit à la main et zéro plastique superflu.'
+            returns:
+                title: 'Retours sans souci'
+                text: '30 jours pour changer d’avis, l’étiquette de retour est offerte.'
+            care:
+                title: 'Toujours à l’écoute'
+                text: 'Une vraie personne vous répond, en moins de 24 heures.'

@@ -12,12 +12,14 @@ panel.
   neutral text.
 - **Components** — compact square-edged controls, a responsive category menu,
   dark product cards, an accessible off-canvas cart and a matching footer.
-- **Homepage** — a two-column introduction with a terminal-style panel and a
-  direct link to the latest products.
+- **Homepage** — a two-column introduction with a terminal-style panel, a
+  direct link to the latest products and a link to the promise block; then the
+  promise block, a *"before / after"* written as a `git diff` (through the
+  `theme_promise` hookable), and the latest products.
 - **Shopping flow** — matching cart and checkout styling, with light sage
   summary panels for contrast.
 - **Checkout** — the checkout header uses the Prompt wordmark and category navigation.
-- **Translations** — the hero texts live in a `prompt` translation domain
+- **Translations** — the homepage texts live in a `prompt` translation domain
   (`translations/prompt.en.yaml` and `prompt.fr.yaml`).
 
 Install it with `castor sylius:theme:setup prompt_dark`.
