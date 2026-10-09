@@ -76,6 +76,8 @@ header .navbar {
 .aurora-category-nav__links {
   width: 100%;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 0.25rem;
   overflow: visible;
@@ -197,6 +199,19 @@ header .dropdown-item {
   }
 }
 
+// Desktop: the menu fills the space between the logo and the account links and is centered in it.
+
+@media (min-width: 992px) {
+  .aurora-category-nav__menu {
+    width: 100%;
+  }
+
+  .aurora-category-nav__menu .offcanvas-body {
+    flex-grow: 1;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 991.98px) {
   .aurora-category-nav__menu {
     position: fixed;
@@ -213,6 +228,7 @@ header .dropdown-item {
 
   .aurora-category-nav__links {
     flex-direction: column;
+    justify-content: flex-start;
     align-items: stretch;
     gap: 0.25rem;
   }
@@ -220,6 +236,7 @@ header .dropdown-item {
   .aurora-category-nav__links > .nav-link,
   .aurora-category-nav__links > .nav-item > .nav-link {
     width: 100%;
+    white-space: normal;
     justify-content: space-between;
     padding: 0.75rem 0.85rem !important;
     border-radius: $radius-sm;
