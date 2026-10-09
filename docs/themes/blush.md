@@ -13,6 +13,9 @@ soft rose panels and a deep plum footer.
   (`#B54878`) accents and plum (`#2D141F`) typography and footer.
 - **Components** — rounded buttons and product cards, a custom wordmark and
   responsive taxon navigation.
+- **Product cards** — rounded white cards with a pale rose image well and a soft
+  plum shadow, raspberry prices, a lift on hover; the whole card is clickable, on
+  the homepage and on category pages alike.
 - **Homepage** — a French editorial hero with a CSS illustration, a direct
   link to the latest products and a link to the promise block; then the
   *"Our little promises"* block (four rose cards with coloured badges, through

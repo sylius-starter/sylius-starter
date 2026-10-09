@@ -12,6 +12,9 @@ panel.
   neutral text.
 - **Components** — compact square-edged controls, a responsive category menu,
   dark product cards, an accessible off-canvas cart and a matching footer.
+- **Product cards** — raised dark cards with a `>` prompt before the product name
+  (it lights up on hover), green prices and a green border on hover; the whole
+  card is clickable, on the homepage and on category pages alike.
 - **Homepage** — a two-column introduction with a terminal-style panel, a
   direct link to the latest products and a link to the promise block; then the
   promise block, a *"before / after"* written as a `git diff` (through the

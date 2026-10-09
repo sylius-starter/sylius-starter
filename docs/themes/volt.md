@@ -16,6 +16,9 @@ assets.
   a dark footer with white links and light-backed payment logos, a full-width
   add-to-cart button, and no default header top bar.
 - **Product page** — the price sits directly below the product name, before reviews.
+- **Product cards** — rounded white cards with a lavender image well, electric
+  prices and a stronger lift on hover; the whole card is clickable, on the
+  homepage and on category pages alike.
 - **Homepage** — an oversized, responsive graphic hero aligned on the page
   grid, a strip of three perks (shipping, returns, secure checkout), the
   *"Volt pact"* bento with three bold figures (the promise block, through the

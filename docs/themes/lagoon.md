@@ -12,9 +12,12 @@ shipped by the Sylius shop, so no extra font file is needed).
 - **Palette** — abyss teal (`#0A3A3E`), teal (`#0E7C86`), aqua (`#14DFE6`),
   mint foam (`#E7F9F9`) and an iris accent (`#6B3FE0`) on a white background.
 - **Components** — pill-shaped buttons (teal for primary actions, aqua for
-  highlights), mint-framed product cards with a slow image zoom, quiet
+  highlights), white product cards with a mint image well, quiet
   text-only breadcrumbs, a teal cart pill with an aqua item counter, a full-width
   aqua add-to-cart button, and no default header top bar.
+- **Product cards** — white cards with a mint image well flush to the top, name
+  and price aligned, a lift and a teal title on hover; the whole card is
+  clickable, on the homepage and on category pages alike.
 - **Homepage** — a split hero with oversized copy, three reassurance items and a
   floating "storefront window" that showcases the **latest product of the
   channel** (real image and link, no static asset), a *"You replace / You keep"*

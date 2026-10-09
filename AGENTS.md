@@ -78,6 +78,11 @@ Never rely on `data-test-*` attributes in CSS selectors. They are testing
 helpers and may not be present in the production storefront; target stable
 classes or semantic structure instead.
 
+Product cards are wrapped in a `<div>` inside `.products-grid` on the homepage and
+in association lists, but are direct grid items on category pages. Style the card
+root with `.products-grid div:has(> a.link-reset)` (each theme does it in
+`_cards.scss`), never with `.products-grid > div > div`.
+
 ## Monorepo
 
 The code is split into packages under `src/<Package>/` (`composer.json`, `src/`, `tests/`, `resources/`). The root

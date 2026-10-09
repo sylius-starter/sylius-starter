@@ -248,36 +248,6 @@
   }
 }
 
-.products-grid {
-  row-gap: 2.5rem;
-}
-
-.products-grid a .rounded-3 {
-  border-radius: 1.25rem !important;
-  background-color: $lavender !important;
-
-  img {
-    transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-}
-
-.products-grid a:hover .rounded-3 img {
-  transform: scale(1.05);
-}
-
-.products-grid a .h6 {
-  margin-bottom: 0.35rem;
-  color: $ink;
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  transition: color 160ms ease;
-}
-
-.products-grid a:hover .h6 {
-  color: $electric;
-}
-
 @media (max-width: 991.98px) {
   .volt-perks {
     grid-template-columns: 1fr;
