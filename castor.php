@@ -39,7 +39,7 @@ function qa_phpcsfixer(bool $dryRun = false): int
 #[AsTask(description: 'Run PHPStan', namespace: 'qa', name: 'phpstan', aliases: ['phpstan'])]
 function qa_phpstan(bool $generateBaseline = false): int
 {
-    $args = ['analyze', '--configuration', context()->workingDirectory . '/phpstan.dist.neon'];
+    $args = ['analyze', '--configuration', context()->workingDirectory . '/phpstan.dist.neon', '--memory-limit=1G'];
 
     if ($generateBaseline) {
         $args[] = '-b';

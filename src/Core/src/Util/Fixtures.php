@@ -7,11 +7,22 @@ namespace SyliusStarter\Core\Util;
 use SyliusStarter\Core\App;
 
 use function Castor\fs;
-use function SyliusStarter\Import\ensure_import_scaffold;
-use function SyliusStarter\Import\is_import_scaffold_deployed;
 
-final readonly class Fixtures
+final class Fixtures
 {
+    /** @var list<\Closure(App, list<string>): void> */
+    private static array $beforeLoadCallbacks = [];
+
+    /**
+     * Packages may register hooks run before a fixture suite is loaded (e.g. ensure scaffold).
+     *
+     * @param callable(App, list<string>): void $callback
+     */
+    public static function beforeLoad(callable $callback): void
+    {
+        self::$beforeLoadCallbacks[] = $callback(...);
+    }
+
     /**
      * Locales that must be loaded (fixture suite) before channel fixtures run.
      * PHP fixture files cannot use the Symfony {@code %locale%} parameter placeholder.
@@ -25,27 +36,13 @@ final readonly class Fixtures
 
     public static function load(App $app, ?string ...$args): void
     {
-        $suites = array_values(array_filter($args, static fn (?string $arg): bool => null !== $arg && '' !== $arg));
+        $suites = array_values(array_filter($args, static fn(?string $arg): bool => null !== $arg && '' !== $arg));
 
-        if (\in_array('app', $suites, true)) {
-            self::ensureAppFixtureSuite($app);
+        foreach (self::$beforeLoadCallbacks as $callback) {
+            $callback($app, $suites);
         }
 
         Docker::run($app, \sprintf('php bin/console sylius:fixtures:load %s -n', implode(' ', $suites)));
-    }
-
-    private static function ensureAppFixtureSuite(App $app): void
-    {
-        if (!\function_exists('SyliusStarter\Import\ensure_import_scaffold')) {
-            return;
-        }
-
-        $wasDeployed = is_import_scaffold_deployed($app);
-        ensure_import_scaffold($app, $app->name());
-
-        if (!$wasDeployed) {
-            Docker::run($app, 'php bin/console cache:clear --no-warmup -n');
-        }
     }
 
     public static function createSuite(App $app, ?string $name = null): void
