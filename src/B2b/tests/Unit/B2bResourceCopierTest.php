@@ -44,8 +44,12 @@ final class B2bResourceCopierTest extends TestCase
         B2bResourceCopier::copy(new App('test-app', $this->tempDir), 'hide_prices');
 
         static::assertFileExists($this->tempDir . '/config/sylius/twig_hooks/shop/product/hide_prices.php');
-        static::assertFileExists($this->tempDir . '/templates/shop/product/common/price.html.twig');
-        static::assertFileExists($this->tempDir . '/templates/shop/product/show/content/info/summary/prices/price.html.twig');
+        static::assertFileExists($this->tempDir . '/src/Security/CanAccessB2bShopVoter.php');
+        static::assertDirectoryDoesNotExist($this->tempDir . '/templates');
+        static::assertStringContainsString(
+            "'condition' => '@=is_granted(\"CAN_ACCESS_B2B_SHOP\")'",
+            (string) file_get_contents($this->tempDir . '/config/sylius/twig_hooks/shop/product/hide_prices.php'),
+        );
     }
 
     public function testCopiesCustomerValidationEmailResources(): void

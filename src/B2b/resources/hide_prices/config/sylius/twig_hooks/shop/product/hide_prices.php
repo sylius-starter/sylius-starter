@@ -9,17 +9,16 @@ return App::config([
         'hooks' => [
             'sylius_shop.shared.product.card.prices' => [
                 'price' => [
-                    'props' => [
-                        'template' => 'shop/product/common/price.html.twig',
-                    ],
+                    'condition' => '@=is_granted("CAN_ACCESS_B2B_SHOP")',
                 ],
             ],
 
             'sylius_shop.product.show.content.info.summary.prices' => [
                 'price' => [
-                    'props' => [
-                        'template' => 'shop/product/show/content/info/summary/prices/price.html.twig',
-                    ],
+                    'condition' => '@=is_granted("CAN_ACCESS_B2B_SHOP")',
+                ],
+                'lowest_price_before_discount' => [
+                    'condition' => '@=is_granted("CAN_ACCESS_B2B_SHOP")',
                 ],
             ],
         ],
