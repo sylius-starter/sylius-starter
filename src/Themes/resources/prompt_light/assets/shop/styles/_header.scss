@@ -79,6 +79,8 @@ header .navbar {
 .prompt-category-nav__links {
   width: 100%;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 0.25rem;
 }
@@ -89,6 +91,7 @@ header .navbar {
   border-radius: 0.3rem;
   color: $text-muted;
   font-size: 0.82rem;
+  white-space: nowrap;
 
   &:hover,
   &:focus,
@@ -169,6 +172,19 @@ header .navbar-brand {
   color: $white !important;
 }
 
+// Desktop: the menu fills the space between the logo and the account links and is centered in it.
+
+@media (min-width: 992px) {
+  .prompt-category-nav__menu {
+    width: 100%;
+  }
+
+  .prompt-category-nav__menu .offcanvas-body {
+    flex-grow: 1;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 991.98px) {
   .prompt-category-nav__menu {
     position: fixed;
@@ -186,12 +202,14 @@ header .navbar-brand {
 
   .prompt-category-nav__links {
     flex-direction: column;
+    justify-content: flex-start;
     align-items: stretch;
   }
 
   .prompt-category-nav__links > .nav-link,
   .prompt-category-nav__links > .nav-item > .nav-link {
     width: 100%;
+    white-space: normal;
     justify-content: space-between;
   }
 }

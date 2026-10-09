@@ -75,6 +75,28 @@ header .nav-link {
   }
 }
 
+// Category navigation: keep each label on one line and wrap whole items instead.
+
+@media (min-width: 992px) {
+  header .navbar {
+    width: 100%;
+  }
+
+  header .navbar .offcanvas-body {
+    flex-grow: 1;
+  }
+
+  header .navbar-nav {
+    flex-wrap: wrap;
+    row-gap: 0 !important;
+  }
+
+  header .navbar-nav > .nav-link,
+  header .navbar-nav > .nav-item > .nav-link {
+    white-space: nowrap;
+  }
+}
+
 .canvas-checkout-brand,
 .canvas-checkout-account {
   color: $text;
