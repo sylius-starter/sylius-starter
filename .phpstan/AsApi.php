@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jolicode\CastorApi\Attribute;
+namespace Castor\Api\Attribute;
 
 #[\Attribute(\Attribute::TARGET_FUNCTION)]
 final class AsApi
