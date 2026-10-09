@@ -1,0 +1,30 @@
+{# Theme markup for the core hero slot (StorefrontHero). `hero` holds contributed data (import...); theme copy is the fallback. #}
+<section class="container prompt-hero" aria-label="{{ 'sylius.ui.home'|trans }}">
+    <div class="prompt-hero__copy">
+        <p class="prompt-hero__eyebrow">{% if hero.eyebrow %}{{ hero.eyebrow }}{% else %}{{ 'prompt.hero.eyebrow'|trans({}, 'prompt') }}{% endif %}</p>
+        <h1>{% if hero.title %}{{ hero.title }}{% else %}{{ 'prompt.hero.title'|trans({}, 'prompt')|raw }}{% endif %}</h1>
+        <p class="prompt-hero__description">{% if hero.lead %}{{ hero.lead }}{% else %}{{ 'prompt.hero.description'|trans({}, 'prompt') }}{% endif %}</p>
+        <a class="btn btn-primary" href="{{ hero.ctaUrl ?? '#prompt-products' }}">{% if hero.ctaLabel %}{{ hero.ctaLabel }}{% else %}{{ 'prompt.hero.cta'|trans({}, 'prompt') }}{% endif %}</a>
+    </div>
+
+    {% if hero.image %}
+        <img class="prompt-hero__image" src="{{ hero.image }}" alt="{{ hero.imageAlt ?? '' }}">
+    {% else %}
+        <div class="prompt-terminal" aria-label="Prompt terminal">
+            <div class="prompt-terminal__bar" aria-hidden="true">
+                <span class="prompt-terminal__dot"></span>
+                <span class="prompt-terminal__dot"></span>
+                <span class="prompt-terminal__dot"></span>
+                <span class="prompt-terminal__label">storefront — prompt_light</span>
+            </div>
+            <div class="prompt-terminal__body">
+                <span class="prompt-terminal__command">castor sylius:theme:setup prompt_light</span>
+                <p class="prompt-terminal__result"><strong>✓ storefront theme applied</strong></p>
+                <span class="prompt-terminal__command">sylius shop:discover</span>
+                <p class="prompt-terminal__result"><strong>✓</strong> thoughtful goods, no extra noise</p>
+                <span class="prompt-terminal__command">sylius cart:add --item=your-next-favorite</span>
+                <p class="prompt-terminal__result"><strong>✓</strong> good choice.</p>
+            </div>
+        </div>
+    {% endif %}
+</section>

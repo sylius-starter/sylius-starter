@@ -145,3 +145,13 @@
     font-size: 0.72rem;
   }
 }
+
+// Image contributed to the hero slot (e.g. by the import), replaces the terminal.
+.prompt-hero__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid $border;
+  border-radius: 0.55rem;
+}

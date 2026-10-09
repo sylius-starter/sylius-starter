@@ -359,3 +359,12 @@
     animation: none;
   }
 }
+
+// Image contributed to the hero slot (e.g. by the import), replaces the spotlight.
+.lagoon-hero__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: $radius-lg;
+}

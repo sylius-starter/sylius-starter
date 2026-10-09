@@ -295,3 +295,11 @@
     font-size: 1rem;
   }
 }
+
+// Image contributed to the hero slot (e.g. by the import), replaces the collage.
+.canvas-cover__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 7 / 6;
+  object-fit: cover;
+}

@@ -8,9 +8,6 @@ return App::config([
     'sylius_twig_hooks' => [
         'hooks' => [
             'sylius_shop.homepage.index' => [
-                'banner' => [
-                    'template' => 'shop/homepage/banner.html.twig',
-                ],
                 'latest_deals' => [
                     'enabled' => false,
                 ],
