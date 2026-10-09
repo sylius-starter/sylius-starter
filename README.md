@@ -507,6 +507,17 @@ Import data is stored per project slug under `.castor/import/var/{project-slug}/
 castor sylius:import:fixtures:generate ai --project="Organic Kids" --limit=100
 ```
 
+The `--subdomain` option decides which channel receives the catalog:
+
+| `--subdomain`        | Channel                                         | Hostname                 | On load                                                       |
+|----------------------|-------------------------------------------------|--------------------------|---------------------------------------------------------------|
+| `""` (explicit)      | the default `WEB_STORE` channel                 | the app domain           | only the project's previously imported products/taxons are replaced; the channel, its orders and admins are kept |
+| omitted (slug) or e.g. `organic-kids` | a dedicated channel (`ORGANIC_KIDS`) + scoped admin user | `organic-kids.{domain}` | the dedicated channel is reset and recreated (demo shops) |
+
+The choice is stored in `.castor/import/var/{project-slug}/project.yaml` (`shop` key) and reused by `fixtures:load` and
+`sylius:import:delete`. Projects generated before keep their dedicated channel. Use `--subdomain=""` to import into
+the default channel.
+
 #### Load the fixture suite
 
 ```bash
