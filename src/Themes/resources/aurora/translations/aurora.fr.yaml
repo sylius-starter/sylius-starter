@@ -1,0 +1,102 @@
+aurora:
+    hero:
+        kicker: 'Livraison offerte, zéro frais cachés.'
+        title: '<em>Votre style,</em> livré en quelques jours.'
+        lead: 'Des pièces pensées pour être portées tous les jours, prêtes à partir en 48 heures. Des prix honnêtes, <strong>aucun frais caché</strong> et une équipe qui répond quand vous en avez besoin.'
+        cta: 'Découvrir les nouveautés'
+        spotlight: 'Nouveauté'
+        discover: 'Voir le produit'
+        float:
+            value: '0 €'
+            stat: 'de frais de port sur chaque commande'
+            title: 'Essayez chez vous'
+            text: '30 jours pour retourner, étiquette fournie'
+    usp:
+        shipping:
+            title: 'Expédié sous 48 h'
+            text: 'Suivi jusqu’à votre porte'
+        returns:
+            title: 'Retours gratuits'
+            text: '30 jours, sans justification'
+        payment:
+            title: 'Paiement sécurisé'
+            text: 'Carte, PayPal et plus'
+    proof:
+        label: 'Notre promesse, en chiffres'
+        item_1:
+            value: '48 h'
+            text: 'pour expédier votre commande'
+        item_2:
+            value: '30 jours'
+            text: 'pour changer d’avis'
+        item_3:
+            value: '0 €'
+            text: 'de livraison, retours compris'
+        item_4:
+            value: '7j/7'
+            text: 'un humain vous répond'
+    products:
+        eyebrow:
+            latest: 'Nouveautés'
+    promise:
+        eyebrow: 'Pourquoi Aurora'
+        title: 'La boutique que vous attendiez.'
+        lead: '<strong>Aurora</strong> s’occupe de la partie ennuyeuse : du clic à votre porte, chaque étape est <strong>visible, rapide et gratuite</strong>.'
+        item_1:
+            title: 'Un clic, une commande.'
+            text: 'Pas de compte obligatoire, votre panier est gardé pour vous.'
+        item_2:
+            title: 'Expédié sous 48 heures.'
+            text: 'Vous suivez votre colis à chaque étape.'
+        item_3:
+            title: 'Des retours qui ne coûtent rien.'
+            text: '30 jours pour changer d’avis, étiquette fournie.'
+        item_4:
+            title: 'De vraies personnes derrière l’écran.'
+            text: 'Notre équipe vous répond, sept jours sur sept.'
+        commitments:
+            eyebrow: 'Nos engagements'
+            title: 'Simple, de bout en bout.'
+        journey:
+            title: 'Du clic à votre porte.'
+        cta: 'Voir les nouveautés'
+        secondary_cta: 'Nos services'
+        log:
+            title: 'commande #A-2048 · suivi en direct'
+            footer: 'Votre prochaine commande est à un clic.'
+            event_1:
+                time: '09:12'
+                label: 'Commande confirmée'
+                detail: 'paiement accepté · e-mail de confirmation envoyé'
+            event_2:
+                time: '11:40'
+                label: 'Préparée avec soin'
+                detail: 'contrôle qualité · emballage recyclable'
+            event_3:
+                time: '16:05'
+                label: 'Expédiée'
+                detail: 'numéro de suivi envoyé par e-mail'
+            event_4:
+                time: 'demain'
+                label: 'Livrée chez vous'
+                detail: 'ou dans le point relais de votre choix'
+    footer:
+        tagline: 'La boutique en ligne qui tient ses promesses. Livrée vite, retournée gratuitement.'
+        services:
+            eyebrow: 'Nos services'
+            title: 'À vos côtés, avant et après.'
+            shipping:
+                title: 'Livraison rapide'
+                tag: 'Offerte dès le premier article'
+                text: 'Votre commande quitte notre entrepôt sous 48 heures et vous la suivez jusqu’à votre porte ou votre point relais.'
+                cta: 'Commencer mes achats'
+            returns:
+                title: 'Retours simplifiés'
+                tag: '30 jours'
+                text: 'Vous avez changé d’avis ? Lancez un retour depuis votre compte, imprimez l’étiquette et déposez le colis : nous vous remboursons dès sa réception.'
+                cta: 'Mon compte'
+            support:
+                title: 'Service client'
+                tag: '7 jours sur 7'
+                text: 'Une question sur une taille, une commande ou une livraison ? Écrivez-nous, un membre de l’équipe vous répond personnellement.'
+                cta: 'Nous contacter'

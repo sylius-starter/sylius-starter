@@ -16,6 +16,7 @@ node scripts/capture-theme-screenshots.mjs prompt_dark
 node scripts/capture-theme-screenshots.mjs prompt_light
 node scripts/capture-theme-screenshots.mjs volt
 node scripts/capture-theme-screenshots.mjs lagoon
+node scripts/capture-theme-screenshots.mjs aurora
 ```
 
 The script saves the screenshots in `docs/images/` (`<theme>-homepage.png`, `<theme>-product.png` and `<theme>-cart.png`). Use `--base-url <url>` to capture from another storefront URL, or `--output-dir <dir>` to choose another output directory. The default storefront is `https://app.test/en_US/`.
@@ -34,6 +35,7 @@ node scripts/capture-theme-screenshots.mjs prompt_dark --include-cart
 node scripts/capture-theme-screenshots.mjs prompt_light --include-cart
 node scripts/capture-theme-screenshots.mjs volt --include-cart
 node scripts/capture-theme-screenshots.mjs lagoon --include-cart
+node scripts/capture-theme-screenshots.mjs aurora --include-cart
 ```
 
 The cart uses an isolated temporary browser profile and does not alter another browser session's cart.

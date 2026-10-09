@@ -21,6 +21,7 @@ const themeSelectors = {
   blush: '.blush-logo',
   volt: '.volt-logo',
   lagoon: '.lagoon-logo',
+  aurora: '.aurora-logo',
 };
 
 function printUsage() {

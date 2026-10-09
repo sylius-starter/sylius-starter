@@ -1,0 +1,518 @@
+// Split hero: an aurora-gradient headline on the left, a miniature product page on a lavender glow on the right.
+
+.aurora-hero {
+  overflow: hidden;
+  padding-top: clamp(2.5rem, 6vw, 5rem);
+}
+
+.aurora-hero > .container {
+  container-type: inline-size;
+}
+
+.aurora-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.aurora-hero__kicker {
+  margin-bottom: 1.5rem;
+  color: $ink;
+  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.aurora-hero h1 {
+  margin: 0 0 1.75rem;
+  font-size: clamp(3rem, 6.4vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+  text-wrap: initial;
+
+  // The first line glows from electric blue to violet, like the mockup's "Votre boutique,".
+  em {
+    display: block;
+    background: $gradient-aurora;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-style: normal;
+  }
+}
+
+.aurora-hero__lead {
+  max-width: 36rem;
+  margin-bottom: 2rem;
+  color: $text-muted;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.6;
+
+  strong {
+    color: $ink;
+    font-weight: 600;
+  }
+}
+
+.aurora-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: center;
+
+  .btn {
+    min-height: 3.25rem;
+    padding-inline: 1.6rem;
+    font-size: 1rem;
+  }
+}
+
+.aurora-hero__link {
+  color: $ink;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: $violet-soft;
+  text-decoration-thickness: 2px;
+
+  &:hover {
+    color: $violet;
+  }
+}
+
+.aurora-usp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.25rem;
+  margin: 3rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  svg {
+    width: 1.9rem;
+    height: 1.9rem;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: $electric;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+  }
+
+  span {
+    display: flex;
+    flex-direction: column;
+    color: $text-muted;
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+
+  strong {
+    color: $ink;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+}
+
+// Visual: a lavender glow that bleeds off the right edge of the page.
+
+.aurora-hero__visual {
+  position: relative;
+  // 100cqw is the width of the hero container: the panel runs to the viewport edge.
+  margin-right: calc((100vw - 100cqw) / -2);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: $radius-lg 0 0 $radius-lg;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(#B3A6FF, 0.95), transparent 45%),
+    radial-gradient(circle at 0% 100%, rgba($electric, 0.12), transparent 45%),
+    linear-gradient(165deg, #DCD8FF 0%, #F3F1FF 55%, #FBFAFF 100%);
+}
+
+.aurora-showcase {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba($white, 0.8);
+  border-radius: $radius;
+  background-color: $white;
+  box-shadow: $shadow-float;
+}
+
+.aurora-showcase__bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid $border;
+}
+
+.aurora-logo--mini .aurora-logo__name {
+  font-size: 0.95rem;
+}
+
+.aurora-logo--mini .aurora-logo__dot {
+  width: 0.35rem;
+  height: 0.35rem;
+}
+
+.aurora-showcase__nav {
+  display: flex;
+  gap: 0.4rem;
+
+  span {
+    width: 2rem;
+    height: 0.35rem;
+    border-radius: 50rem;
+    background-color: $lavender-strong;
+
+    &:last-child {
+      width: 1rem;
+      background-color: $violet-soft;
+    }
+  }
+}
+
+.aurora-showcase__body {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.aurora-showcase__thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aurora-showcase__thumb {
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  background-color: $lavender;
+  opacity: 0.7;
+
+  &.is-active {
+    border-color: $electric;
+    opacity: 1;
+  }
+}
+
+.aurora-showcase__product {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1rem;
+  color: $ink;
+  text-decoration: none;
+
+  &:hover {
+    color: $ink;
+  }
+}
+
+.aurora-showcase__media {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: $radius-sm;
+  background-color: $lavender;
+
+  img {
+    transition: transform 800ms $ease;
+  }
+}
+
+.aurora-showcase__product:hover .aurora-showcase__media img {
+  transform: scale(1.05);
+}
+
+.aurora-showcase__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.25rem;
+}
+
+.aurora-showcase__label {
+  color: $violet;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.aurora-showcase__name {
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.aurora-showcase__price {
+  color: $text;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.aurora-showcase__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+
+  span {
+    height: 0.4rem;
+    border-radius: 50rem;
+    background-color: $lavender;
+
+    &:nth-child(2) {
+      width: 85%;
+    }
+
+    &:nth-child(3) {
+      width: 60%;
+    }
+  }
+}
+
+.aurora-showcase__cta {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: auto;
+  padding: 0.45rem 0.9rem;
+  border-radius: 50rem;
+  background-color: $violet;
+  color: $white;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  &::after {
+    margin-inline-start: 0.4rem;
+    content: "→";
+    transition: transform 180ms $ease;
+  }
+}
+
+.aurora-showcase__product:hover .aurora-showcase__cta::after {
+  transform: translateX(3px);
+}
+
+.aurora-showcase__empty {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+
+  span {
+    border-radius: $radius-sm;
+    background: linear-gradient(135deg, $lavender, $lavender-strong);
+
+    &:first-child {
+      grid-row: span 2;
+      aspect-ratio: 4 / 5;
+    }
+  }
+}
+
+// Floating cards
+
+.aurora-float {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid $border;
+  border-radius: 1rem;
+  background-color: $white;
+  box-shadow: $shadow-float;
+  animation: aurora-drift 7s ease-in-out infinite;
+}
+
+.aurora-float--stat {
+  top: -1.5rem;
+  right: clamp(1rem, 6vw, 5rem);
+  max-width: 10.5rem;
+}
+
+.aurora-float--note {
+  bottom: -1.5rem;
+  left: clamp(-2.5rem, -3vw, -1rem);
+  max-width: 17rem;
+  animation-delay: -3.5s;
+}
+
+.aurora-float__value {
+  background: $gradient-aurora;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.aurora-float__title {
+  color: $electric;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.aurora-float__text {
+  color: $ink;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+// Proof strip: the mockup's logo band, turned into the shop's key numbers.
+
+.aurora-proof {
+  border-block: 1px solid $border;
+  background-color: $white;
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    padding-block: 1.75rem;
+  }
+}
+
+.aurora-proof__label {
+  margin: 0;
+  color: $text-muted;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.aurora-proof__items {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: 1.25rem clamp(1.5rem, 4vw, 3.5rem);
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+}
+
+.aurora-proof__value {
+  color: $ink;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.aurora-proof__text {
+  color: $text-muted;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 991.98px) {
+  .aurora-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aurora-hero__visual {
+    margin-top: 1rem;
+    margin-right: 0;
+    border-radius: $radius-lg;
+  }
+
+  .aurora-float--note {
+    left: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .aurora-showcase__body {
+    grid-template-columns: 1fr;
+  }
+
+  .aurora-showcase__thumbs {
+    display: none;
+  }
+
+  .aurora-showcase__product {
+    grid-template-columns: 1fr;
+  }
+
+  .aurora-showcase__media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .aurora-showcase__lines {
+    display: none;
+  }
+
+  .aurora-showcase__cta {
+    margin-top: 0.5rem;
+  }
+
+  .aurora-float--stat {
+    top: -1rem;
+    right: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .aurora-float__value {
+    font-size: 1.9rem;
+  }
+
+  .aurora-float--note {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    max-width: none;
+    margin-top: 1rem;
+    animation: none;
+  }
+
+  .aurora-proof__items {
+    justify-content: flex-start;
+  }
+}
+
+// Image contributed to the hero slot (e.g. by the import), replaces the showcase.
+.aurora-hero__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: $radius-lg;
+}

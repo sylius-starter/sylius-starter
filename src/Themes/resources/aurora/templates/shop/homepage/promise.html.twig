@@ -1,0 +1,47 @@
+{# Aurora promise: a split card, numbered commitments on white and the journey of an order on midnight. #}
+<section id="aurora-promise" class="aurora-promise" aria-labelledby="aurora-promise-title">
+    <div class="container">
+        <div class="aurora-section-head aurora-section-head--wide">
+            <p class="aurora-eyebrow">{{ 'aurora.promise.eyebrow'|trans({}, 'aurora') }}</p>
+            <h2 id="aurora-promise-title">{{ 'aurora.promise.title'|trans({}, 'aurora') }}</h2>
+            <p class="aurora-section-head__lead">{{ 'aurora.promise.lead'|trans({}, 'aurora')|raw }}</p>
+        </div>
+
+        <div class="aurora-split">
+            <div class="aurora-split__side aurora-split__side--commitments">
+                <p class="aurora-eyebrow">{{ 'aurora.promise.commitments.eyebrow'|trans({}, 'aurora') }}</p>
+                <h3>{{ 'aurora.promise.commitments.title'|trans({}, 'aurora') }}</h3>
+                <ol class="aurora-commitments" role="list">
+                    {% for item in 1..4 %}
+                        <li>
+                            <span class="aurora-commitments__index">{{ '%02d'|format(item) }}</span>
+                            <span><strong>{{ ('aurora.promise.item_' ~ item ~ '.title')|trans({}, 'aurora') }}</strong> {{ ('aurora.promise.item_' ~ item ~ '.text')|trans({}, 'aurora') }}</span>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+            <div class="aurora-split__side aurora-split__side--journey">
+                <p class="aurora-eyebrow">{{ 'aurora.promise.log.title'|trans({}, 'aurora') }}</p>
+                <h3>{{ 'aurora.promise.journey.title'|trans({}, 'aurora') }}</h3>
+                <ol class="aurora-journey" role="list">
+                    {% for event in 1..4 %}
+                        <li class="aurora-journey__step{{ loop.last ? ' is-next' }}">
+                            <span class="aurora-journey__time">{{ ('aurora.promise.log.event_' ~ event ~ '.time')|trans({}, 'aurora') }}</span>
+                            <span class="aurora-journey__label">{{ ('aurora.promise.log.event_' ~ event ~ '.label')|trans({}, 'aurora') }}</span>
+                            <span class="aurora-journey__detail">{{ ('aurora.promise.log.event_' ~ event ~ '.detail')|trans({}, 'aurora') }}</span>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+
+        <div class="aurora-promise__outro">
+            <p><strong>{{ 'aurora.promise.log.footer'|trans({}, 'aurora') }}</strong></p>
+            <div class="aurora-promise__actions">
+                <a class="btn btn-primary aurora-btn-arrow" href="#aurora-latest-products">{{ 'aurora.promise.cta'|trans({}, 'aurora') }}</a>
+                <a class="btn btn-secondary" href="#aurora-services">{{ 'aurora.promise.secondary_cta'|trans({}, 'aurora') }}</a>
+            </div>
+        </div>
+    </div>
+</section>

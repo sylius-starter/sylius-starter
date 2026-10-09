@@ -69,7 +69,9 @@ function docs_screenshots(
     sort($available);
 
     if ([] === $themes) {
-        $question = new ChoiceQuestion('Which themes do you want to capture? (comma-separated)', ['all', ...$available], 'all');
+        // The default of a multiselect question over a list is an index, not a value: "0" is "all".
+        // With 'all', the prompt hits an undefined array key on every attempt and asks again forever.
+        $question = new ChoiceQuestion('Which themes do you want to capture? (comma-separated)', ['all', ...$available], '0');
         $question->setMultiselect(true);
         $themes = io()->askQuestion($question);
     }

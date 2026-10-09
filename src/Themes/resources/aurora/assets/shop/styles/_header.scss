@@ -1,0 +1,248 @@
+header {
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid $border;
+  background-color: rgba($white, 0.92);
+  backdrop-filter: saturate(1.4) blur(10px);
+}
+
+header .container {
+  padding-block: 0.4rem;
+}
+
+header a {
+  color: $ink;
+
+  &:hover {
+    color: $violet;
+  }
+}
+
+header .navbar {
+  background-color: transparent;
+}
+
+// Wordmark: tight Inter and a violet dot that glows on hover.
+
+.aurora-logo {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.55rem;
+  color: $ink;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $ink;
+    text-decoration: none;
+  }
+}
+
+.aurora-logo__name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.aurora-logo__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: 0 0 auto;
+  margin-top: 0.15rem;
+  border-radius: 50%;
+  background-color: $violet;
+  box-shadow: 0 0 0 0 rgba($violet, 0.6);
+  transition: box-shadow 400ms ease;
+}
+
+.aurora-logo:hover .aurora-logo__dot {
+  box-shadow: 0 0 0 0.35rem rgba($violet, 0.18);
+}
+
+// Category navigation
+
+.aurora-category-nav {
+  display: flex;
+  align-items: center;
+}
+
+.aurora-category-nav__menu .offcanvas-body {
+  display: flex;
+  align-items: center;
+}
+
+.aurora-category-nav__links {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  overflow: visible;
+}
+
+.aurora-category-nav__links > .nav-item.dropdown {
+  position: relative;
+}
+
+.aurora-category-nav__links > .nav-link,
+.aurora-category-nav__links > .nav-item > .nav-link {
+  flex: 0 0 auto;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 50rem;
+  color: $text-muted;
+  font-size: 0.95rem;
+  font-weight: 450;
+  white-space: nowrap;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+
+  &:hover,
+  &:focus,
+  &[aria-expanded="true"] {
+    color: $ink;
+  }
+
+  &[aria-expanded="true"] {
+    background-color: $lavender;
+  }
+}
+
+.aurora-category-nav__menu .dropdown-menu {
+  z-index: 1060;
+  min-width: 13rem;
+  padding: 0.5rem;
+  border: 1px solid $border;
+  border-radius: $radius-sm;
+  background-color: $white;
+  box-shadow: $shadow-float;
+}
+
+.aurora-category-nav__menu .dropdown-menu .nav-link {
+  padding: 0.55rem 0.75rem !important;
+  border-radius: 0.55rem;
+  color: $text;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: normal;
+
+  &:hover,
+  &:focus {
+    background-color: $lavender;
+    color: $violet-dark;
+  }
+}
+
+// Cart: the violet pill of the mockup's "Accompagnement" call to action.
+
+.aurora-cart__button {
+  --bs-btn-color: #{$white};
+  --bs-btn-bg: #{$violet};
+  --bs-btn-border-color: #{$violet};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-hover-bg: #{$violet-dark};
+  --bs-btn-hover-border-color: #{$violet-dark};
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #{$violet-dark};
+  --bs-btn-active-border-color: #{$violet-dark};
+
+  position: relative;
+  display: inline-flex;
+  min-height: 2.6rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+.aurora-cart__icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.aurora-cart__count {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.35rem;
+  display: grid;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  padding: 0 0.3rem;
+  border: 2px solid $white;
+  border-radius: 50rem;
+  background-color: $electric;
+  color: $white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+header .dropdown-menu {
+  border: 1px solid $border;
+  border-radius: $radius-sm;
+  background-color: $white;
+  box-shadow: $shadow-float;
+}
+
+header .dropdown-item {
+  border-radius: 0.5rem;
+  color: $ink;
+
+  &:hover,
+  &:focus {
+    background-color: $lavender;
+    color: $violet-dark;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .aurora-category-nav__menu {
+    position: fixed;
+  }
+
+  .aurora-category-nav__menu .offcanvas-header {
+    border-bottom: 1px solid $border;
+  }
+
+  .aurora-category-nav__menu .offcanvas-body {
+    align-items: flex-start;
+    padding: 1rem !important;
+  }
+
+  .aurora-category-nav__links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+
+  .aurora-category-nav__links > .nav-link,
+  .aurora-category-nav__links > .nav-item > .nav-link {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.75rem 0.85rem !important;
+    border-radius: $radius-sm;
+    color: $ink;
+  }
+
+  .aurora-category-nav__menu .dropdown-menu {
+    position: static !important;
+    width: 100%;
+    margin-top: 0.25rem;
+    border: 0;
+    background: $lavender;
+    box-shadow: none;
+    transform: none !important;
+  }
+
+  .aurora-category-nav__menu .dropdown-menu .nav-link {
+    padding-left: 1.25rem !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .aurora-cart__button {
+    padding-inline: 0.8rem;
+  }
+}

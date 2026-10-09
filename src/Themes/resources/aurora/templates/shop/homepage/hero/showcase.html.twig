@@ -1,0 +1,41 @@
+{% import '@SyliusShop/shared/macro/money.html.twig' as money %}
+{% set product = latest_products|first %}
+
+{# A miniature product page: thumbnails of the latest products, the newest one in focus. #}
+<div class="aurora-showcase">
+    <div class="aurora-showcase__bar" aria-hidden="true">
+        <span class="aurora-logo aurora-logo--mini">{% include 'shop/shared/layout/brand/identity.html.twig' %}</span>
+        <span class="aurora-showcase__nav"><span></span><span></span><span></span></span>
+    </div>
+
+    {% if product %}
+        <div class="aurora-showcase__body">
+            <ul class="aurora-showcase__thumbs" role="list" aria-hidden="true">
+                {% for thumb in latest_products %}
+                    <li class="aurora-showcase__thumb{{ loop.first ? ' is-active' }}">
+                        {{ component('sylius_shop:main_image', {product: thumb, class: 'w-100 h-100 object-fit-cover'}) }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <a class="aurora-showcase__product" href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}">
+                <span class="aurora-showcase__media">
+                    {{ component('sylius_shop:main_image', {product: product, class: 'w-100 h-100 object-fit-cover'}) }}
+                </span>
+                <span class="aurora-showcase__info">
+                    <span class="aurora-showcase__label">{{ 'aurora.hero.spotlight'|trans({}, 'aurora') }}</span>
+                    <span class="aurora-showcase__name">{{ product.name }}</span>
+                    {% if not product.enabledVariants.empty() %}
+                        <span class="aurora-showcase__price">{{ money.calculatePrice(product.enabledVariants.first) }}</span>
+                    {% endif %}
+                    <span class="aurora-showcase__lines" aria-hidden="true"><span></span><span></span><span></span></span>
+                    <span class="aurora-showcase__cta">{{ 'aurora.hero.discover'|trans({}, 'aurora') }}</span>
+                </span>
+            </a>
+        </div>
+    {% else %}
+        <div class="aurora-showcase__empty" aria-hidden="true">
+            <span></span><span></span><span></span>
+        </div>
+    {% endif %}
+</div>

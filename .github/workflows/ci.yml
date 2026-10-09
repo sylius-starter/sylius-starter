@@ -247,6 +247,8 @@ jobs:
                         value: "castor sylius:theme:setup volt"
                     -   name: Lagoon theme
                         value: "castor sylius:theme:setup lagoon"
+                    -   name: Aurora theme
+                        value: "castor sylius:theme:setup aurora"
                     -   name: B2B
                         value: 'castor sylius:b2b:enable -n hide_prices hide_checkout customer_validation'
                     -   name: Remove Menu items

@@ -1,0 +1,36 @@
+{% set aurora_services = [
+    {key: 'shipping', url: path('sylius_shop_homepage') ~ '#aurora-latest-products', class: 'btn-primary'},
+    {key: 'returns', url: path('sylius_shop_account_dashboard'), class: 'btn-secondary'},
+    {key: 'support', url: path('sylius_shop_contact_request'), class: 'btn-secondary'},
+] %}
+
+<footer class="aurora-footer">
+    <div id="aurora-services" class="aurora-services">
+        <div class="container">
+            <p class="aurora-eyebrow">{{ 'aurora.footer.services.eyebrow'|trans({}, 'aurora') }}</p>
+            <p class="aurora-services__title">{{ 'aurora.footer.services.title'|trans({}, 'aurora') }}</p>
+
+            <ul class="aurora-services__rows" role="list">
+                {% for service in aurora_services %}
+                    <li class="aurora-services__row">
+                        <div>
+                            <p class="aurora-services__name">{{ ('aurora.footer.services.' ~ service.key ~ '.title')|trans({}, 'aurora') }}</p>
+                            <p class="aurora-services__tag">{{ ('aurora.footer.services.' ~ service.key ~ '.tag')|trans({}, 'aurora') }}</p>
+                        </div>
+                        <p class="aurora-services__text">{{ ('aurora.footer.services.' ~ service.key ~ '.text')|trans({}, 'aurora') }}</p>
+                        <a class="btn {{ service.class }}" href="{{ service.url }}">{{ ('aurora.footer.services.' ~ service.key ~ '.cta')|trans({}, 'aurora') }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container aurora-footer__main">
+        <div class="aurora-footer__brand">
+            {% include 'shop/shared/layout/brand/logo.html.twig' with {variant: 'footer'} %}
+            <p>{{ 'aurora.footer.tagline'|trans({}, 'aurora') }}</p>
+        </div>
+        <div class="row">
+            {% hook 'content' %}
+        </div>
+    </div>
+</footer>
