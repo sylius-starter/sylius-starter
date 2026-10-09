@@ -411,13 +411,17 @@ If no arguments are provided, an interactive choice lets you select the features
 
 #### Hide prices for anonymous users
 
-Hides product prices (product cards and product details page) from visitors who are not logged in. Prices remain visible
-to logged-in customers.
+Hides product prices (product cards, product details page and lowest price before discount) from visitors who are not
+logged in. Prices remain visible to logged-in customers.
 
 #### Hide checkout for anonymous users
 
-Removes the "Add to cart" button on the product details page, hides the cart from the header, and blanks the cart
-summary page for guests.
+Removes the "Add to cart" button on the product details page and hides the cart from the header for guests. Cart and
+checkout routes return a 403 for them.
+
+Both features rely on Twig Hooks hookable conditions (`condition: '@=is_granted("CAN_ACCESS_B2B_SHOP")'`) rather than
+template overrides, so they require `sylius/twig-hooks` 0.14+ (the command upgrades it if needed). To change who can
+see prices and checkout, adapt `App\Security\CanAccessB2bShopVoter`.
 
 #### Admin validation for new users
 
