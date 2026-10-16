@@ -28,6 +28,19 @@ use function Castor\run;
 
 final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDatabase
 {
+    /**
+     * The opcache of the long-lived FrankenPHP server keeps the scripts of every cache it served, and an opcache
+     * restart crashes it ("zend_mm_heap corrupted"). "{app}:cache-clear" restarts the server to free the scripts of
+     * the old cache (see SyliusService), and these sizes leave room for the cache rebuilds that do not go through it:
+     * the 256 MB default was full after 3 or 4 theme switches, and the 8 MB interned strings after one page.
+     */
+    public const PHP_INI = [
+        'memory_limit' => '1G',
+        'opcache.memory_consumption' => '1024',
+        'opcache.interned_strings_buffer' => '64',
+        'opcache.max_accelerated_files' => '100000',
+    ];
+
     public function getName(): string
     {
         return 'sylius';
@@ -63,7 +76,7 @@ final class SyliusInstaller extends AbstractServiceInstaller implements NeedsDat
             ->callMethod('withDirectory', [Ast::raw(\sprintf("__DIR__ . '/%s'", $answers['directory']))])
             ->callMethod('withVersion', [(string) $answers['version']])
             ->callMethod('withMode', [Ast::raw('PhpMode::' . PhpMode::from((string) $answers['mode'])->name)])
-            ->callMethod('withPhpIni', [['memory_limit' => '1G']])
+            ->callMethod('withPhpIni', [self::PHP_INI])
             ->callMethod('withHttpAccess')
         ;
         $builder->addImport(PhpMode::class);

@@ -166,5 +166,5 @@ function register_service(RegisterServiceEvent $event): void
 {
     $postgres = (new PostgresService())->withVersion('16');
     $event->addService($postgres);
-    $event->addService((new SyliusService('app'))->withDirectory(__DIR__ . '/app')->withVersion('8.5')->withMode(PhpMode::FrankenPhp)->withPhpIni(['memory_limit' => '1G'])->withHttpAccess()->withDomain(domain())->withDatabaseService($postgres));
+    $event->addService((new SyliusService('app'))->withDirectory(__DIR__ . '/app')->withVersion('8.5')->withMode(PhpMode::FrankenPhp)->withPhpIni(['memory_limit' => '1G', 'opcache.memory_consumption' => '1024', 'opcache.interned_strings_buffer' => '64', 'opcache.max_accelerated_files' => '100000'])->withHttpAccess()->withDomain(domain())->withDatabaseService($postgres));
 }
