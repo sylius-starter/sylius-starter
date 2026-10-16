@@ -13,7 +13,7 @@ sidebar:
 | [`sylius-starter/menu`](https://github.com/sylius-starter/sylius-starter-menu)       | `SyliusStarter\Menu`    | [`sylius:menu:remove`](../commands/admin-menu.md)                     |
 | [`sylius-starter/b2b`](https://github.com/sylius-starter/sylius-starter-b2b)         | `SyliusStarter\B2b`     | [`sylius:b2b:enable`](../commands/b2b.md)                             |
 | [`sylius-starter/import`](https://github.com/sylius-starter/sylius-starter-import)   | `SyliusStarter\Import`  | [`sylius:import:*`](../import/index.md)                               |
-| [`sylius-starter/upsun`](https://github.com/sylius-starter/sylius-starter-upsun)     | `SyliusStarter\Upsun`   | [`sylius:upsun:check`](../commands/upsun.md)                          |
+| [`sylius-starter/upsun`](https://github.com/sylius-starter/sylius-starter-upsun)     | `SyliusStarter\Upsun`   | [`sylius:upsun:*`](../commands/upsun.md)                              |
 | `sylius-starter/sylius-starter`                                                      | —                       | All of the above                                                      |
 
 The core is the Castor plugin itself. Every other package only contributes tasks: it registers them in the core

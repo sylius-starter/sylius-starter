@@ -1,6 +1,6 @@
 {
     "name": "sylius-starter/upsun",
-    "description": "Castor tasks to check the Upsun deployment configuration of a Sylius application",
+    "description": "Castor tasks to set up, check and deploy a Sylius application on Upsun",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -19,6 +19,7 @@
         "php": ">=8.3",
         "sylius-starter/core": "self.version",
         "symfony/dotenv": "^7.4|^8.0",
+        "symfony/process": "^7.4|^8.0",
         "symfony/yaml": "^7.4|^8.0"
     },
     "autoload": {
