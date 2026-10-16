@@ -1,6 +1,7 @@
 # sylius-starter/upsun
 
-Castor task to check the Upsun deployment configuration of a Sylius application: `sylius:upsun:check`.
+Castor tasks to set up, check and deploy the Upsun configuration of a Sylius application:
+`sylius:upsun:setup`, `sylius:upsun:check` and `sylius:upsun:deploy`.
 
 ## Installation
 

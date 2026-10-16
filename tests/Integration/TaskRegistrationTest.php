@@ -34,6 +34,8 @@ final class TaskRegistrationTest extends TestCase
         yield 'import fixtures load' => ['import', 'sylius:import:fixtures:load'];
         yield 'b2b' => ['b2b', 'sylius:b2b:enable'];
         yield 'upsun' => ['upsun', 'sylius:upsun:check'];
+        yield 'upsun setup' => ['upsun', 'sylius:upsun:setup'];
+        yield 'upsun deploy' => ['upsun', 'sylius:upsun:deploy'];
     }
 
     #[DataProvider('packageTaskProvider')]

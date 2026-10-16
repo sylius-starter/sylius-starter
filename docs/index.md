@@ -60,7 +60,7 @@ The built-in plugins and themes are only a starting point. Register your own wit
 - [Installation](getting-started/installation.md): start a new project, or add Sylius Starter to an existing one.
 - [Packages](getting-started/packages.md): what each `sylius-starter/*` package brings.
 - Commands: [plugins](commands/plugins.md), [themes](commands/themes.md), [Admin menu](commands/admin-menu.md),
-  [B2B features](commands/b2b.md), [Upsun check](commands/upsun.md).
+  [B2B features](commands/b2b.md), [Upsun](commands/upsun.md).
 - [E-commerce import](import/index.md): generate a catalog with AI, or import an existing website.
 - [Extending](extending/index.md): register your own plugins, themes and tasks.
 - [Storefront slots](storefront/hero.md): how themes and packages share the homepage hero and the shop logo.
